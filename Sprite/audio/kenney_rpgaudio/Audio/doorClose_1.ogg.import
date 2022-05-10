@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/doorClose_1.ogg-4b1605c30b39a524f4dddc30bfcfbe32.oggstr"
+
+[deps]
+
+source_file="res://Sprite/audio/kenney_rpgaudio/Audio/doorClose_1.ogg"
+dest_files=[ "res://.import/doorClose_1.ogg-4b1605c30b39a524f4dddc30bfcfbe32.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

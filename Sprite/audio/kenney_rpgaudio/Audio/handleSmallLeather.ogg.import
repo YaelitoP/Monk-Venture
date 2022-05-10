@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/handleSmallLeather.ogg-e1371eb5472fdfc83afff90d9162499e.oggstr"
+
+[deps]
+
+source_file="res://Sprite/audio/kenney_rpgaudio/Audio/handleSmallLeather.ogg"
+dest_files=[ "res://.import/handleSmallLeather.ogg-e1371eb5472fdfc83afff90d9162499e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
