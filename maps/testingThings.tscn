@@ -8,4 +8,8 @@
 [node name="hitboxed_world" parent="." instance=ExtResource( 2 )]
 
 [node name="Monk" parent="." instance=ExtResource( 1 )]
-position = Vector2( 114, 91 )
+position = Vector2( 143, 108 )
+
+[node name="PlayerView" type="Camera2D" parent="Monk"]
+current = true
+zoom = Vector2( 0.5, 0.5 )
