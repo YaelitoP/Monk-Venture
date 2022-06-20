@@ -82,6 +82,44 @@ tracks/5/keys = {
 "update": 0,
 "values": [ 10.0, 0.0 ]
 }
+tracks/6/type = "method"
+tracks/6/path = NodePath("player_monk")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "falling", -1, 1.0, false ],
+"method": "play"
+} ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("rayfloor/floor_ray1:enabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("rayfloor/floor_ray2:enabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -241,6 +279,30 @@ tracks/12/keys = {
 "update": 0,
 "values": [ Vector2( -1, 1 ) ]
 }
+tracks/13/type = "value"
+tracks/13/path = NodePath("rayfloor/floor_ray1:enabled")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("rayfloor/floor_ray2:enabled")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=11]
 resource_name = "falling"
@@ -316,6 +378,30 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("rayfloor/floor_ray1:enabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("rayfloor/floor_ray2:enabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -1121,14 +1207,14 @@ polygon = PoolVector2Array( -8, -26, -2, -33, 2, -34, 7, -34, 11, -32, 11, -28, 
 modulate = Color( 0, 1, 0.0392157, 1 )
 self_modulate = Color( 0, 1, 0.0392157, 1 )
 position = Vector2( -6, 3 )
-enabled = true
 cast_to = Vector2( 0, 25 )
 collision_mask = 2
+collide_with_areas = true
 
 [node name="floor_ray2" type="RayCast2D" parent="rayfloor"]
 modulate = Color( 0, 1, 0.0392157, 1 )
 self_modulate = Color( 0, 1, 0.0392157, 1 )
 position = Vector2( 6, 3 )
-enabled = true
 cast_to = Vector2( 0, 25 )
 collision_mask = 2
+collide_with_areas = true
