@@ -307,6 +307,7 @@ tracks/14/keys = {
 [sub_resource type="Animation" id=11]
 resource_name = "falling"
 length = 0.6
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("anim_monk:animation")
 tracks/0/interp = 1
@@ -541,7 +542,7 @@ tracks/4/enabled = true
 tracks/4/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
+"update": 1,
 "values": [ Vector2( 0, 0 ), Vector2( 1, 0 ), Vector2( 8, 0 ), Vector2( 8, 8 ) ]
 }
 tracks/5/type = "value"
@@ -565,7 +566,7 @@ tracks/6/enabled = true
 tracks/6/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
+"update": 1,
 "values": [ 22.0, 22.0, 22.0, 8.0 ]
 }
 tracks/7/type = "value"
@@ -577,7 +578,7 @@ tracks/7/enabled = true
 tracks/7/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
+"update": 1,
 "values": [ 15.0 ]
 }
 tracks/8/type = "value"
@@ -589,7 +590,7 @@ tracks/8/enabled = true
 tracks/8/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
+"update": 1,
 "values": [ Vector2( 1, 1 ) ]
 }
 tracks/9/type = "value"
@@ -677,7 +678,7 @@ tracks/4/enabled = true
 tracks/4/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
+"update": 1,
 "values": [ Vector2( 0, 0 ), Vector2( -4, 0 ), Vector2( -8, 0 ), Vector2( -11, 8 ) ]
 }
 tracks/5/type = "value"
@@ -701,7 +702,7 @@ tracks/6/enabled = true
 tracks/6/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
+"update": 1,
 "values": [ 22.0, 22.0, 22.0, 8.0 ]
 }
 tracks/7/type = "value"
@@ -713,7 +714,7 @@ tracks/7/enabled = true
 tracks/7/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
+"update": 1,
 "values": [ 15.0 ]
 }
 tracks/8/type = "value"
@@ -725,7 +726,7 @@ tracks/8/enabled = true
 tracks/8/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
+"update": 1,
 "values": [ Vector2( -1, 1 ) ]
 }
 tracks/9/type = "value"
@@ -1016,6 +1017,7 @@ tracks/9/keys = {
 [sub_resource type="Animation" id=3]
 resource_name = "walk"
 length = 0.6
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("anim_monk:frame")
 tracks/0/interp = 1
@@ -1092,6 +1094,7 @@ tracks/5/keys = {
 [sub_resource type="Animation" id=4]
 resource_name = "walkL"
 length = 0.6
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("anim_monk:frame")
 tracks/0/interp = 1
@@ -1206,7 +1209,7 @@ polygon = PoolVector2Array( -8, -26, -2, -33, 2, -34, 7, -34, 11, -32, 11, -28, 
 [node name="floor_ray1" type="RayCast2D" parent="rayfloor"]
 modulate = Color( 0, 1, 0.0392157, 1 )
 self_modulate = Color( 0, 1, 0.0392157, 1 )
-position = Vector2( -6, 3 )
+position = Vector2( -6, 5 )
 cast_to = Vector2( 0, 25 )
 collision_mask = 2
 collide_with_areas = true
@@ -1214,7 +1217,7 @@ collide_with_areas = true
 [node name="floor_ray2" type="RayCast2D" parent="rayfloor"]
 modulate = Color( 0, 1, 0.0392157, 1 )
 self_modulate = Color( 0, 1, 0.0392157, 1 )
-position = Vector2( 6, 3 )
+position = Vector2( 6, 5 )
 cast_to = Vector2( 0, 25 )
 collision_mask = 2
 collide_with_areas = true
