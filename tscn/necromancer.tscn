@@ -289,7 +289,7 @@ shape = SubResource( 1 )
 position = Vector2( 0, -26 )
 frames = SubResource( 62 )
 animation = "idle"
-frame = 5
+frame = 6
 playing = true
 __meta__ = {
 "_edit_lock_": true

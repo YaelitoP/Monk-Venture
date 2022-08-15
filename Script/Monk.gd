@@ -1,5 +1,5 @@
 extends KinematicBody2D
-
+class_name monkCharacter
 onready var coll: = $coll_monk
 onready var anim: = $anim_monk
 onready var anim_player: = $player_monk

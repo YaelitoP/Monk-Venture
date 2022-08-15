@@ -8,6 +8,22 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "RigidBody2D",
+"class": "Wispy",
+"language": "GDScript",
+"path": "res://Script/wispy.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "monkCharacter",
+"language": "GDScript",
+"path": "res://Script/Monk.gd"
+} ]
+_global_script_class_icons={
+"Wispy": "",
+"monkCharacter": ""
+}
+
 [application]
 
 config/name="Reverse Diablo"
@@ -112,10 +128,12 @@ Run={
 2d_render/layer_2="world"
 2d_render/layer_3="mobs"
 2d_render/layer_4="interactive"
+2d_render/layer_5="bullets"
 2d_physics/layer_1="player"
 2d_physics/layer_2="world"
 2d_physics/layer_3="mobs"
 2d_physics/layer_4="interactive"
+2d_physics/layer_5="bullets"
 
 [physics]
 

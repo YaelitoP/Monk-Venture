@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Sprite/mobs/wizard/enemy-death/enemy-death-sprites/enemy-death1.png" type="Texture" id=1]
 [ext_resource path="res://Sprite/mobs/wizard/spritesheet/wizard.png" type="Texture" id=2]
@@ -94,17 +94,126 @@ animations = [ {
 radius = 14.0
 height = 14.0
 
+[sub_resource type="Animation" id=19]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("anim_sprites:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "idle" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("anim_sprites:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/path = NodePath("anim_sprites:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "death" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("anim_sprites:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+}
+
+[sub_resource type="Animation" id=21]
+resource_name = "idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("anim_sprites:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "idle" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("anim_sprites:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.4, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+
+[sub_resource type="Animation" id=22]
+resource_name = "shoot"
+tracks/0/type = "value"
+tracks/0/path = NodePath("anim_sprites:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "fireball" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("anim_sprites:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+}
+
 [sub_resource type="CircleShape2D" id=18]
-radius = 69.0
+radius = 202.01
 
 [node name="wizard" type="KinematicBody2D"]
+collision_layer = 4
+collision_mask = 3
 script = ExtResource( 11 )
 
 [node name="anim_sprites" type="AnimatedSprite" parent="."]
 frames = SubResource( 16 )
-animation = "death"
-frame = 4
-playing = true
+animation = "idle"
 __meta__ = {
 "_edit_lock_": true
 }
@@ -114,11 +223,39 @@ position = Vector2( 0, 13 )
 shape = SubResource( 17 )
 
 [node name="anim_wizard" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 19 )
+anims/death = SubResource( 20 )
+anims/idle = SubResource( 21 )
+anims/shoot = SubResource( 22 )
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="area_wizard" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="coll_area" type="CollisionShape2D" parent="area_wizard"]
 modulate = Color( 0.905882, 0.027451, 0.027451, 1 )
 self_modulate = Color( 0.894118, 0.101961, 0.101961, 1 )
 position = Vector2( 0, 13 )
 shape = SubResource( 18 )
+
+[node name="aiming" type="Node2D" parent="."]
+position = Vector2( 0, 13 )
+
+[node name="aim1" type="RayCast2D" parent="aiming"]
+enabled = true
+collision_mask = 3
+
+[node name="aim2" type="RayCast2D" parent="aiming"]
+rotation = 0.256999
+enabled = true
+collision_mask = 3
+
+[node name="aim3" type="RayCast2D" parent="aiming"]
+rotation = -0.25695
+enabled = true
+collision_mask = 3
+
+[node name="shot_speed" type="Timer" parent="."]
+process_mode = 0
+
+[connection signal="body_entered" from="area_wizard" to="." method="_on_area_wizard_body_entered"]
