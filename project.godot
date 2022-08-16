@@ -134,6 +134,7 @@ Run={
 2d_physics/layer_3="mobs"
 2d_physics/layer_4="interactive"
 2d_physics/layer_5="bullets"
+2d_physics/layer_6="atacks"
 
 [physics]
 

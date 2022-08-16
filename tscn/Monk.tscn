@@ -160,7 +160,7 @@ tracks/2/keys = {
 "values": [ "idle" ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("coll_atacks:polygon")
+tracks/3/path = NodePath("area_atacks/coll_atacks:polygon")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -172,7 +172,7 @@ tracks/3/keys = {
 "values": [ PoolVector2Array( -8, -26, -2, -33, 2, -34, 7, -34, 11, -32, 11, -28, 10, -26, 5, -26, 0, -30, -8, -26 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("coll_atacks:disabled")
+tracks/4/path = NodePath("area_atacks/coll_atacks:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -244,7 +244,7 @@ tracks/9/keys = {
 "values": [ Vector2( -1, 1 ) ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("coll_atacks:scale")
+tracks/10/path = NodePath("area_atacks/coll_atacks:scale")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -510,7 +510,7 @@ tracks/1/keys = {
 "values": [ 0, 1, 2, 3, 4 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("coll_atacks:polygon")
+tracks/2/path = NodePath("area_atacks/coll_atacks:polygon")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -522,7 +522,7 @@ tracks/2/keys = {
 "values": [ PoolVector2Array( -8, -26, -2, -33, 2, -34, 7, -34, 11, -32, 11, -28, 10, -26, 5, -26, 0, -30, -8, -26 ), PoolVector2Array( 11.8827, -31.5844, 20.7948, -31.5844, 31.6873, -27.4286, 36.6384, -24.9351, 38.6189, -20.7792, 39.6091, -13.2987, 34.658, -5.81818, 28.7166, -5.81818, 28.7166, -10.8052, 32.6775, -14.1299, 31.6873, -21.6104, 25.7459, -26.5974, 19.8046, -29.9221 ), PoolVector2Array( 40.5993, -14.1299, 42.5798, -9.14286, 42.5798, 2.49351, 38.6189, 14.1299, 30.6971, 14.1299, 29.7068, 9.97403, 36.6384, 6.64935, 40.5993, -3.32468 ), PoolVector2Array(  ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("coll_atacks:disabled")
+tracks/3/path = NodePath("area_atacks/coll_atacks:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -594,7 +594,7 @@ tracks/8/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("coll_atacks:scale")
+tracks/9/path = NodePath("area_atacks/coll_atacks:scale")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -646,7 +646,7 @@ tracks/1/keys = {
 "values": [ 0, 1, 2, 3, 4 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("coll_atacks:polygon")
+tracks/2/path = NodePath("area_atacks/coll_atacks:polygon")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -658,7 +658,7 @@ tracks/2/keys = {
 "values": [ PoolVector2Array( -8, -26, -2, -33, 2, -34, 7, -34, 11, -32, 11, -28, 10, -26, 5, -26, 0, -30, -8, -26 ), PoolVector2Array( 11.8827, -31.5844, 20.7948, -31.5844, 31.6873, -27.4286, 36.6384, -24.9351, 38.6189, -20.7792, 39.6091, -13.2987, 34.658, -5.81818, 28.7166, -5.81818, 28.7166, -10.8052, 32.6775, -14.1299, 31.6873, -21.6104, 25.7459, -26.5974, 19.8046, -29.9221 ), PoolVector2Array( 40.5993, -14.1299, 42.5798, -9.14286, 42.5798, 2.49351, 38.6189, 14.1299, 30.6971, 14.1299, 29.7068, 9.97403, 36.6384, 6.64935, 40.5993, -3.32468 ), PoolVector2Array(  ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("coll_atacks:disabled")
+tracks/3/path = NodePath("area_atacks/coll_atacks:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -730,7 +730,7 @@ tracks/8/keys = {
 "values": [ Vector2( -1, 1 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("coll_atacks:scale")
+tracks/9/path = NodePath("area_atacks/coll_atacks:scale")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -782,7 +782,7 @@ tracks/1/keys = {
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("coll_atacks:disabled")
+tracks/2/path = NodePath("area_atacks/coll_atacks:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -794,7 +794,7 @@ tracks/2/keys = {
 "values": [ false, true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("coll_atacks:polygon")
+tracks/3/path = NodePath("area_atacks/coll_atacks:polygon")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -866,7 +866,7 @@ tracks/8/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("coll_atacks:scale")
+tracks/9/path = NodePath("area_atacks/coll_atacks:scale")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -918,7 +918,7 @@ tracks/1/keys = {
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("coll_atacks:disabled")
+tracks/2/path = NodePath("area_atacks/coll_atacks:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -930,7 +930,7 @@ tracks/2/keys = {
 "values": [ false, true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("coll_atacks:polygon")
+tracks/3/path = NodePath("area_atacks/coll_atacks:polygon")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -990,7 +990,7 @@ tracks/7/keys = {
 "values": [ 2.0 ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("coll_atacks:scale")
+tracks/8/path = NodePath("area_atacks/coll_atacks:scale")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -1201,8 +1201,16 @@ anims/punchLeft = SubResource( 10 )
 anims/walk = SubResource( 3 )
 anims/walkL = SubResource( 4 )
 
-[node name="coll_atacks" type="CollisionPolygon2D" parent="."]
+[node name="area_atacks" type="Area2D" parent="." groups=["atacks"]]
 position = Vector2( 0, 7 )
+rotation = 3.14159
+scale = Vector2( 1, -1.203 )
+collision_layer = 32
+collision_mask = 4
+priority = 1.0
+space_override = 1
+
+[node name="coll_atacks" type="CollisionPolygon2D" parent="area_atacks" groups=["atacks"]]
 scale = Vector2( -1, 1.203 )
 polygon = PoolVector2Array( -8, -26, -2, -33, 2, -34, 7, -34, 11, -32, 11, -28, 10, -26, 5, -26, 0, -30, -8, -26 )
 
@@ -1223,3 +1231,6 @@ position = Vector2( 6, 5 )
 cast_to = Vector2( 0, 25 )
 collision_mask = 2
 collide_with_areas = true
+
+[connection signal="area_entered" from="area_atacks" to="." method="_on_area_atacks_area_entered"]
+[connection signal="body_entered" from="area_atacks" to="." method="_on_area_atacks_body_entered"]
