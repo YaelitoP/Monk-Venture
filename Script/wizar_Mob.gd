@@ -22,17 +22,17 @@ var collision0: Node
 var collision1: Node
 var collision2: Node
 
-var health: = 100
-var max_health: = 200
+export var health: = 100
+export var max_health: = 200
 var sight: = 100
 
 var dmg_income = 0
 var intruder_pos: Vector2
 
 var intruder: Object
-var is_shooting: = false
-var striked: = false
-var dying: = false
+export var is_shooting: = false
+export var striked: = false
+export var dying: = false
 
 
 
@@ -88,16 +88,17 @@ func sprites():
 		elif striked:
 			anim.play("hurt")
 	elif dying:
-		print("memori")
 		anim.play("death")
 
 func damage():
-	health = health - dmg_income
-	striked = true
-	print("Wizard get hit by ", dmg_income, " dmg, ", health, " health remaining")
-	emit_signal("health_update", health)
-	if health > 0:
+	if !striked:
+		health = health - dmg_income
+		striked = true
+		print("Wizard get hit by ", dmg_income, " dmg, ", health, " health remaining")
+		emit_signal("health_update", health)
+	elif health > 0 and !dying:
 		dying = true
+		print("muriendo")
 
 func _on_hurbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("atacks"):
@@ -107,5 +108,4 @@ func _on_Monk_monk_dmg(dmg) -> void:
 	dmg_income = dmg
 
 func _on_hurbox_area_exited(area: Area2D) -> void:
-	if area.is_in_group("atacks"):
-		striked = false
+	pass
