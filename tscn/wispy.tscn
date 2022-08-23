@@ -385,6 +385,7 @@ position = Vector2( 2, 4 )
 shape = SubResource( 1 )
 
 [node name="anim_sprites" type="AnimatedSprite" parent="."]
+self_modulate = Color( 0.4, 0.341176, 0.341176, 1 )
 frames = SubResource( 56 )
 animation = "body"
 
@@ -399,3 +400,8 @@ anims/idle = SubResource( 59 )
 [node name="coll_hurtbox" type="CollisionShape2D" parent="hurtbox"]
 position = Vector2( 2, 4 )
 shape = SubResource( 60 )
+
+[node name="time_alive" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true

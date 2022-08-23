@@ -16,5 +16,14 @@ position = Vector2( 644, 156 )
 [node name="Monk" parent="." instance=ExtResource( 4 )]
 position = Vector2( 160, 62 )
 
+[node name="anim_monk" parent="Monk" index="1"]
+frame = 1
+
+[node name="Camera2D" type="Camera2D" parent="Monk"]
+current = true
+zoom = Vector2( 0.8, 0.8 )
+
+[connection signal="monk_dmg" from="Monk" to="wizard" method="_on_Monk_monk_dmg"]
+
 [editable path="wizard"]
 [editable path="Monk"]

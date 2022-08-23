@@ -3,9 +3,9 @@ class_name Wispy
 
 onready var coll: = $coll_wisp
 onready var anim: = $anim_wisp
-onready var hurtbox: = $Hurtbox
-onready var coll_hurtbox: = $Hurtbox/coll_hurt
-
+onready var hurtbox: = $hurtbox
+onready var coll_hurtbox: = $hurtbox/coll_hurtbox
+onready var time_alive = $time_alive
 var intruder: Object
 
 func _ready() -> void:
@@ -13,14 +13,16 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	
+	if time_alive.time_left == 0:
+		anim.play("dead")
 	if is_instance_valid(self):
 		for collide in self.get_colliding_bodies():
 			if collide.is_in_group("player"):
-				if is_instance_valid(anim):
-					anim.play("dead")
+				anim.play("dead")
 				self.set_sleeping(true)
 				
 
 func _on_Hurtbox_body_entered(body: Node) -> void:
 	if body.is_in_group("player"):
 		intruder = body
+

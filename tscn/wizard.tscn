@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Sprite/mobs/wizard/enemy-death/enemy-death-sprites/enemy-death1.png" type="Texture" id=1]
 [ext_resource path="res://Sprite/mobs/wizard/spritesheet/wizard.png" type="Texture" id=2]
@@ -95,8 +95,8 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=23]
-radius = 18.0
-height = 14.0
+radius = 19.0
+height = 12.0
 
 [sub_resource type="Animation" id=19]
 length = 0.001
@@ -124,9 +124,34 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 0 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("anim_sprites:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("anim_sprites:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.905882, 0.0627451, 0.0627451, 1 ) ]
+}
 
 [sub_resource type="Animation" id=20]
 resource_name = "death"
+length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("anim_sprites:animation")
 tracks/0/interp = 1
@@ -146,10 +171,76 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[sub_resource type="Animation" id=24]
+resource_name = "hurt"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("anim_sprites:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "idle" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("anim_sprites:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("anim_sprites:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("anim_sprites:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.905882, 0.0627451, 0.0627451, 1 ), Color( 0.905882, 0.0627451, 0.0627451, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=21]
@@ -210,7 +301,7 @@ tracks/1/keys = {
 [sub_resource type="CircleShape2D" id=18]
 radius = 202.01
 
-[node name="wizard" type="RigidBody2D"]
+[node name="wizard" type="RigidBody2D" groups=["mobs"]]
 collision_layer = 4
 collision_mask = 35
 mode = 2
@@ -224,13 +315,16 @@ position = Vector2( 0, 13 )
 shape = SubResource( 17 )
 
 [node name="anim_sprites" type="AnimatedSprite" parent="."]
+modulate = Color( 0.905882, 0.0627451, 0.0627451, 1 )
 frames = SubResource( 16 )
 animation = "idle"
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="hurbox" type="Area2D" parent="."]
+[node name="hurbox" type="Area2D" parent="." groups=["hurtboxs"]]
+collision_layer = 4
+collision_mask = 35
 
 [node name="coll_hurtbox" type="CollisionShape2D" parent="hurbox"]
 position = Vector2( 0, 13 )
@@ -242,6 +336,7 @@ process_mode = 0
 [node name="anim_wizard" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 19 )
 anims/death = SubResource( 20 )
+anims/hurt = SubResource( 24 )
 anims/idle = SubResource( 21 )
 anims/shoot = SubResource( 22 )
 
@@ -274,4 +369,5 @@ enabled = true
 collision_mask = 3
 
 [connection signal="area_entered" from="hurbox" to="." method="_on_hurbox_area_entered"]
+[connection signal="area_exited" from="hurbox" to="." method="_on_hurbox_area_exited"]
 [connection signal="body_entered" from="area_wizard" to="." method="_on_area_wizard_body_entered"]

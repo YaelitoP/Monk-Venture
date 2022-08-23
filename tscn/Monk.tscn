@@ -160,7 +160,7 @@ tracks/2/keys = {
 "values": [ "idle" ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("area_atacks/coll_atacks:polygon")
+tracks/3/path = NodePath("parent_area/area_atacks/coll_atacks:polygon")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -172,7 +172,7 @@ tracks/3/keys = {
 "values": [ PoolVector2Array( -8, -26, -2, -33, 2, -34, 7, -34, 11, -32, 11, -28, 10, -26, 5, -26, 0, -30, -8, -26 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("area_atacks/coll_atacks:disabled")
+tracks/4/path = NodePath("parent_area/area_atacks/coll_atacks:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -244,7 +244,7 @@ tracks/9/keys = {
 "values": [ Vector2( -1, 1 ) ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("area_atacks/coll_atacks:scale")
+tracks/10/path = NodePath("parent_area/area_atacks/coll_atacks:scale")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -510,19 +510,19 @@ tracks/1/keys = {
 "values": [ 0, 1, 2, 3, 4 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("area_atacks/coll_atacks:polygon")
+tracks/2/path = NodePath("parent_area/area_atacks/coll_atacks:polygon")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.1, 0.2, 0.3, 0.4 ),
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ PoolVector2Array( -8, -26, -2, -33, 2, -34, 7, -34, 11, -32, 11, -28, 10, -26, 5, -26, 0, -30, -8, -26 ), PoolVector2Array( 11.8827, -31.5844, 20.7948, -31.5844, 31.6873, -27.4286, 36.6384, -24.9351, 38.6189, -20.7792, 39.6091, -13.2987, 34.658, -5.81818, 28.7166, -5.81818, 28.7166, -10.8052, 32.6775, -14.1299, 31.6873, -21.6104, 25.7459, -26.5974, 19.8046, -29.9221 ), PoolVector2Array( 40.5993, -14.1299, 42.5798, -9.14286, 42.5798, 2.49351, 38.6189, 14.1299, 30.6971, 14.1299, 29.7068, 9.97403, 36.6384, 6.64935, 40.5993, -3.32468 ), PoolVector2Array(  ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("area_atacks/coll_atacks:disabled")
+tracks/3/path = NodePath("parent_area/area_atacks/coll_atacks:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -594,7 +594,7 @@ tracks/8/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("area_atacks/coll_atacks:scale")
+tracks/9/path = NodePath("parent_area/area_atacks/coll_atacks:scale")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -603,7 +603,7 @@ tracks/9/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1.203 ) ]
+"values": [ Vector2( -1, 1.203 ) ]
 }
 tracks/10/type = "value"
 tracks/10/path = NodePath("anim_monk:flip_h")
@@ -646,19 +646,19 @@ tracks/1/keys = {
 "values": [ 0, 1, 2, 3, 4 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("area_atacks/coll_atacks:polygon")
+tracks/2/path = NodePath("parent_area/area_atacks/coll_atacks:polygon")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.1, 0.2, 0.3, 0.4 ),
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ PoolVector2Array( -8, -26, -2, -33, 2, -34, 7, -34, 11, -32, 11, -28, 10, -26, 5, -26, 0, -30, -8, -26 ), PoolVector2Array( 11.8827, -31.5844, 20.7948, -31.5844, 31.6873, -27.4286, 36.6384, -24.9351, 38.6189, -20.7792, 39.6091, -13.2987, 34.658, -5.81818, 28.7166, -5.81818, 28.7166, -10.8052, 32.6775, -14.1299, 31.6873, -21.6104, 25.7459, -26.5974, 19.8046, -29.9221 ), PoolVector2Array( 40.5993, -14.1299, 42.5798, -9.14286, 42.5798, 2.49351, 38.6189, 14.1299, 30.6971, 14.1299, 29.7068, 9.97403, 36.6384, 6.64935, 40.5993, -3.32468 ), PoolVector2Array(  ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("area_atacks/coll_atacks:disabled")
+tracks/3/path = NodePath("parent_area/area_atacks/coll_atacks:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -730,7 +730,7 @@ tracks/8/keys = {
 "values": [ Vector2( -1, 1 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("area_atacks/coll_atacks:scale")
+tracks/9/path = NodePath("parent_area/area_atacks/coll_atacks:scale")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -739,7 +739,7 @@ tracks/9/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -1, 1.203 ) ]
+"values": [ Vector2( 1, 1.203 ) ]
 }
 tracks/10/type = "value"
 tracks/10/path = NodePath("anim_monk:flip_h")
@@ -782,7 +782,7 @@ tracks/1/keys = {
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("area_atacks/coll_atacks:disabled")
+tracks/2/path = NodePath("parent_area/area_atacks/coll_atacks:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -794,13 +794,13 @@ tracks/2/keys = {
 "values": [ false, true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("area_atacks/coll_atacks:polygon")
+tracks/3/path = NodePath("parent_area/area_atacks/coll_atacks:polygon")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ PoolVector2Array( 14.8534, -1.66234, 22.7752, -2.49351, 25.7459, -5.81818, 31.6873, -4.15584, 35.6482, -5.81818, 36.6384, -13.2987, 32.6775, -14.961, 21.785, -15.7922, 20.7948, -12.4675, 12.873, -12.4675, 13.8632, -4.98701 ), PoolVector2Array( 19.8046, -8.31169, 22.7752, -2.49351, 27.7264, -3.32468, 31.6873, -4.98701, 38.6189, -7.48052, 41.5896, -10.8052, 32.6775, -12.4675, 26.7362, -16.6234, 22.7752, -12.4675, 18.8143, -14.1299, 14.8534, -11.6364, 14.8534, -4.15584 ), PoolVector2Array( 23.7655, 0, 28.7166, -2.49351, 30.6971, -5.81818, 38.6189, -5.81818, 41.5896, -9.97403, 39.6091, -14.1299, 35.6482, -13.2987, 32.6775, -11.6364, 30.6971, -14.1299, 27.7264, -17.4545, 23.7655, -17.4545, 16.8339, -9.14286 ), PoolVector2Array( 17.8241, -7.48052, 20.7948, -5.81818, 25.7459, -5.81818, 26.7362, -7.48052, 26.7362, -12.4675, 17.8241, -12.4675 ), PoolVector2Array( 17.8241, -7.48052, 20.7948, -5.81818, 25.7459, -5.81818, 26.7362, -7.48052, 26.7362, -12.4675, 17.8241, -12.4675 ) ]
@@ -866,7 +866,7 @@ tracks/8/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("area_atacks/coll_atacks:scale")
+tracks/9/path = NodePath("parent_area/area_atacks/coll_atacks:scale")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -875,7 +875,7 @@ tracks/9/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1.203 ) ]
+"values": [ Vector2( -1, 1.203 ) ]
 }
 tracks/10/type = "value"
 tracks/10/path = NodePath("anim_monk:flip_h")
@@ -918,7 +918,7 @@ tracks/1/keys = {
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("area_atacks/coll_atacks:disabled")
+tracks/2/path = NodePath("parent_area/area_atacks/coll_atacks:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -930,13 +930,13 @@ tracks/2/keys = {
 "values": [ false, true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("area_atacks/coll_atacks:polygon")
+tracks/3/path = NodePath("parent_area/area_atacks/coll_atacks:polygon")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ PoolVector2Array( 14.8534, -1.66234, 22.7752, -2.49351, 25.7459, -5.81818, 31.6873, -4.15584, 35.6482, -5.81818, 36.6384, -13.2987, 32.6775, -14.961, 21.785, -15.7922, 20.7948, -12.4675, 12.873, -12.4675, 13.8632, -4.98701 ), PoolVector2Array( 19.8046, -8.31169, 22.7752, -2.49351, 27.7264, -3.32468, 31.6873, -4.98701, 38.6189, -7.48052, 41.5896, -10.8052, 32.6775, -12.4675, 26.7362, -16.6234, 22.7752, -12.4675, 18.8143, -14.1299, 14.8534, -11.6364, 14.8534, -4.15584 ), PoolVector2Array( 23.7655, 0, 28.7166, -2.49351, 30.6971, -5.81818, 38.6189, -5.81818, 41.5896, -9.97403, 39.6091, -14.1299, 35.6482, -13.2987, 32.6775, -11.6364, 30.6971, -14.1299, 27.7264, -17.4545, 23.7655, -17.4545, 16.8339, -9.14286 ), PoolVector2Array( 17.8241, -7.48052, 20.7948, -5.81818, 25.7459, -5.81818, 26.7362, -7.48052, 26.7362, -12.4675, 17.8241, -12.4675 ), PoolVector2Array( 17.8241, -7.48052, 20.7948, -5.81818, 25.7459, -5.81818, 26.7362, -7.48052, 26.7362, -12.4675, 17.8241, -12.4675 ) ]
@@ -990,7 +990,7 @@ tracks/7/keys = {
 "values": [ 2.0 ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("area_atacks/coll_atacks:scale")
+tracks/8/path = NodePath("parent_area/area_atacks/coll_atacks:scale")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -999,7 +999,7 @@ tracks/8/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -1, 1.203 ) ]
+"values": [ Vector2( 1, 1.203 ) ]
 }
 tracks/9/type = "value"
 tracks/9/path = NodePath("anim_monk:flip_h")
@@ -1183,7 +1183,6 @@ position = Vector2( 0, -7 )
 scale = Vector2( -1.025, 1.025 )
 frames = ExtResource( 2 )
 animation = "idle"
-frame = 1
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1201,16 +1200,17 @@ anims/punchLeft = SubResource( 10 )
 anims/walk = SubResource( 3 )
 anims/walkL = SubResource( 4 )
 
-[node name="area_atacks" type="Area2D" parent="." groups=["atacks"]]
+[node name="parent_area" type="Node2D" parent="." groups=["atacks"]]
+
+[node name="area_atacks" type="Area2D" parent="parent_area" groups=["atacks"]]
 position = Vector2( 0, 7 )
 rotation = 3.14159
 scale = Vector2( 1, -1.203 )
 collision_layer = 32
 collision_mask = 4
-priority = 1.0
 space_override = 1
 
-[node name="coll_atacks" type="CollisionPolygon2D" parent="area_atacks" groups=["atacks"]]
+[node name="coll_atacks" type="CollisionPolygon2D" parent="parent_area/area_atacks" groups=["atacks"]]
 scale = Vector2( -1, 1.203 )
 polygon = PoolVector2Array( -8, -26, -2, -33, 2, -34, 7, -34, 11, -32, 11, -28, 10, -26, 5, -26, 0, -30, -8, -26 )
 
@@ -1232,5 +1232,5 @@ cast_to = Vector2( 0, 25 )
 collision_mask = 2
 collide_with_areas = true
 
-[connection signal="area_entered" from="area_atacks" to="." method="_on_area_atacks_area_entered"]
-[connection signal="body_entered" from="area_atacks" to="." method="_on_area_atacks_body_entered"]
+[connection signal="area_entered" from="parent_area/area_atacks" to="." method="_on_area_atacks_area_entered"]
+[connection signal="body_entered" from="parent_area/area_atacks" to="." method="_on_area_atacks_body_entered"]

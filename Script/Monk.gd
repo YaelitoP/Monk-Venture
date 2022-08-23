@@ -12,7 +12,7 @@ signal death()
 onready var coll: = $coll_monk
 onready var anim: = $anim_monk
 onready var anim_player: = $player_monk
-onready var dmg_box: = $area_atacks
+onready var dmg_box: = $parent_area/area_atacks
 onready var current_anim: String = $player_monk.get_current_animation()
 onready var rayfloor: = $rayfloor
 onready var floor_ray1: =  $rayfloor/floor_ray1
@@ -136,8 +136,10 @@ func set_dmg(new_dmg):
 
 
 func _on_area_atacks_body_entered(body: Node) -> void:
-	emit_signal("monk_dmg", dmg)
+	if body.is_in_group("mobs"):
+		emit_signal("monk_dmg", dmg)
 
 
 func _on_area_atacks_area_entered(area: Area2D) -> void:
-	emit_signal("monk_dmg", dmg)
+	if area.is_in_group("hurboxs"):
+		emit_signal("monk_dmg", dmg)
