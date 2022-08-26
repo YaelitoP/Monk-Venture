@@ -8,7 +8,7 @@ onready var anim: = $anim_wizard
 onready var area_sight: = $area_wizard
 onready var coll: = $coll_wizard
 onready var aiming: = $aiming
-onready var hurtbox: = $hurbox
+onready var hurtbox: = $hurtbox
 onready var aim0: = $aiming/aim1
 onready var aim1: = $aiming/aim2
 onready var aim2: = $aiming/aim3
@@ -104,8 +104,11 @@ func _on_hurbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("atacks"):
 		damage()
 
-func _on_Monk_monk_dmg(dmg) -> void:
-	dmg_income = dmg
 
-func _on_hurbox_area_exited(area: Area2D) -> void:
-	pass
+func _on_Monk_monk_dmg(dmg) -> void:
+	pass # Replace with function body.
+
+
+func _on_area_wizard_body_shape_entered(body_rid: RID, body: Node, body_shape_index: int, local_shape_index: int) -> void:
+	
+	pass # Replace with function body.

@@ -1,13 +1,6 @@
 extends KinematicBody2D
 class_name monkCharacter
 
-signal monk_dmg(dmg)
-signal health_change(health)
-signal death()
-
-
-
-
 
 onready var coll: = $coll_monk
 onready var anim: = $anim_monk
@@ -31,7 +24,8 @@ onready var grav: float = ((-2.0 * jumpheight) / (falltime * falltime)) * -1.0
 var jumptime: = 0.4
 var falltime: = 0.5
 
-var dmg: = 20 setget set_dmg
+var dmg: = 20 setget set_dmg, get_dmg
+
 var health: = 1000
 var direction : = Vector2.ZERO
 var motion: = 0
@@ -121,7 +115,6 @@ func animations():
 
 func jumping():
 	
-	
 	direction.y += jump
 	if is_on_floor() or floor_ray1.is_colliding() or floor_ray2.is_colliding():
 		on_air = false
@@ -134,12 +127,8 @@ func gravity():
 func set_dmg(new_dmg):
 	dmg = new_dmg
 
-
-func _on_area_atacks_body_entered(body: Node) -> void:
-	if body.is_in_group("mobs"):
-		emit_signal("monk_dmg", dmg)
+func get_dmg():
+	return dmg
 
 
-func _on_area_atacks_area_entered(area: Area2D) -> void:
-	if area.is_in_group("hurboxs"):
-		emit_signal("monk_dmg", dmg)
+
