@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Script/Monk.gd" type="Script" id=1]
 [ext_resource path="res://Sprite Sets/Monk.tres" type="SpriteFrames" id=2]
 [ext_resource path="res://Script/Character.gd" type="Script" id=3]
+[ext_resource path="res://tscn/characterUi.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 15.0
@@ -1546,7 +1547,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -15, 6 ), Vector2( -5, 5 ) ]
+"values": [ Vector2( -15, 6 ), Vector2( -5, 6 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("coll_monk:shape")
@@ -2164,10 +2165,11 @@ tracks/11/keys = {
 }
 
 [sub_resource type="CapsuleShape2D" id=12]
-radius = 16.0
+radius = 15.0
 height = 22.0
 
 [node name="character" type="Node2D"]
+position = Vector2( 0, -2 )
 script = ExtResource( 3 )
 
 [node name="monk" type="KinematicBody2D" parent="." groups=["player"]]
@@ -2180,16 +2182,17 @@ offset = Vector2( 0, -50 )
 current = true
 zoom = Vector2( 0.6, 0.6 )
 
+[node name="characterUI" parent="monk/cam_character" instance=ExtResource( 4 )]
+
 [node name="coll_monk" type="CollisionShape2D" parent="monk" groups=["player"]]
-position = Vector2( 2, 0 )
-scale = Vector2( -1, 1 )
 shape = SubResource( 1 )
 
 [node name="anim_monk" type="AnimatedSprite" parent="monk"]
 position = Vector2( 0, -7 )
 scale = Vector2( -1.025, 1.025 )
 frames = ExtResource( 2 )
-animation = "walk"
+animation = "idle"
+flip_h = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -2220,8 +2223,8 @@ space_override = 3
 
 [node name="coll_atacks" type="CollisionPolygon2D" parent="monk/area_atacks" groups=["atacks"]]
 position = Vector2( 1, 0.831254 )
-scale = Vector2( 1, 1.203 )
-polygon = PoolVector2Array( 17.8241, -7.48052, 20.7948, -5.81818, 25.7459, -5.81818, 26.7362, -7.48052, 26.7362, -12.4675, 17.8241, -12.4675 )
+scale = Vector2( -1, 1.203 )
+polygon = PoolVector2Array( 21, -4.14588, 25.7459, -5.81818, 32, -5.52783, 37, -7.60077, 37.0001, -14.5106, 33.0001, -16.5836, 22.0001, -17.2746, 18.0001, -14.5107, 13.0001, -14.5107, 13.8632, -4.98701 )
 disabled = true
 
 [node name="rayfloor" type="Node2D" parent="monk"]
@@ -2246,7 +2249,6 @@ collision_mask = 2
 [node name="hurtbox" type="Area2D" parent="monk"]
 
 [node name="coll_hurt" type="CollisionShape2D" parent="monk/hurtbox"]
-position = Vector2( 2, 0 )
 shape = SubResource( 12 )
 
 [connection signal="body_entered" from="monk/hurtbox" to="monk" method="_on_hurtbox_body_entered"]

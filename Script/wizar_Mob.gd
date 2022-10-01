@@ -12,12 +12,16 @@ onready var aim0: = $aiming/aim1
 onready var aim1: = $aiming/aim2
 onready var aim2: = $aiming/aim3
 onready var shot_speed: = $shot_speed
+
 onready var bullet: = preload("res://tscn/wispy.tscn")
+
 onready var parent: = get_parent()
-onready var striked: = false
+
 onready var collision0: Node
 onready var collision1: Node
 onready var collision2: Node
+
+onready var striked: = false
 onready var collided_player: = false
 export var shoot: = false
 
@@ -31,8 +35,6 @@ export var sight: = 200
 var intruder_pos: Vector2
 var bullet_speed: = 500
 var angle_shot: = Vector2.ZERO
-
-
 
 
 func _ready() -> void:
@@ -93,7 +95,6 @@ func check_cast_to(collide):
 func collided_with():
 	if collision0 != null:
 		if collision0.is_in_group("player"):
-			
 			collided_player = true
 			
 	if collision1 != null:

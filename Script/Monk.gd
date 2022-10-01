@@ -4,7 +4,9 @@ class_name monkCharacter
 onready var coll: = $coll_monk
 onready var sprite: = $anim_monk
 onready var anim_player: = $player_monk
+
 onready var dmg_box: = $area_atacks
+
 onready var rayfloor: = $rayfloor
 onready var floor_ray1: =  $rayfloor/floor_ray1
 onready var floor_ray2: =  $rayfloor/floor_ray2
@@ -13,8 +15,8 @@ export var maxspeed: = 400
 export var minspeed: = 50
 export var fricction: = 5
 export var acceleration: = 2
-export var jumpheight: = 120
 
+export var jumpheight: = 120
 onready var jump: float = ((2.0 * jumpheight) / jumptime) * -1.0
 onready var jumpfall: float = ((-2.0 * jumpheight) / (jumptime * jumptime)) * -1.0
 onready var grav: float = ((-2.0 * jumpheight) / (falltime * falltime)) * -1.0
@@ -43,7 +45,7 @@ func _ready() -> void:
 	sprite.flip_h = true
 	death = false
 	hurted = false
-	pass 
+ 
 
 func _physics_process(delta: float) -> void:
 	if !death and !hurted:
@@ -155,6 +157,7 @@ func was_hurted():
 	if health <= 0:
 		death = true
 		anim_player.play("death")
+	return true
 	
 
 
