@@ -1,8 +1,11 @@
 extends KinematicBody2D
+class_name monkCharacter
+
 
 onready var coll: = $coll_monk
 onready var anim: = $anim_monk
 onready var anim_player: = $player_monk
+onready var dmg_box: = $parent_area/area_atacks
 onready var current_anim: String = $player_monk.get_current_animation()
 onready var rayfloor: = $rayfloor
 onready var floor_ray1: =  $rayfloor/floor_ray1
@@ -21,7 +24,8 @@ onready var grav: float = ((-2.0 * jumpheight) / (falltime * falltime)) * -1.0
 var jumptime: = 0.4
 var falltime: = 0.5
 
-var dmg: = 20
+var dmg: = 20 setget set_dmg, get_dmg
+
 var health: = 1000
 var direction : = Vector2.ZERO
 var motion: = 0
@@ -42,7 +46,7 @@ func _physics_process(delta: float) -> void:
 		get_directions(delta)
 	else:
 		direction.x = 0
-
+	
 	animations()
 	
 	if is_on_floor() and Input.is_action_just_pressed("Jump"):
@@ -110,15 +114,21 @@ func animations():
 		one_time = false
 
 func jumping():
+	
 	direction.y += jump
 	if is_on_floor() or floor_ray1.is_colliding() or floor_ray2.is_colliding():
 		on_air = false
 	else:
 		on_air = true
 
-
 func gravity():
 	return jumpfall if jumping() else grav
 
-func atacks():
-	pass
+func set_dmg(new_dmg):
+	dmg = new_dmg
+
+func get_dmg():
+	return dmg
+
+
+
