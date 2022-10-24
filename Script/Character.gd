@@ -17,8 +17,9 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	if !is_instance_valid(heroe):
 		emit_signal("heroe_death")
-	if heroe.hurted == true:
-		emit_signal("health_status", heroe.health)
+	if is_instance_valid(heroe):
+		if heroe.hurted == true:
+			emit_signal("health_status", heroe.health)
 	
 
 

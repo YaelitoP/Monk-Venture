@@ -33,7 +33,7 @@ _global_script_class_icons={
 [application]
 
 config/name="probando"
-run/main_scene="res://maps/WorldTest1.tscn"
+run/main_scene="res://maps/GameNode.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -146,6 +146,7 @@ Run={
 2d_render/layer_3="mobs"
 2d_render/layer_4="interactive"
 2d_render/layer_5="bullets"
+2d_render/layer_6="atacks"
 2d_physics/layer_1="player"
 2d_physics/layer_2="world"
 2d_physics/layer_3="mobs"

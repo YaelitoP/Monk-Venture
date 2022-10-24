@@ -4,7 +4,8 @@ class_name monkCharacter
 onready var coll: = $coll_monk
 onready var sprite: = $anim_monk
 onready var anim_player: = $player_monk
-
+onready var hurtbox: = $hurtbox
+onready var coll_hurt: = $hurtbox/coll_hurt
 onready var dmg_box: = $area_atacks
 
 onready var rayfloor: = $rayfloor
@@ -28,14 +29,14 @@ var dmg: = 20 setget set_dmg, get_dmg
 
 export var health: = 150
 export var dmg_income: = 25
-var direction : = Vector2.ZERO
+export var direction: Vector2 = Vector2.ZERO
 var motion: = 0
 
 var anim_time: float
 
 var on_air: bool
 var is_atacking: bool
-
+var crounched: bool
 export var death: = false
 export var hurted: = false
 var one_time: = false
@@ -63,17 +64,20 @@ func _physics_process(delta: float) -> void:
 		direction = move_and_slide(direction, Vector2.UP)
 		
 func get_directions(delta):
-	if Input.is_action_pressed("Left") and direction.x >= -maxspeed and !is_atacking:
+	if Input.is_action_pressed("Left") and direction.x >= -maxspeed and !is_atacking and !crounched:
 		direction.x += lerp(direction.x, -maxspeed, acceleration) * delta
 		motion = -1
 		moving = true
 		
-	elif Input.is_action_pressed("Right") and direction.x <= maxspeed and !is_atacking:
+	elif Input.is_action_pressed("Right") and direction.x <= maxspeed and !is_atacking and !crounched:
 		direction.x += lerp(direction.x, maxspeed, acceleration) * delta
 		motion = 1
 		moving = true
 		
-	elif on_air and !moving and Input.is_action_just_pressed("Jump") and !one_time:
+	elif Input.is_action_pressed("Down") and !is_atacking:
+		direction.x += lerp(direction.x, 0, fricction) * delta
+		
+	elif on_air and !moving and Input.is_action_just_pressed("Jump") and !one_time and !crounched:
 		direction.x += lerp(direction.x, 0, grav) * delta
 		motion = 0
 		
@@ -91,45 +95,58 @@ func get_directions(delta):
 
 func animations():
 	
-	if !is_atacking and on_air and !one_time:
+	if !is_atacking and on_air and !one_time and !crounched:
 		anim_player.play("Jump")
 		one_time = true
 		if is_on_floor() or (floor_ray1.is_colliding() or floor_ray2.is_colliding()):
 			anim_player.play("idle")
 			one_time = false
+			crounched = false
 	
-	if !is_atacking and Input.is_action_pressed("Right") and is_on_floor():
-		anim_player.play("walk")
-		one_time = false
-	
-	if !is_atacking and Input.is_action_pressed("Left") and is_on_floor():
+	if !is_atacking and Input.is_action_pressed("Right") and is_on_floor() and !crounched:
 		anim_player.play("walkL")
 		one_time = false
 	
-	elif !is_atacking and direction.x == 0 and is_on_floor():
+	if !is_atacking and Input.is_action_pressed("Left") and is_on_floor() and !crounched:
+		anim_player.play("walk")
+		one_time = false
+		
+	elif !is_atacking and Input.is_action_pressed("Down") and is_on_floor():
+		anim_player.play("crounch")
+		crounched = true
+		
+	elif !is_atacking and Input.is_action_just_released("Down") and is_on_floor():
+		
+		crounched = false
+		
+	if !is_atacking and crounched and Input.is_action_just_pressed("Specials"):
+		anim_player.play("crounchKick")
+		
+	elif !is_atacking and direction.x == 0 and is_on_floor() and !crounched:
 		anim_player.play("idle")
 		one_time = false
 		is_atacking = false
 		
-	if !is_atacking and Input.is_action_just_pressed("Attack") and motion <= 0:
+	if !is_atacking and Input.is_action_just_pressed("Attack") and motion <= 0 and !crounched:
 		anim_player.play("punchLeft")
 		is_atacking = true
 	
-	elif !is_atacking and Input.is_action_just_pressed("Attack") and motion >= 0:
+	elif !is_atacking and Input.is_action_just_pressed("Attack") and motion >= 0 and !crounched:
 		anim_player.play("punch")
 		is_atacking = true
 	
-	elif !is_atacking and Input.is_action_just_pressed("Specials") and motion <= 0:
+	elif !is_atacking and Input.is_action_just_pressed("Specials") and motion <= 0 and !crounched:
 		anim_player.play("kickleft")
 		is_atacking = true
 	
-	elif !is_atacking and Input.is_action_just_pressed("Specials") and motion >= 0:
+	elif !is_atacking and Input.is_action_just_pressed("Specials") and motion >= 0 and !crounched:
 		anim_player.play("kick")
 		is_atacking = true
 	
 	elif !anim_player.is_playing():
 		is_atacking = false
 		one_time = false
+		crounched = false
 
 func jumping():
 	if Input.is_action_just_pressed("Jump") and !one_time:
@@ -152,7 +169,8 @@ func get_dmg():
 func was_hurted():
 	anim_player.play("hurt")
 	hurted = true
-	direction.x = -motion * 80
+	if is_on_floor():
+		direction.x = -motion * 80
 	health = health - dmg_income
 	if health <= 0:
 		death = true

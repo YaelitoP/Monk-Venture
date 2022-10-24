@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Sprite/mobs/wizard/enemy-death/enemy-death-sprites/enemy-death1.png" type="Texture" id=1]
 [ext_resource path="res://Sprite/mobs/wizard/spritesheet/wizard.png" type="Texture" id=2]
@@ -12,6 +12,9 @@
 [ext_resource path="res://Sprite/mobs/wizard/enemy-death/enemy-death-sprites/enemy-death9.png" type="Texture" id=10]
 [ext_resource path="res://Script/wizar_Mob.gd" type="Script" id=11]
 [ext_resource path="res://Script/mob.gd" type="Script" id=12]
+
+[sub_resource type="PhysicsMaterial" id=25]
+rough = true
 
 [sub_resource type="CapsuleShape2D" id=17]
 radius = 14.0
@@ -223,10 +226,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ true, false ]
+"values": [ false ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath(".:shoot")
@@ -370,7 +373,7 @@ tracks/4/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=18]
-radius = 265.002
+radius = 359.113
 
 [node name="mob" type="Node2D"]
 script = ExtResource( 12 )
@@ -379,9 +382,10 @@ script = ExtResource( 12 )
 collision_layer = 4
 collision_mask = 35
 mode = 2
-mass = 20.46
-gravity_scale = 15.0
-contact_monitor = true
+mass = 30.0
+physics_material_override = SubResource( 25 )
+gravity_scale = 14.13
+continuous_cd = 2
 script = ExtResource( 11 )
 
 [node name="coll_wizard" type="CollisionShape2D" parent="wizard"]
@@ -390,8 +394,7 @@ shape = SubResource( 17 )
 
 [node name="anim_sprites" type="AnimatedSprite" parent="wizard"]
 frames = SubResource( 16 )
-animation = "fireball"
-frame = 7
+animation = "idle"
 
 [node name="hurtbox" type="Area2D" parent="wizard"]
 collision_layer = 4
@@ -442,7 +445,5 @@ collision_mask = 3
 rotation = -0.25695
 enabled = true
 collision_mask = 3
-
-[node name="floor_rays" type="Node2D" parent="wizard"]
 
 [connection signal="area_entered" from="wizard/hurtbox" to="." method="_on_hurtbox_area_entered"]

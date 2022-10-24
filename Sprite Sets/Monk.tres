@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=33 format=2]
+[gd_resource type="SpriteFrames" load_steps=35 format=2]
 
 [ext_resource path="res://Sprite/Character/monk/sprites/kick1.png" type="Texture" id=1]
 [ext_resource path="res://Sprite/Character/monk/sprites/walk1.png" type="Texture" id=2]
@@ -32,22 +32,14 @@
 [ext_resource path="res://Sprite/Character/monk/sprites/jump1.png" type="Texture" id=30]
 [ext_resource path="res://Sprite/Character/monk/sprites/crouch1.png" type="Texture" id=31]
 [ext_resource path="res://Sprite/Character/monk/sprites/crouch-kick5.png" type="Texture" id=32]
+[ext_resource path="res://Sprite/Character/monk/sprites/hurt2.png" type="Texture" id=33]
+[ext_resource path="res://Sprite/Character/monk/sprites/hurt1.png" type="Texture" id=34]
 
 [resource]
 animations = [ {
-"frames": [ ExtResource( 26 ), ExtResource( 25 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 23 ), ExtResource( 25 ), ExtResource( 26 ) ],
+"frames": [ ExtResource( 34 ), ExtResource( 33 ) ],
 "loop": true,
-"name": "idle",
-"speed": 12.0
-}, {
-"frames": [ ExtResource( 2 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ) ],
-"loop": true,
-"name": "walk",
-"speed": 8.0
-}, {
-"frames": [ ExtResource( 27 ), ExtResource( 29 ) ],
-"loop": true,
-"name": "fall",
+"name": "hurt",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 30 ), ExtResource( 7 ) ],
@@ -55,14 +47,9 @@ animations = [ {
 "name": "jump",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 31 ), ExtResource( 14 ) ],
+"frames": [ ExtResource( 1 ), ExtResource( 11 ), ExtResource( 28 ), ExtResource( 8 ), ExtResource( 15 ) ],
 "loop": true,
-"name": "crounch",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 32 ) ],
-"loop": true,
-"name": "crounchkick",
+"name": "Kick",
 "speed": 8.0
 }, {
 "frames": [ ExtResource( 21 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 22 ) ],
@@ -70,8 +57,28 @@ animations = [ {
 "name": "punch",
 "speed": 9.0
 }, {
-"frames": [ ExtResource( 1 ), ExtResource( 11 ), ExtResource( 28 ), ExtResource( 8 ), ExtResource( 15 ) ],
+"frames": [ ExtResource( 31 ), ExtResource( 14 ) ],
 "loop": true,
-"name": "Kick",
+"name": "crounch",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 27 ), ExtResource( 29 ) ],
+"loop": true,
+"name": "fall",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 32 ) ],
+"loop": true,
+"name": "crounchkick",
 "speed": 8.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "walk",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 26 ), ExtResource( 25 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 23 ), ExtResource( 25 ), ExtResource( 26 ) ],
+"loop": true,
+"name": "idle",
+"speed": 12.0
 } ]
