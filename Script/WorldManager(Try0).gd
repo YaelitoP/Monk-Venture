@@ -3,7 +3,7 @@ class_name world_manager
 
 onready var wizard_node: = preload("res://tscn/wizard.tscn")
 onready var monk_node: = preload("res://tscn/Monk.tscn")
-onready var world0: = preload("res://maps/level1.tscn")
+onready var world0: = preload("res://maps/world0.tscn")
 onready var ui: = preload("res://tscn/UI.tscn")
 onready var start_menu: = preload("res://tscn/startMenu.tscn")
 onready var angel: = preload("res://tscn/angel.tscn")

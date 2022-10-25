@@ -37,14 +37,14 @@
 
 [resource]
 animations = [ {
-"frames": [ ExtResource( 34 ), ExtResource( 33 ) ],
-"loop": true,
-"name": "hurt",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 30 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "jump",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 34 ), ExtResource( 33 ) ],
+"loop": true,
+"name": "hurt",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 1 ), ExtResource( 11 ), ExtResource( 28 ), ExtResource( 8 ), ExtResource( 15 ) ],

@@ -1150,7 +1150,7 @@ tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0.1, 0.2, 0.3, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
+"update": 1,
 "values": [ PoolVector2Array( -9.99982, -25.5666, -4.9998, -30.4035, 0.000206649, -32.4764, 5.00021, -32.4764, 11, -32, 12.0002, -26.9485, 5, -26, 0.000188887, -27.6395 ), PoolVector2Array( 10.0001, -30.4033, 21.0001, -31.0943, 30.0001, -29.0213, 36.0001, -26.2574, 42.0001, -20.0385, 42, -12.4377, 36.0001, -8.29185, 28, -8.29177, 32.0001, -17.2746, 29.0001, -23.4935, 19.0001, -27.6394 ), PoolVector2Array( 41.0001, -17.9655, 44, -8.98273, 44, -0.690908, 41, 8.98289, 34, 9.67385, 29, 8.29187, 30, 4.83694, 39, -7.60077 ), PoolVector2Array(  ) ]
 }
 tracks/3/type = "value"
@@ -1322,7 +1322,7 @@ tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0.1, 0.2, 0.3, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
+"update": 1,
 "values": [ PoolVector2Array( -12.0001, -24.8755, -5.00012, -31.0943, 1.99988, -32.4763, 9.99988, -31.0944, 10, -26, 5, -26, -2.0001, -26.9484 ), PoolVector2Array( 8.99988, -30.4034, 19.9999, -31.0944, 31.6873, -27.4286, 36.6384, -24.9351, 38.6189, -20.7792, 39.6091, -13.2987, 34.658, -5.81818, 29, -8.29187, 26.9999, -12.4378, 29.9999, -15.2017, 28.9999, -20.0386, 23.9999, -24.1845, 16.9999, -27.6394 ), PoolVector2Array( 38.9999, -15.8927, 42.5798, -9.14286, 43, 0.690909, 39, 7.60077, 28, 8.98276, 28, 3.45488, 34, 1.38191, 38, -6.90992 ), PoolVector2Array(  ) ]
 }
 tracks/3/type = "value"
@@ -2058,8 +2058,6 @@ position = Vector2( 0, -7 )
 scale = Vector2( -1.025, 1.025 )
 frames = ExtResource( 2 )
 animation = "crounchkick"
-frame = 3
-flip_h = true
 
 [node name="player_monk" type="AnimationPlayer" parent="monk"]
 autoplay = "idle"
@@ -2090,7 +2088,7 @@ space_override = 3
 
 [node name="coll_atacks" type="CollisionPolygon2D" parent="monk/area_atacks" groups=["atacks"]]
 position = Vector2( 1, 0.831 )
-scale = Vector2( -1, 1.203 )
+scale = Vector2( 1, 1.203 )
 polygon = PoolVector2Array( 20, -10.3645, 30, -14.5104, 42, -9.67351, 39, -0.690707, 25, 0.691239, 15, 2.07319, 12, -6.90962 )
 disabled = true
 
