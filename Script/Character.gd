@@ -1,28 +1,17 @@
 extends Node2D
 
-signal heroe_death()
-signal health_status(health)
-onready var heroe: Node
-onready var heroe_atk: int
+onready var monk: = $Monk
+
+onready var monk_atk: int = monk.get_dmg()
 
 func _ready() -> void:
-	for child in get_children():
-		if child.name == "monk":
-			heroe = $monk
-			heroe_atk = heroe.get_dmg() 
-		
-	
+	pass 
 
 
-func _physics_process(_delta: float) -> void:
-	if !is_instance_valid(heroe):
-		emit_signal("heroe_death")
-	if heroe.hurted == true:
-		emit_signal("health_status", heroe.health)
-	
+func _physics_process(delta: float) -> void:
+	pass
 
 
-func health_status(health):
-	health = heroe.health
-
-
+func _on_area_atacks_body_entered(body: Node) -> void:
+	if body.is_in_group("mobs"):
+		monk.emit_signal("monk_dmg", monk_atk)
