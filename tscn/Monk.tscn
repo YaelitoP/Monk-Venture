@@ -1258,7 +1258,7 @@ tracks/11/enabled = true
 tracks/11/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
+"update": 1,
 "values": [ Vector2( 0, 0 ), Vector2( 1, 0 ), Vector2( 8, 0 ), Vector2( 8, 7 ) ]
 }
 tracks/12/type = "value"
@@ -1270,7 +1270,7 @@ tracks/12/enabled = true
 tracks/12/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 0,
+"update": 1,
 "values": [ 22.0, 8.0 ]
 }
 tracks/13/type = "value"
@@ -1282,7 +1282,7 @@ tracks/13/enabled = true
 tracks/13/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
+"update": 1,
 "values": [ 15.0 ]
 }
 
@@ -2057,7 +2057,8 @@ shape = SubResource( 1 )
 position = Vector2( 0, -7 )
 scale = Vector2( -1.025, 1.025 )
 frames = ExtResource( 2 )
-animation = "crounchkick"
+animation = "Kick"
+flip_h = true
 
 [node name="player_monk" type="AnimationPlayer" parent="monk"]
 autoplay = "idle"
@@ -2088,7 +2089,7 @@ space_override = 3
 
 [node name="coll_atacks" type="CollisionPolygon2D" parent="monk/area_atacks" groups=["atacks"]]
 position = Vector2( 1, 0.831 )
-scale = Vector2( 1, 1.203 )
+scale = Vector2( -1, 1.203 )
 polygon = PoolVector2Array( 20, -10.3645, 30, -14.5104, 42, -9.67351, 39, -0.690707, 25, 0.691239, 15, 2.07319, 12, -6.90962 )
 disabled = true
 

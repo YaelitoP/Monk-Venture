@@ -23,6 +23,7 @@ z_index = -1
 tile_set = ExtResource( 4 )
 cell_size = Vector2( 32, 32 )
 cell_y_sort = true
+show_collision = true
 collision_layer = 0
 collision_mask = 0
 format = 1

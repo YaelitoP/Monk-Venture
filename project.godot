@@ -32,7 +32,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="probando"
+config/name="Monkventure"
 run/main_scene="res://maps/GameNode.tscn"
 config/icon="res://icon.png"
 
