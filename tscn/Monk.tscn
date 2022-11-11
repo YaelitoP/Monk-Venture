@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Script/Monk.gd" type="Script" id=1]
 [ext_resource path="res://Sprite Sets/Monk.tres" type="SpriteFrames" id=2]
 [ext_resource path="res://Script/Character.gd" type="Script" id=3]
 [ext_resource path="res://tscn/characterUi.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Sprite/Fx/Free_Skills_Fire/Fire III/Fire_III_Flame_A_32x48.png" type="Texture" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 15.0
@@ -157,6 +158,18 @@ tracks/11/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 15.0 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("effects:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -377,6 +390,78 @@ tracks/17/keys = {
 "update": 0,
 "values": [ Vector2( 2, 5 ) ]
 }
+tracks/18/type = "value"
+tracks/18/path = NodePath("effects:animation")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "doblejump" ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("effects:frame")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("effects:flip_v")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("effects:position")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 40 ) ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("effects:flip_h")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("effects:visible")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=15]
 resource_name = "crounch"
@@ -488,6 +573,18 @@ tracks/8/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("effects:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=16]
@@ -715,6 +812,227 @@ tracks/13/keys = {
 "method": "queue_free"
 } ]
 }
+tracks/14/type = "value"
+tracks/14/path = NodePath("effects:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "dobleJump"
+tracks/0/type = "value"
+tracks/0/path = NodePath("anim_monk:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "jump", "fall" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("anim_monk:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0, 1, 0, 1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("coll_monk:shape:radius")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 15.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("coll_monk:shape:height")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 10.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("coll_monk:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -2 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("hurtbox/coll_hurt:shape:radius")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 15.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("hurtbox/coll_hurt:shape:height")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 10.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("hurtbox/coll_hurt:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -2 ) ]
+}
+tracks/8/type = "method"
+tracks/8/path = NodePath("player_monk")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "falling", -1, 1.0, false ],
+"method": "play"
+} ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("rayfloor/floor_ray1:enabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("rayfloor/floor_ray2:enabled")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("effects:animation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "doblejump" ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("effects:frame")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("effects:flip_v")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("effects:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 40 ), Vector2( 0, 0 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("effects:flip_h")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("effects:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=11]
 resource_name = "falling"
@@ -839,6 +1157,18 @@ tracks/9/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.8, 1.0 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("effects:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=14]
@@ -1000,6 +1330,18 @@ tracks/12/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/13/type = "value"
+tracks/13/path = NodePath("effects:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "idle"
@@ -1113,6 +1455,21 @@ tracks/8/keys = {
 "update": 0,
 "values": [ 22.0 ]
 }
+tracks/9/type = "value"
+tracks/9/path = NodePath("effects:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "jumpKick"
 
 [sub_resource type="Animation" id=6]
 resource_name = "kick"
@@ -1284,6 +1641,18 @@ tracks/13/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 15.0 ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("effects:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=9]
@@ -1457,6 +1826,18 @@ tracks/13/keys = {
 "update": 1,
 "values": [ Vector2( 0, 0 ), Vector2( -4, 0 ), Vector2( -8, 0 ), Vector2( -11, 7 ) ]
 }
+tracks/14/type = "value"
+tracks/14/path = NodePath("effects:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=7]
 resource_name = "punch"
@@ -1628,6 +2009,18 @@ tracks/13/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( -15, 6 ), Vector2( 0, 6 ) ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("effects:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -1801,6 +2194,18 @@ tracks/13/keys = {
 "update": 0,
 "values": [ Vector2( 11, 6 ), Vector2( 3, 6 ), Vector2( 0, 6 ) ]
 }
+tracks/14/type = "value"
+tracks/14/path = NodePath("effects:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "walk"
@@ -1913,6 +2318,30 @@ tracks/8/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("area_atacks/coll_atacks:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1.203 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("effects:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -2027,20 +2456,80 @@ tracks/8/keys = {
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
 }
+tracks/9/type = "value"
+tracks/9/path = NodePath("area_atacks/coll_atacks:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1, 1.203 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("effects:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="CapsuleShape2D" id=12]
 radius = 15.0
 height = 22.0
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 5 )
+region = Rect2( 32, 0, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 5 )
+region = Rect2( 64, 0, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 5 )
+region = Rect2( 96, 0, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 5 )
+region = Rect2( 128, 0, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 5 )
+region = Rect2( 160, 0, 32, 48 )
+
+[sub_resource type="SpriteFrames" id=18]
+animations = [ {
+"frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
+"loop": true,
+"name": "doblejump",
+"speed": 5.0
+} ]
+
+[sub_resource type="DynamicFontData" id=26]
+font_path = "res://Sprite/Gui/NbPixelFontBundle_v1_0/TripleN.ttf"
+
+[sub_resource type="DynamicFont" id=27]
+font_data = SubResource( 26 )
 
 [node name="character" type="Node2D"]
 position = Vector2( 0, -2 )
 script = ExtResource( 3 )
 
 [node name="monk" type="KinematicBody2D" parent="." groups=["player"]]
-position = Vector2( 0, 1 )
 collision_mask = 14
 script = ExtResource( 1 )
-direction = Vector2( -11, 0 )
 
 [node name="cam_character" type="Camera2D" parent="monk"]
 rotation = -1.74846e-07
@@ -2057,7 +2546,7 @@ shape = SubResource( 1 )
 position = Vector2( 0, -7 )
 scale = Vector2( -1.025, 1.025 )
 frames = ExtResource( 2 )
-animation = "Kick"
+animation = "idle"
 flip_h = true
 
 [node name="player_monk" type="AnimationPlayer" parent="monk"]
@@ -2069,9 +2558,11 @@ anims/RESET = SubResource( 2 )
 anims/crounch = SubResource( 15 )
 anims/crounchKick = SubResource( 16 )
 anims/death = SubResource( 13 )
+anims/dobleJump = SubResource( 19 )
 anims/falling = SubResource( 11 )
 anims/hurt = SubResource( 14 )
 anims/idle = SubResource( 5 )
+anims/jumpKick = SubResource( 17 )
 anims/kick = SubResource( 6 )
 anims/kickleft = SubResource( 9 )
 anims/punch = SubResource( 7 )
@@ -2090,7 +2581,7 @@ space_override = 3
 [node name="coll_atacks" type="CollisionPolygon2D" parent="monk/area_atacks" groups=["atacks"]]
 position = Vector2( 1, 0.831 )
 scale = Vector2( -1, 1.203 )
-polygon = PoolVector2Array( 20, -10.3645, 30, -14.5104, 42, -9.67351, 39, -0.690707, 25, 0.691239, 15, 2.07319, 12, -6.90962 )
+polygon = PoolVector2Array( 17.8241, -7.48052, 20.7948, -5.81818, 25.7459, -5.81818, 26.7362, -7.48052, 26.7362, -12.4675, 17.8241, -12.4675 )
 disabled = true
 
 [node name="rayfloor" type="Node2D" parent="monk"]
@@ -2117,5 +2608,31 @@ collision_mask = 20
 
 [node name="coll_hurt" type="CollisionShape2D" parent="monk/hurtbox"]
 shape = SubResource( 12 )
+
+[node name="effects" type="AnimatedSprite" parent="monk"]
+visible = false
+position = Vector2( 0, 40 )
+z_index = -1
+frames = SubResource( 18 )
+animation = "doblejump"
+flip_h = true
+flip_v = true
+
+[node name="Control" type="Control" parent="monk"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="monk/Control"]
+margin_right = 93.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 27 )
+text = "Pick up with "
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="body_entered" from="monk/hurtbox" to="monk" method="_on_hurtbox_body_entered"]

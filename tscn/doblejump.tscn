@@ -4,12 +4,12 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 
-[node name="doblejump" type="Node2D"]
+[node name="doblejump" type="Node2D" groups=["pickup"]]
 
 [node name="icon" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 
 [node name="pickup" type="Area2D" parent="."]
 
-[node name="coll_pickup" type="CollisionShape2D" parent="pickup"]
+[node name="coll_pickup" type="CollisionShape2D" parent="pickup" groups=["pickup"]]
 shape = SubResource( 1 )
