@@ -21,7 +21,7 @@ export var acceleration: = 2
 export var jumpheight: = 120
 
 
-export var dobleJump: = false
+export var dobleJump: = true
 
 onready var force: = 0 setget , get_force
 
@@ -52,7 +52,7 @@ var crounched: bool
 export var death: = false
 export var hurted: = false
 
-var available_jumps: = 2
+export var available_jumps: = 2
 var moving = false
 
 
@@ -66,9 +66,9 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if !death and !hurted:
 		direction.y += gravity() * delta
-		animations()
-		jumping()
 		
+		jumping()
+		animations()
 		if !is_atacking and !on_air:
 			get_directions(delta)
 		else:
@@ -116,30 +116,21 @@ func animations():
 	if !is_atacking:
 		
 		if Input.is_action_just_pressed("Jump"):
-			print("entre")
-			on_air = true
 			anim_player.play("Jump")
-			available_jumps = 1
 			
-				
-				
-			if is_on_floor() or (floor_ray1.is_colliding() or floor_ray2.is_colliding()):
-				on_air = false
-				anim_player.play("idle")
-				available_jumps = 2
-				crounched = false
-				
+			if dobleJump and Input.is_action_just_pressed("Jump") and available_jumps != 2:
+				anim_player.play("dobleJump")
 			
-		if is_on_floor():
+		if !on_air:
 			if !crounched:
-				if  Input.is_action_pressed("Right"):
+				if  Input.is_action_pressed("Right") and moving:
 					anim_player.play("walkL")
 					force = 100
-					available_jumps = 2
-				if Input.is_action_pressed("Left"):
+					
+				if Input.is_action_pressed("Left") and moving:
 					anim_player.play("walk")
 					force = -100
-					available_jumps = 2
+					
 			if Input.is_action_pressed("Down"):
 				anim_player.play("crounch")
 				crounched = true
@@ -151,27 +142,27 @@ func animations():
 		elif direction.x == 0 and !on_air and !crounched:
 			anim_player.play("idle")
 			available_jumps = 2
-			is_atacking = false
 			
-	if !is_atacking and Input.is_action_just_pressed("Attack") and motion <= 0 and !crounched:
-		anim_player.play("punchLeft")
-		force = -100
-		is_atacking = true
+	if !crounched:
+		if !is_atacking and Input.is_action_just_pressed("Attack") and motion <= 0:
+			anim_player.play("punchLeft")
+			force = -100
+			is_atacking = true
+			
+		elif !is_atacking and Input.is_action_just_pressed("Attack") and motion >= 0:
+			anim_player.play("punch")
+			force = 100
+			is_atacking = true
 		
-	elif !is_atacking and Input.is_action_just_pressed("Attack") and motion >= 0 and !crounched:
-		anim_player.play("punch")
-		force = 100
-		is_atacking = true
-	
-	elif !is_atacking and Input.is_action_just_pressed("Specials") and motion <= 0 and !crounched:
-		anim_player.play("kickleft")
-		force = -100
-		is_atacking = true
-	
-	elif !is_atacking and Input.is_action_just_pressed("Specials") and motion >= 0 and !crounched:
-		anim_player.play("kick")
-		force = 100
-		is_atacking = true
+		elif !is_atacking and Input.is_action_just_pressed("Specials") and motion <= 0:
+			anim_player.play("kickleft")
+			force = -100
+			is_atacking = true
+		
+		elif !is_atacking and Input.is_action_just_pressed("Specials") and motion >= 0:
+			anim_player.play("kick")
+			force = 100
+			is_atacking = true
 	
 	elif !anim_player.is_playing():
 		is_atacking = false
@@ -183,16 +174,14 @@ func jumping():
 		on_air = true
 		if available_jumps == 2:
 			direction.y += jump
-			available_jumps = 1
 			
 		elif dobleJump and available_jumps == 1:
-			available_jumps = 0
-			direction.y = 0
-			direction.y += jump
-			
+			direction.y += jump 
+
 	elif is_on_floor():
-		available_jumps = 2
 		on_air = false
+		available_jumps = 2
+
 
 func gravity():
 	return jumpfall if available_jumps != 2 else grav
