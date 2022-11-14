@@ -19,11 +19,16 @@ export var fricction: = 5
 export var acceleration: = 2
 
 export var jumpheight: = 120
+
+
 export var dobleJump: = false
 
 onready var force: = 0 setget , get_force
+
 onready var jump: float = ((2.0 * jumpheight) / jumptime) * -1.0
+
 onready var jumpfall: float = ((-2.0 * jumpheight) / (jumptime * jumptime)) * -1.0
+
 onready var grav: float = ((-2.0 * jumpheight) / (falltime * falltime)) * -1.0
 
 var jumptime: = 0.4
@@ -47,7 +52,7 @@ var crounched: bool
 export var death: = false
 export var hurted: = false
 
-var can_jump: = true
+var available_jumps: = 2
 var moving = false
 
 
@@ -61,38 +66,35 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if !death and !hurted:
 		direction.y += gravity() * delta
-		
+		animations()
 		jumping()
 		
-		
-		if !is_atacking or on_air:
+		if !is_atacking and !on_air:
 			get_directions(delta)
 		else:
-			direction.x = 0
-		
-		animations()
+			direction.x += lerp(direction.x, 0, fricction) * delta
 		
 	if !death:
 		direction = move_and_slide(direction, Vector2.UP)
-
+	
 
 
 func get_directions(delta):
-	if Input.is_action_pressed("Left") and direction.x >= -maxspeed and !is_atacking and !crounched:
+	if Input.is_action_pressed("Left") and direction.x >= -maxspeed and !crounched:
 		direction.x += lerp(direction.x, -maxspeed, acceleration) * delta
 		motion = -1
 		moving = true
 		
-	elif Input.is_action_pressed("Right") and direction.x <= maxspeed and !is_atacking and !crounched:
+	elif Input.is_action_pressed("Right") and direction.x <= maxspeed and !crounched:
 		direction.x += lerp(direction.x, maxspeed, acceleration) * delta
 		motion = 1
 		moving = true
 		
-	elif Input.is_action_pressed("Down") and !is_atacking:
+	elif Input.is_action_pressed("Down"):
 		direction.x += lerp(direction.x, 0, fricction) * delta
 		
-	elif on_air and !moving and Input.is_action_just_pressed("Jump") and can_jump and !crounched:
-		direction.x += lerp(direction.x, 0, grav) * delta
+	elif !moving and !is_on_floor():
+		direction.x += lerp(direction.x, 0, fricction) * delta
 		motion = 0
 		
 	elif direction.x < -25 or direction.x > 25:
@@ -106,101 +108,111 @@ func get_directions(delta):
 		moving = false
 	if Input.is_action_just_released("Left"):
 		moving = false
-
-
+	if Input.is_action_just_released("Down"):
+		crounched = false
 
 func animations():
 	
-	if !is_atacking and can_jump and !crounched:
+	if !is_atacking:
 		
-		anim_player.play("Jump")
-		
-		if !dobleJump:
-			can_jump = false
+		if Input.is_action_just_pressed("Jump"):
+			on_air = true
+			anim_player.play("Jump")
+			available_jumps = 1
 			
-		elif dobleJump and !is_on_floor() and Input.is_action_just_pressed("Jump"):
-			anim_player.play("dobleJump")
 			
-		if is_on_floor() or (floor_ray1.is_colliding() or floor_ray2.is_colliding()):
+			if dobleJump and Input.is_action_just_pressed("Jump") and available_jumps == 1 and on_air:
+				available_jumps = 0
+				anim_player.play("dobleJump")
+				
+				
+			if is_on_floor() or (floor_ray1.is_colliding() or floor_ray2.is_colliding()):
+				on_air = false
+				anim_player.play("idle")
+				#available_jumps = 2
+				crounched = false
+				
+
+		elif is_on_floor():
 			
+			if  Input.is_action_pressed("Right") and !crounched:
+				anim_player.play("walkL")
+				force = 100
+				available_jumps = 2
+			
+			
+			if Input.is_action_pressed("Left") and !crounched:
+				anim_player.play("walk")
+				force = -100
+				available_jumps = 2
+			
+			
+			elif Input.is_action_pressed("Down"):
+				anim_player.play("crounch")
+				crounched = true
+			
+			
+		if !is_atacking and crounched and Input.is_action_just_pressed("Specials"):
+			anim_player.play("crounchKick")
+			is_atacking = true
+			
+			
+		elif !is_atacking and direction.x == 0 and is_on_floor() and !crounched:
 			anim_player.play("idle")
+			available_jumps = 2
+			is_atacking = false
 			
-			can_jump = true
-			crounched = false
-	
-	if !is_atacking and Input.is_action_pressed("Right") and is_on_floor() and !crounched:
-		anim_player.play("walkL")
-		force = 100
-		can_jump = true
-	
-	if !is_atacking and Input.is_action_pressed("Left") and is_on_floor() and !crounched:
-		anim_player.play("walk")
-		force = -100
-		can_jump = true
 		
-	elif !is_atacking and Input.is_action_pressed("Down") and is_on_floor():
-		anim_player.play("crounch")
-		crounched = true
-		
-	elif !is_atacking and Input.is_action_just_released("Down") and is_on_floor():
-		crounched = false
-		
-	if !is_atacking and crounched and Input.is_action_pressed("Specials"):
-		anim_player.play("crounchKick")
-		is_atacking = true
-		
-	elif !is_atacking and direction.x == 0 and is_on_floor() and !crounched:
-		anim_player.play("idle")
-		can_jump = true
-		is_atacking = false
 		
 	if !is_atacking and Input.is_action_just_pressed("Attack") and motion <= 0 and !crounched:
 		anim_player.play("punchLeft")
 		force = -100
 		is_atacking = true
 	
+	
 	elif !is_atacking and Input.is_action_just_pressed("Attack") and motion >= 0 and !crounched:
 		anim_player.play("punch")
 		force = 100
 		is_atacking = true
+	
+	
 	
 	elif !is_atacking and Input.is_action_just_pressed("Specials") and motion <= 0 and !crounched:
 		anim_player.play("kickleft")
 		force = -100
 		is_atacking = true
 	
+	
+	
 	elif !is_atacking and Input.is_action_just_pressed("Specials") and motion >= 0 and !crounched:
 		anim_player.play("kick")
 		force = 100
 		is_atacking = true
 	
+	
+	
 	elif !anim_player.is_playing():
 		is_atacking = false
-		can_jump = true
 		crounched = false
 
 
-
 func jumping():
-		
-		if Input.is_action_just_pressed("Jump") and can_jump and is_on_floor():
+	if Input.is_action_just_pressed("Jump"):
+		on_air = true
+		if available_jumps == 2:
 			direction.y += jump
+			available_jumps = 1
 			
-		if Input.is_action_just_pressed("Jump") and dobleJump and !is_on_floor():
-				print("dobleJump")
-				can_jump = false
-				direction.y += jump
-				
-		#if (floor_ray1.is_colliding() or floor_ray2.is_colliding()):
-			
-		#	on_air = false
-		#else:
-		#	on_air = true
-
-
+		elif dobleJump and available_jumps == 1:
+			available_jumps = 0
+			direction.y = 0
+			direction.y += jump
+	elif is_on_floor():
+		#available_jumps = 2
+		on_air = false
 
 func gravity():
-	return jumpfall if on_air else grav
+	return jumpfall if available_jumps != 2 else grav
 
 
 
@@ -233,10 +245,19 @@ func _on_hurtbox_body_entered(body: Node) -> void:
 	if body.is_in_group("bullets"):
 		was_hurted(body)
 		print("auch")
-	if body.is_in_group("pickup"):
-		
-		pass
 		
 
 func get_force():
 	return force
+
+
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	if area.get_collision_layer() == 8:
+		control.set_visible(true)
+
+
+func _on_hurtbox_area_exited(area: Area2D) -> void:
+	if area.get_collision_layer() == 8:
+		control.set_visible(false)
+
+
