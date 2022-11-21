@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Sprite/mobs/wizard/enemy-death/enemy-death-sprites/enemy-death1.png" type="Texture" id=1]
 [ext_resource path="res://Sprite/mobs/wizard/spritesheet/wizard.png" type="Texture" id=2]
@@ -10,8 +10,10 @@
 [ext_resource path="res://Sprite/mobs/wizard/enemy-death/enemy-death-sprites/enemy-death7.png" type="Texture" id=8]
 [ext_resource path="res://Sprite/mobs/wizard/enemy-death/enemy-death-sprites/enemy-death8.png" type="Texture" id=9]
 [ext_resource path="res://Sprite/mobs/wizard/enemy-death/enemy-death-sprites/enemy-death9.png" type="Texture" id=10]
-[ext_resource path="res://Script/wizar_Mob.gd" type="Script" id=11]
+[ext_resource path="res://Script/wiz_mob.gd" type="Script" id=11]
 [ext_resource path="res://Script/mob.gd" type="Script" id=12]
+
+[sub_resource type="PhysicsMaterial" id=25]
 
 [sub_resource type="CapsuleShape2D" id=17]
 radius = 14.0
@@ -79,14 +81,14 @@ region = Rect2( 405, 0, 81, 66 )
 
 [sub_resource type="SpriteFrames" id=16]
 animations = [ {
-"frames": [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
-"loop": true,
-"name": "death",
-"speed": 8.0
-}, {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
 "loop": true,
 "name": "fireball",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "death",
 "speed": 8.0
 }, {
 "frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
@@ -223,10 +225,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ true, false ]
+"values": [ false ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath(".:shoot")
@@ -370,18 +372,19 @@ tracks/4/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=18]
-radius = 265.002
+radius = 359.113
 
 [node name="mob" type="Node2D"]
 script = ExtResource( 12 )
 
 [node name="wizard" type="RigidBody2D" parent="." groups=["mobs"]]
+modulate = Color( 1, 0, 0, 1 )
 collision_layer = 4
 collision_mask = 35
 mode = 2
-mass = 20.46
-gravity_scale = 15.0
-contact_monitor = true
+mass = 30.0
+physics_material_override = SubResource( 25 )
+gravity_scale = 14.13
 script = ExtResource( 11 )
 
 [node name="coll_wizard" type="CollisionShape2D" parent="wizard"]
@@ -390,8 +393,7 @@ shape = SubResource( 17 )
 
 [node name="anim_sprites" type="AnimatedSprite" parent="wizard"]
 frames = SubResource( 16 )
-animation = "fireball"
-frame = 7
+animation = "idle"
 
 [node name="hurtbox" type="Area2D" parent="wizard"]
 collision_layer = 4
@@ -442,7 +444,5 @@ collision_mask = 3
 rotation = -0.25695
 enabled = true
 collision_mask = 3
-
-[node name="floor_rays" type="Node2D" parent="wizard"]
 
 [connection signal="area_entered" from="wizard/hurtbox" to="." method="_on_hurtbox_area_entered"]
