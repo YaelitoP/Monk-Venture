@@ -1,14 +1,15 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Script/Monk.gd" type="Script" id=1]
 [ext_resource path="res://Sprite Sets/Monk.tres" type="SpriteFrames" id=2]
 [ext_resource path="res://Script/Character.gd" type="Script" id=3]
 [ext_resource path="res://tscn/characterUi.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Sprite/Fx/Free_Skills_Fire/Fire III/Fire_III_Flame_A_32x48.png" type="Texture" id=5]
+[ext_resource path="res://Sprite/Gui/keys.png" type="Texture" id=6]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 15.0
-height = 10.0
+height = 0.0
 
 [sub_resource type="Animation" id=8]
 resource_name = "Jump"
@@ -164,7 +165,7 @@ tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PoolRealArray( 0.3 ),
+"times": PoolRealArray( 0.2 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 1 ]
@@ -636,6 +637,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [ true, false, true ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:is_atacking")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=13]
 resource_name = "death"
@@ -825,6 +838,7 @@ tracks/14/keys = {
 
 [sub_resource type="Animation" id=19]
 resource_name = "dobleJump"
+length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("anim_monk:animation")
 tracks/0/interp = 1
@@ -832,10 +846,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4 ),
+"times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ "jump", "fall" ]
+"values": [ "fall", "jump" ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("anim_monk:frame")
@@ -928,7 +942,7 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0.7 ),
+"times": PoolRealArray( 0.6 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [ "falling", -1, 1.0, false ],
@@ -1664,6 +1678,18 @@ tracks/14/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/15/type = "value"
+tracks/15/path = NodePath(".:is_atacking")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=9]
 resource_name = "kickleft"
@@ -1844,6 +1870,18 @@ tracks/14/imported = false
 tracks/14/enabled = true
 tracks/14/keys = {
 "times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath(".:is_atacking")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0.4 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
@@ -2032,6 +2070,18 @@ tracks/14/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/15/type = "value"
+tracks/15/path = NodePath(".:is_atacking")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=10]
 resource_name = "punchLeft"
@@ -2212,6 +2262,18 @@ tracks/14/imported = false
 tracks/14/enabled = true
 tracks/14/keys = {
 "times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath(".:is_atacking")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0.6 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
@@ -2493,7 +2555,7 @@ tracks/10/keys = {
 
 [sub_resource type="CapsuleShape2D" id=12]
 radius = 15.0
-height = 10.0
+height = 0.0
 
 [sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 5 )
@@ -2528,9 +2590,11 @@ animations = [ {
 } ]
 
 [sub_resource type="DynamicFontData" id=26]
-font_path = "res://Sprite/Gui/NbPixelFontBundle_v1_0/TripleN.ttf"
+font_path = "res://Sprite/Gui/NbPixelFontBundle_v1_0/TinyUnicode.ttf"
 
 [sub_resource type="DynamicFont" id=27]
+outline_size = 1
+outline_color = Color( 0.101961, 0.101961, 0.101961, 1 )
 font_data = SubResource( 26 )
 
 [node name="character" type="Node2D"]
@@ -2540,6 +2604,7 @@ script = ExtResource( 3 )
 [node name="monk" type="KinematicBody2D" parent="." groups=["player"]]
 collision_mask = 14
 script = ExtResource( 1 )
+available_jumps = 1
 
 [node name="cam_character" type="Camera2D" parent="monk"]
 rotation = -1.74846e-07
@@ -2550,14 +2615,15 @@ zoom = Vector2( 0.6, 0.6 )
 [node name="characterUI" parent="monk/cam_character" instance=ExtResource( 4 )]
 
 [node name="coll_monk" type="CollisionShape2D" parent="monk" groups=["player"]]
-position = Vector2( 0, -2 )
+position = Vector2( 0, -4 )
 shape = SubResource( 1 )
 
 [node name="anim_monk" type="AnimatedSprite" parent="monk"]
 position = Vector2( 0, -7 )
 scale = Vector2( -1.025, 1.025 )
 frames = ExtResource( 2 )
-animation = "jump"
+animation = "fall"
+frame = 1
 
 [node name="player_monk" type="AnimationPlayer" parent="monk"]
 autoplay = "idle"
@@ -2591,8 +2657,6 @@ space_override = 3
 [node name="coll_atacks" type="CollisionPolygon2D" parent="monk/area_atacks" groups=["atacks"]]
 position = Vector2( 1, 0.831 )
 scale = Vector2( 1, 1.203 )
-polygon = PoolVector2Array( 17.8241, -7.48052, 20.7948, -5.81818, 25.7459, -5.81818, 26.7362, -7.48052, 26.7362, -12.4675, 17.8241, -12.4675 )
-disabled = true
 
 [node name="rayfloor" type="Node2D" parent="monk"]
 
@@ -2617,33 +2681,39 @@ collision_mask = 2
 collision_mask = 28
 
 [node name="coll_hurt" type="CollisionShape2D" parent="monk/hurtbox"]
-position = Vector2( 0, -2 )
+position = Vector2( 0, -4 )
 shape = SubResource( 12 )
 
 [node name="effects" type="AnimatedSprite" parent="monk"]
-position = Vector2( 0, 40 )
+visible = false
 z_index = -1
 frames = SubResource( 18 )
 animation = "doblejump"
-flip_h = true
-flip_v = true
+frame = 5
 
 [node name="Control" type="Control" parent="monk"]
 visible = false
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = 15.0
+margin_top = -11.0
+margin_right = 55.0
+margin_bottom = 9.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="monk/Control"]
-margin_right = 93.0
-margin_bottom = 16.0
 custom_fonts/font = SubResource( 27 )
-text = "Pick up with "
+text = "Press "
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Sprite" type="Sprite" parent="monk/Control"]
+position = Vector2( 35, 9 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 85, 25, 14, 14 )
 
 [connection signal="area_entered" from="monk/hurtbox" to="monk" method="_on_hurtbox_area_entered"]
 [connection signal="area_exited" from="monk/hurtbox" to="monk" method="_on_hurtbox_area_exited"]

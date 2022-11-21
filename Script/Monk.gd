@@ -12,18 +12,19 @@ onready var rayfloor: = $rayfloor
 onready var floor_ray1: =  $rayfloor/floor_ray1
 onready var floor_ray2: =  $rayfloor/floor_ray2
 
+onready var force: = 0 setget , get_force
 
 export var maxspeed: = 400
 export var minspeed: = 50
 export var fricction: = 5
 export var acceleration: = 2
 
-export var jumpheight: = 120
-
 
 export var dobleJump: = true
+export var on_air: bool
 
-onready var force: = 0 setget , get_force
+export var available_jumps: = 2
+export var jumpheight: = 120
 
 onready var jump: float = ((2.0 * jumpheight) / jumptime) * -1.0
 
@@ -43,16 +44,13 @@ export var direction: Vector2 = Vector2.ZERO
 
 var motion: = 0
 
-var anim_time: float
 
-var on_air: bool
-var is_atacking: bool
-var crounched: bool
+export var is_atacking: bool
+export var crounched: bool
 
 export var death: = false
 export var hurted: = false
 
-export var available_jumps: = 2
 var moving = false
 
 
@@ -117,8 +115,8 @@ func animations():
 		
 		if Input.is_action_just_pressed("Jump"):
 			anim_player.play("Jump")
-			
-			if dobleJump and Input.is_action_just_pressed("Jump") and available_jumps != 2:
+			crounched = false
+			if dobleJump and Input.is_action_just_pressed("Jump"):
 				anim_player.play("dobleJump")
 			
 		if !on_air:
@@ -176,9 +174,9 @@ func jumping():
 			direction.y += jump
 			
 		elif dobleJump and available_jumps == 1:
-			direction.y += jump 
-
-	elif is_on_floor():
+			direction.y += jump + jump
+		
+	elif is_on_floor() and (floor_ray1.is_colliding() or floor_ray2.is_colliding()):
 		on_air = false
 		available_jumps = 2
 
@@ -216,7 +214,6 @@ func _on_hurtbox_body_entered(body: Node) -> void:
 	direction.x = 0
 	if body.is_in_group("bullets"):
 		was_hurted(body)
-		print("auch")
 		
 
 func get_force():
