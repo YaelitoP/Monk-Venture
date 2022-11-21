@@ -9,7 +9,7 @@
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 15.0
-height = 0.0
+height = 22.0
 
 [sub_resource type="Animation" id=8]
 resource_name = "Jump"
@@ -157,18 +157,6 @@ tracks/11/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
-}
-tracks/12/type = "value"
-tracks/12/path = NodePath(".:available_jumps")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/keys = {
-"times": PoolRealArray( 0.2 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 1 ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -1044,18 +1032,6 @@ tracks/16/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
-}
-tracks/17/type = "value"
-tracks/17/path = NodePath(".:available_jumps")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
 }
 
 [sub_resource type="Animation" id=11]
@@ -2555,7 +2531,7 @@ tracks/10/keys = {
 
 [sub_resource type="CapsuleShape2D" id=12]
 radius = 15.0
-height = 0.0
+height = 22.0
 
 [sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 5 )
@@ -2602,6 +2578,7 @@ position = Vector2( 0, -2 )
 script = ExtResource( 3 )
 
 [node name="monk" type="KinematicBody2D" parent="." groups=["player"]]
+modulate = Color( 0.8, 0.8, 0.8, 1 )
 collision_mask = 14
 script = ExtResource( 1 )
 available_jumps = 1
@@ -2615,15 +2592,13 @@ zoom = Vector2( 0.6, 0.6 )
 [node name="characterUI" parent="monk/cam_character" instance=ExtResource( 4 )]
 
 [node name="coll_monk" type="CollisionShape2D" parent="monk" groups=["player"]]
-position = Vector2( 0, -4 )
 shape = SubResource( 1 )
 
 [node name="anim_monk" type="AnimatedSprite" parent="monk"]
 position = Vector2( 0, -7 )
 scale = Vector2( -1.025, 1.025 )
 frames = ExtResource( 2 )
-animation = "fall"
-frame = 1
+animation = "hurt"
 
 [node name="player_monk" type="AnimationPlayer" parent="monk"]
 autoplay = "idle"
@@ -2657,6 +2632,7 @@ space_override = 3
 [node name="coll_atacks" type="CollisionPolygon2D" parent="monk/area_atacks" groups=["atacks"]]
 position = Vector2( 1, 0.831 )
 scale = Vector2( 1, 1.203 )
+disabled = true
 
 [node name="rayfloor" type="Node2D" parent="monk"]
 
@@ -2681,7 +2657,6 @@ collision_mask = 2
 collision_mask = 28
 
 [node name="coll_hurt" type="CollisionShape2D" parent="monk/hurtbox"]
-position = Vector2( 0, -4 )
 shape = SubResource( 12 )
 
 [node name="effects" type="AnimatedSprite" parent="monk"]

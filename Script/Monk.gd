@@ -20,7 +20,7 @@ export var fricction: = 5
 export var acceleration: = 2
 
 
-export var dobleJump: = true
+export var dobleJump: = false
 export var on_air: bool
 
 export var available_jumps: = 2
@@ -113,11 +113,12 @@ func animations():
 	
 	if !is_atacking:
 		
-		if Input.is_action_just_pressed("Jump"):
+		if Input.is_action_just_pressed("Jump") and available_jumps == 1:
 			anim_player.play("Jump")
 			crounched = false
-			if dobleJump and Input.is_action_just_pressed("Jump"):
-				anim_player.play("dobleJump")
+			
+		elif dobleJump and Input.is_action_just_pressed("Jump") and available_jumps == 0:
+			anim_player.play("dobleJump")
 			
 		if !on_air:
 			if !crounched:
@@ -140,7 +141,7 @@ func animations():
 		elif direction.x == 0 and !on_air and !crounched:
 			anim_player.play("idle")
 			available_jumps = 2
-			
+	
 	if !crounched:
 		if !is_atacking and Input.is_action_just_pressed("Attack") and motion <= 0:
 			anim_player.play("punchLeft")
@@ -165,39 +166,46 @@ func animations():
 	elif !anim_player.is_playing():
 		is_atacking = false
 		crounched = false
+	
+
+
 
 func jumping():
-	
 	if Input.is_action_just_pressed("Jump"):
 		on_air = true
 		if available_jumps == 2:
 			direction.y += jump
-			
+			available_jumps = 1
 		elif dobleJump and available_jumps == 1:
-			direction.y += jump + jump
-		
+			direction.y = 0
+			direction.y += jump
+			available_jumps = 0
 	elif is_on_floor() and (floor_ray1.is_colliding() or floor_ray2.is_colliding()):
 		on_air = false
 		available_jumps = 2
 
 
+
+
+
 func gravity():
 	return jumpfall if available_jumps != 2 else grav
-
-
 
 func set_dmg(new_dmg):
 	dmg = new_dmg
 
-
-
 func get_dmg():
 	return dmg
 
-
+func pickUp():
+	if Input.is_action_just_pressed("Interactive"):
+		dobleJump = true
 
 func was_hurted(collide):
 	hurted = true
+	crounched = false
+	moving = false
+	is_atacking = false
 	if collide.is_in_group("bullets"):
 		direction.x += collide.get_applied_force().x / 10
 	health = health - dmg_income
@@ -206,25 +214,19 @@ func was_hurted(collide):
 		death = true
 		anim_player.play("death")
 	return true
-	
-
-
 
 func _on_hurtbox_body_entered(body: Node) -> void:
 	direction.x = 0
 	if body.is_in_group("bullets"):
 		was_hurted(body)
-		
 
 func get_force():
 	return force
 
-
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area.get_collision_layer() == 8:
 		control.set_visible(true)
-
-
+		pickUp()
 func _on_hurtbox_area_exited(area: Area2D) -> void:
 	if area.get_collision_layer() == 8:
 		control.set_visible(false)
