@@ -8,6 +8,7 @@ onready var ui: = preload("res://tscn/UI.tscn")
 onready var start_menu: = preload("res://tscn/startMenu.tscn")
 onready var angel: = preload("res://tscn/angel.tscn")
 onready var doblejump: = preload("res://tscn/doblejump.tscn")
+onready var options_scene: = preload("res://tscn/options.tscn")
 
 onready var save_point: Object
 onready var enemy: Object
@@ -16,9 +17,11 @@ onready var character: Object
 onready var interface: Object
 onready var title: Object
 onready var map: Object
+onready var options: Object
 
 func _ready() -> void:
-	title = start_menu.instance() 
+	options = options_scene.instance()
+	title = start_menu.instance()
 	if SaveFile.actual_level == 0:
 		character = monk_node.instance()
 		enemy = wizard_node.instance()
@@ -38,6 +41,9 @@ func _ready() -> void:
 # warning-ignore:return_value_discarded
 	character.connect("heroe_death", self, "game_over")
 	
+	options.connect("closed", self, "close")
+	options.connect("change_resolution", self, "resolution")
+	title.connect("options_screen", self, "options_popup")
 # warning-ignore:return_value_discarded
 	title.connect("load_game", self, "start_game")
 # warning-ignore:return_value_discarded
@@ -65,8 +71,23 @@ func start_game():
 
 func restart():
 	get_tree().reload_current_scene()
+	
+func options_popup():
+	self.add_child(options)
+	options.panel.popup()
+	
+func resolution():
+	if OS.window_fullscreen == true:
+		OS.window_fullscreen = false
+	else:
+		OS.window_fullscreen = true
 
+
+func close():
+	remove_child(options)
+	
 func game_over():
 	interface.gameover.visible = true
+
 func exit():
 	get_tree().quit()
