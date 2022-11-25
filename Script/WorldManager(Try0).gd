@@ -20,6 +20,7 @@ onready var map: Object
 onready var options: Object
 
 func _ready() -> void:
+	SaveFile.load_game()
 	options = options_scene.instance()
 	title = start_menu.instance()
 	if SaveFile.actual_level == 0:
