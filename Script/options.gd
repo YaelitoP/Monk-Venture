@@ -12,13 +12,11 @@ func _ready() -> void:
 		screen_button.set_pressed(true)
 	else:
 		screen_button.set_pressed(false)
-	pass # Replace with function body.
 
 
 
 func _on_PopupPanel_popup_hide() -> void:
 	emit_signal("closed")
-	pass # Replace with function body.
 
 
 func _on_CheckButton_toggled(button_pressed: bool) -> void:
@@ -27,4 +25,3 @@ func _on_CheckButton_toggled(button_pressed: bool) -> void:
 		SaveFile.fullscreen = false
 	else:
 		SaveFile.fullscreen = true
-	pass # Replace with function body.

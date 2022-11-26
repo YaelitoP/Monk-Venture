@@ -31,13 +31,12 @@ func _ready() -> void:
 		map = world0.instance()
 		upgrade0 = doblejump.instance()
 	
+	self.add_child(title)
 	
 	if !SaveFile.already_started:
-		self.add_child(title)
 		SaveFile.already_started = true
 	else:
-		character.position = Checkpoint.last_point
-		start_game()
+		character.position = SaveFile.last_point
 		
 # warning-ignore:return_value_discarded
 	character.connect("heroe_death", self, "game_over")
@@ -58,12 +57,12 @@ func _ready() -> void:
 	
 
 func start_game():
+	self.add_child(map)
 	self.add_child(enemy)
 	self.add_child(interface)
-	self.add_child(character)
 	self.add_child(save_point)
-	self.add_child(map)
 	self.add_child(upgrade0)
+	self.add_child(character)
 	enemy.position = map.spawn.position
 	save_point.position = map.check.position
 	upgrade0.position = map.upgrade.position
@@ -78,7 +77,7 @@ func options_popup():
 	options.panel.popup()
 	
 func resolution():
-	if OS.window_fullscreen == true:
+	if SaveFile.fullscreen == false:
 		OS.window_fullscreen = false
 	else:
 		OS.window_fullscreen = true
