@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "Gamenode",
+"language": "GDScript",
+"path": "res://Script/GameNode.gd"
+}, {
 "base": "RigidBody2D",
 "class": "Wispy",
 "language": "GDScript",
@@ -30,6 +35,7 @@ _global_script_classes=[ {
 "path": "res://Script/WorldManager(Try0).gd"
 } ]
 _global_script_class_icons={
+"Gamenode": "",
 "Wispy": "",
 "monkCharacter": "",
 "wizard": "",

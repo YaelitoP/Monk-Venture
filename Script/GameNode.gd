@@ -1,5 +1,5 @@
 extends Node2D
-class_name world_manager
+class_name Gamenode
 
 onready var wizard_node: = preload("res://tscn/wizard.tscn")
 onready var monk_node: = preload("res://tscn/Monk.tscn")
@@ -54,7 +54,8 @@ func _ready() -> void:
 		interface.connect("restart", self, "restart")
 # warning-ignore:return_value_discarded
 		interface.connect("quit_game", self, "exit")
-	SaveFile.load_game()
+		
+		
 
 func start_game():
 	self.add_child(map)
@@ -66,6 +67,7 @@ func start_game():
 	enemy.position = map.spawn.position
 	save_point.position = map.check.position
 	upgrade0.position = map.upgrade.position
+	SaveFile.load_game()
 	if is_instance_valid(title):
 		title.queue_free()
 

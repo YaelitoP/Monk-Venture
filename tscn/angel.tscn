@@ -6,18 +6,6 @@
 [ext_resource path="res://Sprite/Gui/Wenrexa Interface UI KIT #4/PNG/Panel03.png" type="Texture" id=4]
 [ext_resource path="res://Sprite/Fx/GameFXexport/SPRITESHEET_Files/LightCast_96.png" type="Texture" id=5]
 
-[sub_resource type="AtlasTexture" id=22]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 122, 117 )
-
-[sub_resource type="AtlasTexture" id=23]
-atlas = ExtResource( 2 )
-region = Rect2( 122, 0, 122, 117 )
-
-[sub_resource type="AtlasTexture" id=24]
-atlas = ExtResource( 2 )
-region = Rect2( 244, 0, 122, 117 )
-
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 122, 117 )
@@ -62,17 +50,29 @@ region = Rect2( 0, 117, 122, 117 )
 atlas = ExtResource( 2 )
 region = Rect2( 122, 117, 122, 117 )
 
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 122, 117 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 2 )
+region = Rect2( 122, 0, 122, 117 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 2 )
+region = Rect2( 244, 0, 122, 117 )
+
 [sub_resource type="SpriteFrames" id=12]
 animations = [ {
-"frames": [ SubResource( 22 ), SubResource( 23 ), SubResource( 24 ) ],
-"loop": true,
-"name": "New Anim",
-"speed": 6.0
-}, {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
 "loop": true,
 "name": "default",
 "speed": 7.0
+}, {
+"frames": [ SubResource( 22 ), SubResource( 23 ), SubResource( 24 ) ],
+"loop": true,
+"name": "New Anim",
+"speed": 6.0
 } ]
 
 [sub_resource type="CircleShape2D" id=13]
@@ -480,7 +480,7 @@ animations = [ {
 "speed": 45.0
 } ]
 
-[node name="angel" type="Node2D"]
+[node name="angel" type="Node2D" groups=["save"]]
 script = ExtResource( 1 )
 
 [node name="sprite_angel" type="AnimatedSprite" parent="."]

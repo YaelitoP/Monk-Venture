@@ -1,0 +1,94 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Script/options.gd" type="Script" id=1]
+[ext_resource path="res://Sprite/Gui/GUI.png" type="Texture" id=2]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Sprite/Gui/NbPixelFontBundle_v1_0/Rockboxcond12.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFontData" id=3]
+font_path = "res://Sprite/Gui/NbPixelFontBundle_v1_0/Rockboxcond12.ttf"
+
+[sub_resource type="DynamicFont" id=4]
+size = 32
+font_data = SubResource( 3 )
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 2 )
+region_rect = Rect2( 4, 18, 47, 11 )
+
+[node name="options" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PopupPanel" type="PopupPanel" parent="Control"]
+visible = true
+anchor_left = 0.3
+anchor_top = 0.3
+anchor_right = 0.7
+anchor_bottom = 0.8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/PopupPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckButton" type="CheckButton" parent="Control/PopupPanel/VBoxContainer"]
+margin_right = 504.0
+margin_bottom = 40.0
+focus_mode = 1
+custom_fonts/font = SubResource( 2 )
+enabled_focus_mode = 1
+text = "Fullscreen"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/PopupPanel/VBoxContainer"]
+margin_top = 44.0
+margin_right = 504.0
+margin_bottom = 74.0
+custom_constants/separation = 300
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control/PopupPanel/VBoxContainer/HBoxContainer"]
+margin_right = 72.0
+margin_bottom = 30.0
+custom_fonts/font = SubResource( 4 )
+text = "Sounds"
+valign = 1
+
+[node name="HSlider" type="HSlider" parent="Control/PopupPanel/VBoxContainer/HBoxContainer"]
+margin_left = 372.0
+margin_top = 7.0
+margin_right = 504.0
+margin_bottom = 23.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+custom_styles/grabber_area = SubResource( 5 )
+value = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="popup_hide" from="Control/PopupPanel" to="." method="_on_PopupPanel_popup_hide"]
+[connection signal="toggled" from="Control/PopupPanel/VBoxContainer/CheckButton" to="." method="_on_CheckButton_toggled"]
