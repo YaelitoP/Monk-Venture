@@ -1,0 +1,2 @@
+{"first_touch":false,"name":"res://tscn/angel.tscn","parent":"Game:[Node2D:2361]","pos_x":577,"pos_y":139}
+{"dmg":20,"health":200,"name":"","parent":"character:[Node2D:2385]","pos_x":516.612976,"pos_y":162.843414}

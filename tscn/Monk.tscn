@@ -2573,7 +2573,7 @@ outline_size = 1
 outline_color = Color( 0.101961, 0.101961, 0.101961, 1 )
 font_data = SubResource( 26 )
 
-[node name="character" type="Node2D"]
+[node name="character" type="Node2D" groups=["save"]]
 position = Vector2( 0, -2 )
 script = ExtResource( 3 )
 

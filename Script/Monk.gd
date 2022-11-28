@@ -12,13 +12,10 @@ onready var rayfloor: = $rayfloor
 onready var floor_ray1: =  $rayfloor/floor_ray1
 onready var floor_ray2: =  $rayfloor/floor_ray2
 
-onready var force: = 0 setget , get_force
-
 export var maxspeed: = 400
 export var minspeed: = 50
 export var fricction: = 5
 export var acceleration: = 2
-
 
 export var dobleJump: = false
 export var on_air: bool
@@ -35,15 +32,14 @@ onready var grav: float = ((-2.0 * jumpheight) / (falltime * falltime)) * -1.0
 var jumptime: = 0.4
 var falltime: = 0.5
 
+var force: = 0 setget ,get_force
 var dmg: = 20 setget set_dmg, get_dmg
 
-export var health: = 10000
+export var health: = 250
 export var dmg_income: = 25
 export var direction: Vector2 = Vector2.ZERO
 
-
 var motion: = 0
-
 
 export var is_atacking: bool
 export var crounched: bool
@@ -53,13 +49,10 @@ export var hurted: = false
 
 var moving = false
 
-
-
 func _ready() -> void:
 	sprite.flip_h = true
 	death = false
 	hurted = false
- 
 
 func _physics_process(delta: float) -> void:
 	if !death and !hurted:
@@ -74,8 +67,6 @@ func _physics_process(delta: float) -> void:
 		
 	if !death:
 		direction = move_and_slide(direction, Vector2.UP)
-	
-
 
 func get_directions(delta):
 	if Input.is_action_pressed("Left") and direction.x >= -maxspeed and !crounched:
@@ -166,9 +157,6 @@ func animations():
 	elif !anim_player.is_playing():
 		is_atacking = false
 		crounched = false
-	
-
-
 
 func jumping():
 	if Input.is_action_just_pressed("Jump"):
@@ -183,10 +171,6 @@ func jumping():
 	elif is_on_floor() and (floor_ray1.is_colliding() or floor_ray2.is_colliding()):
 		on_air = false
 		available_jumps = 2
-
-
-
-
 
 func gravity():
 	return jumpfall if available_jumps != 2 else grav
@@ -227,6 +211,7 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area.get_collision_layer() == 8:
 		control.set_visible(true)
 		pickUp()
+
 func _on_hurtbox_area_exited(area: Area2D) -> void:
 	if area.get_collision_layer() == 8:
 		control.set_visible(false)

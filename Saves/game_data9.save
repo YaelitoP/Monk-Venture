@@ -1,0 +1,3 @@
+{"health":100,"name":"wizard","parent":"/root/Game/mob","pos_x":0,"pos_y":39.300018}
+{"first_touch":false,"name":"angel","parent":"/root/Game","pos_x":577,"pos_y":139}
+{"dmg":20,"health":250,"name":"monk","parent":"/root/Game/character","pos_x":521.513794,"pos_y":141.533752}

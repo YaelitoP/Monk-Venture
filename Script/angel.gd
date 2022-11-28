@@ -31,6 +31,17 @@ func _on_area_angel_body_entered(body: Node) -> void:
 			anim.play("activated")
 
 func _on_area_angel_body_exited(body: Node) -> void:
-	popUp.visible = false
-	quick_save = true
+	if body.is_in_group("player"):
+		popUp.visible = false
+		quick_save = true
 
+
+func save():
+	var game_data: = {
+		"name" : self.get_filename(),
+		"parent" : self.get_parent().get_path(),
+		"pos_x" : self.get_position().x,
+		"pos_y" : self.get_position().y,
+		"first_touch" : first_touch,
+	}
+	return game_data

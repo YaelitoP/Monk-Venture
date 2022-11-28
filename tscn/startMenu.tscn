@@ -58,7 +58,7 @@ outline_size = 1
 outline_color = Color( 0.827451, 0.0470588, 0.0470588, 0.788235 )
 font_data = SubResource( 9 )
 
-[node name="startMenu" type="CanvasLayer"]
+[node name="startMenu" type="CanvasLayer" groups=["save"]]
 script = ExtResource( 4 )
 
 [node name="menu" type="Control" parent="."]

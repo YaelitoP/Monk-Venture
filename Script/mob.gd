@@ -23,3 +23,15 @@ func new_dmg(dmg):
 
 func actual_dmg():
 	return dmg_income
+
+
+func save():
+	
+	var game_data: = {
+		"name" : self.get_filename(),
+		"parent" : self.get_parent().get_path(),
+		"health" : my_child.health,
+		"pos_x" : get_position().x,
+		"pos_y" : get_position().y,
+	}
+	return game_data

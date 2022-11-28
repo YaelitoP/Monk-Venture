@@ -11,6 +11,7 @@ func _ready() -> void:
 			heroe = $monk
 			heroe_atk = heroe.get_dmg() 
 			knockback = heroe.force
+		
 	
 
 
@@ -20,10 +21,21 @@ func _physics_process(_delta: float) -> void:
 	if is_instance_valid(heroe):
 		if heroe.hurted == true:
 			emit_signal("health_status", heroe.health)
+		
 	
 
 
 func health_status(health):
 	health = heroe.health
-
+	
+func save():
+	var game_data: = {
+		"name" : self.get_filename(),
+		"parent" : self.get_parent().get_path(),
+		"health" : heroe.health,
+		"dmg" : heroe.dmg,
+		"pos_x" : heroe.get_position().x,
+		"pos_y" : heroe.get_position().y,
+	}
+	return game_data
 

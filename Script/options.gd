@@ -5,7 +5,8 @@ onready var screen_button: = $Control/PopupPanel/VBoxContainer/CheckButton
 onready var panel: = $Control/PopupPanel
 signal closed()
 signal change_resolution()
-# Called when the node enters the scene tree for the first time.
+
+
 func _ready() -> void:
 	
 	if OS.window_fullscreen == true:
