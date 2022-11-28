@@ -1,3 +1,0 @@
-{"health":80,"name":"","parent":"/root/Game/mob","pos_x":-27.699585,"pos_y":17103.089844}
-{"first_touch":false,"name":"res://tscn/angel.tscn","parent":"/root/Game","pos_x":577,"pos_y":139}
-{"dmg":20,"health":225,"name":"","parent":"/root/Game/character","pos_x":633.754639,"pos_y":167.933731}
