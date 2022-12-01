@@ -9,8 +9,10 @@ onready var start_menu: = preload("res://tscn/startMenu.tscn")
 onready var angel: = preload("res://tscn/angel.tscn")
 onready var doblejump: = preload("res://tscn/doblejump.tscn")
 onready var options_scene: = preload("res://tscn/options.tscn")
+onready var save_scene: = preload("res://tscn/SaveSelectionPanel.tscn")
 
-onready var save_point: Object
+onready var slot_selection: Object
+onready var checkpoint: Object
 onready var enemy: Object
 onready var upgrade0: Object
 onready var character: Object
@@ -19,57 +21,91 @@ onready var title: Object
 onready var map: Object
 onready var options: Object
 
+onready var level: = 0
+
 func _ready() -> void:
-	options = options_scene.instance()
-	title = start_menu.instance()
-	if SaveFile.actual_level == 0:
-		character = monk_node.instance()
-		enemy = wizard_node.instance()
-		interface = ui.instance()
-		save_point = angel.instance()
+	
+	if level != SaveFile.actual_level:
+		level = SaveFile.actual_level
+	if level == 0:
 		map = world0.instance()
 		upgrade0 = doblejump.instance()
-	self.add_child(title)
 	
+	slot_selection = save_scene.instance()
+	options = options_scene.instance()
+	title = start_menu.instance()
+	character = monk_node.instance()
+	enemy = wizard_node.instance()
+	interface = ui.instance()
+	checkpoint = angel.instance()
 	if !SaveFile.already_started:
+		self.add_child(title)
 		SaveFile.already_started = true
 	else:
 		character.position = SaveFile.last_point
-		
+	
+	
+# warning-ignore:return_value_discarded
+	slot_selection.connect("continue_game", self, "load_game")
+# warning-ignore:return_value_discarded
+	slot_selection.connect("close", self, "close")
+# warning-ignore:return_value_discarded
+	slot_selection.connect("start", self, "start_game")
+	
 # warning-ignore:return_value_discarded
 	character.connect("heroe_death", self, "game_over")
+	
 # warning-ignore:return_value_discarded
 	options.connect("closed", self, "close")
 # warning-ignore:return_value_discarded
 	options.connect("change_resolution", self, "resolution")
+	
+# warning-ignore:return_value_discarded
+	title.connect("continue_game", self, "file_selection")
+# warning-ignore:return_value_discarded
+	title.connect("load_game", self, "file_selection")
 # warning-ignore:return_value_discarded
 	title.connect("options_screen", self, "options_popup")
 # warning-ignore:return_value_discarded
-	title.connect("load_game", self, "start_game")
-# warning-ignore:return_value_discarded
 	title.connect("quit_game", self, "exit")
 	
-	if interface.has_signal("restart"):
 # warning-ignore:return_value_discarded
-		interface.connect("restart", self, "restart")
+	interface.connect("restart", self, "restart")
 # warning-ignore:return_value_discarded
-		interface.connect("quit_game", self, "exit")
-		
-		
+	interface.connect("quit_game", self, "exit")
+
+
+func file_selection():
+	self.add_child(slot_selection)
+	slot_selection.panel.popup()
 
 func start_game():
 	self.add_child(map)
 	self.add_child(enemy)
 	self.add_child(interface)
-	self.add_child(save_point)
+	self.add_child(checkpoint)
 	self.add_child(upgrade0)
 	self.add_child(character)
 	enemy.position = map.spawn.position
-	save_point.position = map.check.position
+	checkpoint.position = map.check.position
+	upgrade0.position = map.upgrade.position
+	if is_instance_valid(title):
+		title.queue_free()
+
+func load_game():
+	self.add_child(map)
+	self.add_child(enemy)
+	self.add_child(interface)
+	self.add_child(checkpoint)
+	self.add_child(upgrade0)
+	self.add_child(character)
+	enemy.position = map.spawn.position
+	checkpoint.position = map.check.position
 	upgrade0.position = map.upgrade.position
 	SaveFile.load_game()
 	if is_instance_valid(title):
 		title.queue_free()
+	
 
 func restart():
 	get_tree().reload_current_scene()
@@ -79,15 +115,19 @@ func options_popup():
 	options.panel.popup()
 	
 func resolution():
-	if SaveFile.fullscreen == false:
-		OS.window_fullscreen = false
-	else:
+	if SaveFile.fullscreen:
 		OS.window_fullscreen = true
+	else:
+		OS.window_fullscreen = false
 
 
 func close():
-	remove_child(options)
-	
+	if self.is_a_parent_of(options):
+		remove_child(options)
+	if self.is_a_parent_of(slot_selection):
+		remove_child(slot_selection)
+	SaveFile.save_config()
+
 func game_over():
 	interface.gameover.visible = true
 

@@ -55,9 +55,7 @@ __meta__ = {
 [node name="CheckButton" type="CheckButton" parent="Control/PopupPanel/VBoxContainer"]
 margin_right = 504.0
 margin_bottom = 40.0
-focus_mode = 1
 custom_fonts/font = SubResource( 2 )
-enabled_focus_mode = 1
 text = "Fullscreen"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/PopupPanel/VBoxContainer"]
