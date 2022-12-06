@@ -9,10 +9,10 @@ signal change_resolution()
 
 func _ready() -> void:
 	
-	if OS.window_fullscreen == true:
-		screen_button.set_pressed(true)
+	if SaveFile.fullscreen == true:
+		screen_button.set_pressed_no_signal(true)
 	else:
-		screen_button.set_pressed(false)
+		screen_button.set_pressed_no_signal(false)
 
 
 
@@ -21,8 +21,8 @@ func _on_PopupPanel_popup_hide() -> void:
 
 
 func _on_CheckButton_toggled(button_pressed: bool) -> void:
-	emit_signal("change_resolution")
-	if SaveFile.fullscreen == true:
-		SaveFile.fullscreen = false
-	else:
+	if button_pressed:
 		SaveFile.fullscreen = true
+	else:
+		SaveFile.fullscreen = false
+	emit_signal("change_resolution")

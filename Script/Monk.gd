@@ -1,6 +1,7 @@
 extends KinematicBody2D
 class_name monkCharacter
 
+
 onready var coll: = $coll_monk
 onready var sprite: = $anim_monk
 onready var anim_player: = $player_monk
@@ -12,47 +13,62 @@ onready var rayfloor: = $rayfloor
 onready var floor_ray1: =  $rayfloor/floor_ray1
 onready var floor_ray2: =  $rayfloor/floor_ray2
 
-export var maxspeed: = 400
+
+export var maxspeed: = 250
 export var minspeed: = 50
 export var fricction: = 5
-export var acceleration: = 2
+export var acceleration: = 2.5
+
 
 export var dobleJump: = false
 export var on_air: bool
 
+
 export var available_jumps: = 2
 export var jumpheight: = 120
 
+
 onready var jump: float = ((2.0 * jumpheight) / jumptime) * -1.0
+
 
 onready var jumpfall: float = ((-2.0 * jumpheight) / (jumptime * jumptime)) * -1.0
 
+
 onready var grav: float = ((-2.0 * jumpheight) / (falltime * falltime)) * -1.0
+
 
 var jumptime: = 0.4
 var falltime: = 0.5
 
+
 var force: = 0 setget ,get_force
 var dmg: = 20 setget set_dmg, get_dmg
 
-export var health: = 250
+
+export var health: = 20
 export var dmg_income: = 25
 export var direction: Vector2 = Vector2.ZERO
 
+
 var motion: = 0
+
 
 export var is_atacking: bool
 export var crounched: bool
 
+
 export var death: = false
 export var hurted: = false
 
+
 var moving = false
+
 
 func _ready() -> void:
 	sprite.flip_h = true
 	death = false
 	hurted = false
+
 
 func _physics_process(delta: float) -> void:
 	if !death and !hurted:
@@ -63,10 +79,11 @@ func _physics_process(delta: float) -> void:
 		if !is_atacking and !on_air:
 			get_directions(delta)
 		else:
-			direction.x += lerp(direction.x, 0, fricction/2) * delta
+			direction.x += lerp(direction.x, 0, fricction/3) * delta
 		
 	if !death:
 		direction = move_and_slide(direction, Vector2.UP)
+
 
 func get_directions(delta):
 	if Input.is_action_pressed("Left") and direction.x >= -maxspeed and !crounched:
@@ -99,6 +116,7 @@ func get_directions(delta):
 		moving = false
 	if Input.is_action_just_released("Down"):
 		crounched = false
+
 
 func animations():
 	
@@ -158,6 +176,7 @@ func animations():
 		is_atacking = false
 		crounched = false
 
+
 func jumping():
 	if Input.is_action_just_pressed("Jump"):
 		on_air = true
@@ -172,18 +191,23 @@ func jumping():
 		on_air = false
 		available_jumps = 2
 
+
 func gravity():
 	return jumpfall if available_jumps != 2 else grav
+
 
 func set_dmg(new_dmg):
 	dmg = new_dmg
 
+
 func get_dmg():
 	return dmg
+
 
 func pickUp():
 	if Input.is_action_just_pressed("Interactive"):
 		dobleJump = true
+
 
 func was_hurted(collide):
 	hurted = true
@@ -199,20 +223,26 @@ func was_hurted(collide):
 		anim_player.play("death")
 	return true
 
+
 func _on_hurtbox_body_entered(body: Node) -> void:
 	direction.x = 0
 	if body.is_in_group("bullets"):
 		was_hurted(body)
 
+
 func get_force():
 	return force
+	
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
+	
 	if area.get_collision_layer() == 8:
 		control.set_visible(true)
 		pickUp()
 
+
 func _on_hurtbox_area_exited(area: Area2D) -> void:
+	
 	if area.get_collision_layer() == 8:
 		control.set_visible(false)
 

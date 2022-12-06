@@ -2,6 +2,7 @@ extends Node2D
 
 signal heroe_death()
 signal health_status(health)
+
 onready var heroe: Node
 onready var heroe_atk: int
 onready var knockback: = 0
@@ -11,8 +12,9 @@ func _ready() -> void:
 			heroe = $monk
 			heroe_atk = heroe.get_dmg() 
 			knockback = heroe.force
-		
-	
+		# warning-ignore:return_value_discarded
+			self.connect("heroe_death", get_parent(), "game_over")
+			
 
 
 func _physics_process(_delta: float) -> void:
@@ -21,21 +23,22 @@ func _physics_process(_delta: float) -> void:
 	if is_instance_valid(heroe):
 		if heroe.hurted == true:
 			emit_signal("health_status", heroe.health)
-		
-	
 
 
 func health_status(health):
 	health = heroe.health
 	
 func save():
+	
 	var game_data: = {
 		"name" : self.get_filename(),
 		"parent" : self.get_parent().get_path(),
 		"health" : heroe.health,
 		"dmg" : heroe.dmg,
-		"pos_x" : heroe.get_position().x,
-		"pos_y" : heroe.get_position().y,
+		"pos_x" : heroe.get_global_position().x,
+		"pos_y" : heroe.get_global_position().y,
 	}
+	
 	return game_data
+	
 

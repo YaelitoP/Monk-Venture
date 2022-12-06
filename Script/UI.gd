@@ -4,7 +4,6 @@ extends CanvasLayer
 signal restart()
 signal quit_game()
 onready var gameover: = $gameover
-
 func _ready() -> void:
 	pass 
 
@@ -12,10 +11,10 @@ func _ready() -> void:
 
 
 func _on_restart_pressed() -> void:
-	emit_signal("restart")
+	get_tree().reload_current_scene()
 	pass # Replace with function body.
 
 
 func _on_exit_pressed() -> void:
-	emit_signal("quit_game")
+	get_tree().quit()
 	pass # Replace with function body.
