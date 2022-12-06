@@ -2,7 +2,7 @@ extends Node
 
 onready var new_start: = true
 onready var actual_level: = 0
-onready var saved: = false
+onready var active: = false
 onready var fullscreen: = false
 
 onready var last_point: = Vector2.ZERO
@@ -85,7 +85,6 @@ func load_game():
 	game_save.close()
 
 
-
 func save_config():
 	
 	var config = ConfigFile.new()
@@ -112,5 +111,3 @@ func load_config():
 		
 		if section == "settings":
 			fullscreen = config.get_value(section, "resolution")
-			
-		

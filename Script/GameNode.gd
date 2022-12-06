@@ -71,12 +71,7 @@ func _ready() -> void:
 # warning-ignore:return_value_discarded
 	title.connect("quit_game", self, "exit")
 	
-# warning-ignore:return_value_discarded
-	respawn_screen.connect("restart", self, "restart")
 	
-# warning-ignore:return_value_discarded
-	respawn_screen.connect("quit_game", self, "exit")
-
 
 func file_selection():
 	self.add_child(slot_selection)
@@ -92,7 +87,10 @@ func start_game():
 	enemy.position = map.spawn.position
 	checkpoint.position = map.check.position
 	upgrade0.position = map.upgrade.position
-
+	if !SaveFile.new_start:
+		character.position = SaveFile.last_point
+	else:
+		SaveFile.new_start = false
 	if is_instance_valid(title):
 		title.queue_free()
 
@@ -108,15 +106,14 @@ func load_game():
 	upgrade0.position = map.upgrade.position
 	SaveFile.load_game()
 	if !SaveFile.new_start:
-		character.global_position = SaveFile.last_point
+		character.position = SaveFile.last_point
 	else:
 		SaveFile.new_start = false
 	if is_instance_valid(title):
 		title.queue_free()
 	
 
-func restart():
-	get_tree().reload_current_scene()
+
 	
 func options_popup():
 	self.add_child(options)
@@ -137,8 +134,5 @@ func close():
 	SaveFile.save_config()
 
 func game_over():
-	
 	respawn_screen.gameover.visible = true
 
-func exit():
-	get_tree().quit()

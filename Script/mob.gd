@@ -31,7 +31,7 @@ func save():
 		"name" : self.get_filename(),
 		"parent" : self.get_parent().get_path(),
 		"health" : my_child.health,
-		"pos_x" : get_position().x,
-		"pos_y" : get_position().y,
+		"pos_x" : get_global_position().x,
+		"pos_y" : get_global_position().y,
 	}
 	return game_data
