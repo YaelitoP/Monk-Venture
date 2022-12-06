@@ -14,10 +14,10 @@ onready var floor_ray1: =  $rayfloor/floor_ray1
 onready var floor_ray2: =  $rayfloor/floor_ray2
 
 
-export var maxspeed: = 400
+export var maxspeed: = 250
 export var minspeed: = 50
 export var fricction: = 5
-export var acceleration: = 2
+export var acceleration: = 2.5
 
 
 export var dobleJump: = false
@@ -45,7 +45,7 @@ var force: = 0 setget ,get_force
 var dmg: = 20 setget set_dmg, get_dmg
 
 
-export var health: = 250
+export var health: = 20
 export var dmg_income: = 25
 export var direction: Vector2 = Vector2.ZERO
 
@@ -79,7 +79,7 @@ func _physics_process(delta: float) -> void:
 		if !is_atacking and !on_air:
 			get_directions(delta)
 		else:
-			direction.x += lerp(direction.x, 0, fricction/2) * delta
+			direction.x += lerp(direction.x, 0, fricction/3) * delta
 		
 	if !death:
 		direction = move_and_slide(direction, Vector2.UP)

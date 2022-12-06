@@ -1,12 +1,15 @@
 extends Node
 
-onready var already_started: = false
+onready var new_start: = true
 onready var actual_level: = 0
 onready var saved: = false
 onready var fullscreen: = false
+
 onready var last_point: = Vector2.ZERO
+
 onready var slot: String
-onready var new_game: bool
+onready var new_slot: = true
+
 const save: = "res://Saves/game_data.save"
 const save1: = "res://Saves/game_data1.save"
 const save2: = "res://Saves/game_data2.save"

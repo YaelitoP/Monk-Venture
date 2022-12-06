@@ -23,7 +23,7 @@ func slot0() -> void:
 	
 	SaveFile.slot = SaveFile.save
 	
-	if SaveFile.new_game == true:
+	if SaveFile.new_slot == true:
 		
 		if file.file_exists(SaveFile.save):
 			
@@ -45,7 +45,7 @@ func slot0() -> void:
 func slot1() -> void:
 	SaveFile.slot = SaveFile.save1
 	
-	if SaveFile.new_game == true:
+	if SaveFile.new_slot == true:
 		
 		if file.file_exists(SaveFile.save1):
 			
@@ -67,7 +67,7 @@ func slot1() -> void:
 func slot2() -> void:
 	SaveFile.slot = SaveFile.save2
 	
-	if SaveFile.new_game == true:
+	if SaveFile.new_slot == true:
 		
 		if file.file_exists(SaveFile.save2):
 			

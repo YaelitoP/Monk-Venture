@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-signal load_game()
+signal start_game()
 signal quit_game()
 signal options_screen()
 signal continue_game()
@@ -21,24 +21,28 @@ func _ready() -> void:
 	else:
 		continue_button.set_visible(false)
 
-func _on_Button_pressed() -> void:
-	SaveFile.new_game = true
-	emit_signal("load_game")
+
+func continue_pressed() -> void:
+	SaveFile.new_slot = false
+	emit_signal("continue_game")
 	pass # Replace with function body.
 
 
-func exit_press() -> void:
-	SaveFile.save_config()
-	emit_signal("quit_game")
+func start_pressed() -> void:
+	emit_signal("start_game")
 	pass # Replace with function body.
 
 func _on_options_pressed() -> void:
 	emit_signal("options_screen")
 	pass # Replace with function body.
 
-
-func _on_Button4_pressed() -> void:
-	SaveFile.new_game = false
-	emit_signal("continue_game")
+func exit_press() -> void:
+	SaveFile.save_config()
+	emit_signal("quit_game")
 	pass # Replace with function body.
+
+
+
+
+
 

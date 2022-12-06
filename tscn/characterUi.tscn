@@ -10,17 +10,18 @@ script = ExtResource( 4 )
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+rect_scale = Vector2( 2, 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="bars" type="VBoxContainer" parent="Control"]
-anchor_top = 0.117
-anchor_bottom = 0.117
-margin_left = 56.0
-margin_top = -11.24
-margin_right = 1336.0
-margin_bottom = -4.24001
+anchor_top = 0.063
+anchor_bottom = 0.076
+margin_left = 7.0
+margin_top = -9.86
+margin_right = 1287.0
+margin_bottom = -2.86
 rect_pivot_offset = Vector2( 112, 223.04 )
 __meta__ = {
 "_edit_use_anchors_": false

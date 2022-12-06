@@ -124,7 +124,6 @@ margin_right = 871.0
 margin_bottom = 51.0
 custom_fonts/font = SubResource( 6 )
 text = "SKY"
-percent_visible = -0.333333
 
 [node name="VBoxContainer" type="VBoxContainer" parent="menu"]
 anchor_left = 0.5
@@ -170,7 +169,7 @@ margin_bottom = 227.0
 custom_fonts/font = SubResource( 3 )
 text = "Exit"
 
-[connection signal="pressed" from="menu/VBoxContainer/Button4" to="." method="_on_Button4_pressed"]
-[connection signal="pressed" from="menu/VBoxContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="menu/VBoxContainer/Button4" to="." method="continue_pressed"]
+[connection signal="pressed" from="menu/VBoxContainer/Button" to="." method="start_pressed"]
 [connection signal="pressed" from="menu/VBoxContainer/Button3" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="menu/VBoxContainer/Button2" to="." method="exit_press"]

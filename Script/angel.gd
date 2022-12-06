@@ -17,6 +17,7 @@ func _ready() -> void:
 func _on_area_angel_body_entered(body: Node) -> void:
 	if body.is_in_group("player"):
 		if first_touch:
+			SaveFile.new_start = false
 			SaveFile.saved = true
 			popUp.visible = true
 			first_touch = false
