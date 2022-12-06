@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "Gamenode",
+"language": "GDScript",
+"path": "res://Script/GameNode.gd"
+}, {
 "base": "RigidBody2D",
 "class": "Wispy",
 "language": "GDScript",
@@ -19,14 +24,21 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Script/Monk.gd"
 }, {
+"base": "RigidBody2D",
+"class": "wizard",
+"language": "GDScript",
+"path": "res://Script/wiz_mob.gd"
+}, {
 "base": "Node2D",
 "class": "world_manager",
 "language": "GDScript",
 "path": "res://Script/WorldManager(Try0).gd"
 } ]
 _global_script_class_icons={
+"Gamenode": "",
 "Wispy": "",
 "monkCharacter": "",
+"wizard": "",
 "world_manager": ""
 }
 
@@ -46,6 +58,7 @@ SaveFile="*res://Script/saveFile.gd"
 window/size/width=1280
 window/size/height=720
 window/stretch/mode="2d"
+window/stretch/aspect="expand"
 
 [importer_defaults]
 
@@ -136,6 +149,11 @@ Down={
 Run={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777237,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+Interactive={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 

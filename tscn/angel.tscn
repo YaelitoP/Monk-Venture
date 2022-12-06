@@ -480,7 +480,7 @@ animations = [ {
 "speed": 45.0
 } ]
 
-[node name="angel" type="Node2D"]
+[node name="angel" type="Node2D" groups=["save"]]
 script = ExtResource( 1 )
 
 [node name="sprite_angel" type="AnimatedSprite" parent="."]

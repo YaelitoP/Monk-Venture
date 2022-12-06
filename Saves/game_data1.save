@@ -1,0 +1,3 @@
+{"health":100,"name":"res://tscn/wizard.tscn","parent":"/root/Game","pos_x":1424,"pos_y":119}
+{"first_touch":false,"name":"res://tscn/angel.tscn","parent":"/root/Game","pos_x":577,"pos_y":139}
+{"dmg":20,"health":20,"name":"res://tscn/Monk.tscn","parent":"/root/Game","pos_x":522.330261,"pos_y":150.80043}
