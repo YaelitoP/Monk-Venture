@@ -44,7 +44,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="probando"
+config/name="Monkventure"
 run/main_scene="res://maps/GameNode.tscn"
 config/icon="res://icon.png"
 
@@ -59,6 +59,8 @@ window/size/width=1280
 window/size/height=720
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
+<<<<<<<Updatedupstreamwindow/stretch/mode="2d"
+<<<<<<<Updatedupstream<<<<<<<Updatedupstreamwindow/stretch/mode="2d"
 
 [importer_defaults]
 
