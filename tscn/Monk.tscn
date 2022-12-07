@@ -2598,11 +2598,7 @@ shape = SubResource( 1 )
 position = Vector2( 0, -7 )
 scale = Vector2( -1.025, 1.025 )
 frames = ExtResource( 2 )
-<<<<<<< HEAD
-animation = "crounchkick"
-=======
 animation = "hurt"
->>>>>>> 7de14ebc2d6fc8064955a34ae9952231d2721bc6
 
 [node name="player_monk" type="AnimationPlayer" parent="monk"]
 autoplay = "idle"
@@ -2636,10 +2632,7 @@ space_override = 3
 [node name="coll_atacks" type="CollisionPolygon2D" parent="monk/area_atacks" groups=["atacks"]]
 position = Vector2( 1, 0.831 )
 scale = Vector2( 1, 1.203 )
-<<<<<<< HEAD
 polygon = PoolVector2Array( 20, -10.3645, 30, -14.5104, 42, -9.67351, 39, -0.690707, 25, 0.691239, 15, 2.07319, 12, -6.90962 )
-=======
->>>>>>> 7de14ebc2d6fc8064955a34ae9952231d2721bc6
 disabled = true
 
 [node name="rayfloor" type="Node2D" parent="monk"]
