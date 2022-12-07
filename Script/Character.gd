@@ -12,6 +12,7 @@ func _ready() -> void:
 			heroe = $monk
 			heroe_atk = heroe.get_dmg() 
 			knockback = heroe.force
+			emit_signal("health_status", heroe.health)
 		# warning-ignore:return_value_discarded
 			self.connect("heroe_death", get_parent(), "game_over")
 			

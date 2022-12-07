@@ -9,7 +9,7 @@
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 15.0
-height = 22.0
+height = 10.0
 
 [sub_resource type="Animation" id=8]
 resource_name = "Jump"
@@ -2531,7 +2531,7 @@ tracks/10/keys = {
 
 [sub_resource type="CapsuleShape2D" id=12]
 radius = 15.0
-height = 22.0
+height = 10.0
 
 [sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 5 )
@@ -2592,13 +2592,14 @@ zoom = Vector2( 0.6, 0.6 )
 [node name="characterUI" parent="monk/cam_character" instance=ExtResource( 4 )]
 
 [node name="coll_monk" type="CollisionShape2D" parent="monk" groups=["player"]]
+position = Vector2( 0, -2 )
 shape = SubResource( 1 )
 
 [node name="anim_monk" type="AnimatedSprite" parent="monk"]
 position = Vector2( 0, -7 )
 scale = Vector2( -1.025, 1.025 )
 frames = ExtResource( 2 )
-animation = "hurt"
+animation = "jump"
 
 [node name="player_monk" type="AnimationPlayer" parent="monk"]
 autoplay = "idle"
@@ -2658,6 +2659,7 @@ collision_mask = 2
 collision_mask = 28
 
 [node name="coll_hurt" type="CollisionShape2D" parent="monk/hurtbox"]
+position = Vector2( 0, -2 )
 shape = SubResource( 12 )
 
 [node name="effects" type="AnimatedSprite" parent="monk"]
@@ -2690,6 +2692,9 @@ scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 6 )
 region_enabled = true
 region_rect = Rect2( 85, 25, 14, 14 )
+
+[node name="cooldown" type="Timer" parent="monk"]
+one_shot = true
 
 [connection signal="area_entered" from="monk/hurtbox" to="monk" method="_on_hurtbox_area_entered"]
 [connection signal="area_exited" from="monk/hurtbox" to="monk" method="_on_hurtbox_area_exited"]
