@@ -29,6 +29,7 @@ func continue_pressed() -> void:
 
 
 func start_pressed() -> void:
+	SaveFile.new_slot = true
 	emit_signal("start_game")
 	pass # Replace with function body.
 
@@ -38,7 +39,7 @@ func _on_options_pressed() -> void:
 
 func exit_press() -> void:
 	SaveFile.save_config()
-	emit_signal("quit_game")
+	get_tree().quit()
 	pass # Replace with function body.
 
 

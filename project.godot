@@ -57,7 +57,7 @@ SaveFile="*res://Script/saveFile.gd"
 
 window/size/width=1280
 window/size/height=720
-window/stretch/mode="2d"
+window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 <<<<<<<Updatedupstreamwindow/stretch/mode="2d"
 <<<<<<<Updatedupstream<<<<<<<Updatedupstreamwindow/stretch/mode="2d"

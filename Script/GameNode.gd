@@ -68,9 +68,6 @@ func _ready() -> void:
 # warning-ignore:return_value_discarded
 	title.connect("options_screen", self, "options_popup")
 	
-# warning-ignore:return_value_discarded
-	title.connect("quit_game", self, "exit")
-	
 	
 
 func file_selection():
@@ -84,13 +81,16 @@ func start_game():
 	self.add_child(upgrade0)
 	self.add_child(character)
 	self.add_child(respawn_screen)
+	
 	enemy.position = map.spawn.position
 	checkpoint.position = map.check.position
 	upgrade0.position = map.upgrade.position
+	
 	if !SaveFile.new_start:
 		character.position = SaveFile.last_point
 	else:
 		SaveFile.new_start = false
+		
 	if is_instance_valid(title):
 		title.queue_free()
 
@@ -101,14 +101,18 @@ func load_game():
 	self.add_child(upgrade0)
 	self.add_child(character)
 	self.add_child(respawn_screen)
+	
 	enemy.position = map.spawn.position
 	checkpoint.position = map.check.position
 	upgrade0.position = map.upgrade.position
+	
 	SaveFile.load_game()
+	
 	if !SaveFile.new_start:
 		character.position = SaveFile.last_point
 	else:
 		SaveFile.new_start = false
+		
 	if is_instance_valid(title):
 		title.queue_free()
 	
@@ -119,6 +123,8 @@ func options_popup():
 	self.add_child(options)
 	options.panel.popup()
 	
+
+
 func resolution():
 	if SaveFile.fullscreen:
 		OS.window_fullscreen = true
