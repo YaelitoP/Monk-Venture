@@ -15,7 +15,7 @@ onready var floor_ray1: =  $rayfloor/floor_ray1
 onready var floor_ray2: =  $rayfloor/floor_ray2
 onready var timer: = $cooldown
 
-const DASH_LIMIT: = 250
+const DASH_LIMIT: = 400
 
 
 export var maxspeed: = 240
@@ -80,26 +80,25 @@ func _physics_process(delta: float) -> void:
 	if !death and !hurted:
 		
 		if Input.is_action_pressed("Left"):
-			effects.flip_h = true
 			motion = -1
+			
 		elif Input.is_action_pressed("Right"):
-			effects.flip_h = false
 			motion = 1
 			
 		direction.y += gravity() * delta
 		
 		jumping()
 		animations()
+		dashing()
 		
-		if dash and !dashed:
-			dashing()
-			
-		if !atacking and !on_air:
+		if !atacking and !on_air and !dashed:
 			get_directions(delta)
-			
-		elif dashed or !moving or on_air:
+				
+		elif !moving or on_air:
 			direction.x += lerp(direction.x, 0, fricction/3) * delta
-		
+		elif dashed:
+			direction.x += lerp(direction.x, 0, fricction/2) * delta
+			
 	if !death:
 		direction = move_and_slide(direction, Vector2.UP)
 	
@@ -143,34 +142,29 @@ func get_directions(delta):
 
 func dashing():
 	
-	if available_dash != 0:
-		
-		if (on_air or atacking) and Input.is_action_just_pressed("Run"):
+	if Input.is_action_just_pressed("Run") and available_dash != 0 and !atacking:
+		dashed = true
+		if on_air or atacking:
 			
 			if motion == 1:
 				direction.x += lerp(direction.x, maxspeed, acceleration)
 				available_dash = available_dash - 1
-				dashed = true
-			
+				
+				
 			if motion == -1:
 				direction.x += lerp(direction.x, -maxspeed, acceleration)
 				available_dash = available_dash - 1
-				dashed = true
 			
-		
-		elif Input.is_action_just_pressed("Run"):
+		else:
 			
 			if motion == 1:
-				direction.x += lerp(direction.x, maxspeed * 1.2, acceleration * acceleration)
+				direction.x += clamp(lerp(direction.x, maxspeed * 2, acceleration * 5), 0, DASH_LIMIT)
 				available_dash = available_dash - 1
-				dashed = true
 			
 			if motion == -1:
-				direction.x += lerp(direction.x, -maxspeed * 1.2, acceleration * acceleration)
+				direction.x += clamp(lerp(direction.x, -maxspeed * 2, acceleration * 5), -DASH_LIMIT, 0)
 				available_dash = available_dash - 1
-				dashed = true
 			
-		
 	if available_dash != 2 and !cooldown:
 		timer.start()
 		cooldown = true
@@ -179,17 +173,15 @@ func dashing():
 		available_dash = available_dash + 1
 		cooldown = false
 		
-	if dashed:
-		yield(get_tree().create_timer(0.3), "timeout")
-		dashed = false
-	return true
 	
 
 
 
 
 func animations():
+	
 	if !dashed:
+		
 		if !atacking:
 			
 			if Input.is_action_just_pressed("Jump") and available_jumps == 1:
@@ -200,7 +192,9 @@ func animations():
 				anim_player.play("dobleJump")
 				
 			if !on_air:
+				
 				if !crounched:
+					
 					if  Input.is_action_pressed("Right") and moving:
 						anim_player.play("walkL")
 						force = 100
@@ -213,6 +207,7 @@ func animations():
 					anim_player.play("crounch")
 					crounched = true
 					moving = false
+				
 			if crounched and Input.is_action_just_pressed("Specials"):
 				anim_player.play("crounchKick")
 				atacking = true
@@ -221,17 +216,25 @@ func animations():
 			elif direction.x == 0 and !on_air and !crounched:
 				anim_player.play("idle")
 				available_jumps = 2
-	else:
+			
+	elif dashed and motion == 1:
 		anim_player.play("dash")
 		crounched = false
 		
+	elif dashed and motion == -1:
+		anim_player.play("dashleft")
+		crounched = false
+		
 	if !crounched:
+		
 		if !atacking:
+			
 			if Input.is_action_just_pressed("Attack") and motion <= 0:
 				anim_player.play("punchLeft")
 				force = -100
 				atacking = true
 				moving = false
+				
 			elif Input.is_action_just_pressed("Attack") and motion >= 0:
 				anim_player.play("punch")
 				force = 100
@@ -253,6 +256,7 @@ func animations():
 	if !anim_player.is_playing():
 		atacking = false
 		crounched = false
+	
 
 
 
@@ -261,18 +265,23 @@ func animations():
 
 
 func jumping():
+	
 	if Input.is_action_just_pressed("Jump"):
 		on_air = true
+		
 		if available_jumps == 2:
 			direction.y += jump
 			available_jumps = 1
+			
 		elif dobleJump and available_jumps == 1:
 			direction.y = 0
 			direction.y += jump
 			available_jumps = 0
+			
 	elif is_on_floor() and (floor_ray1.is_colliding() or floor_ray2.is_colliding()):
 		on_air = false
 		available_jumps = 2
+	
 
 
 
@@ -282,17 +291,23 @@ func gravity():
 	return jumpfall if available_jumps != 2 else grav
 
 
+
+
 func set_dmg(new_dmg):
 	dmg = new_dmg
+
+
 
 
 func get_dmg():
 	return dmg
 
 
+
 func pickUp():
 	if Input.is_action_just_pressed("Interactive"):
 		dobleJump = true
+
 
 
 func was_hurted(collide):
@@ -308,6 +323,9 @@ func was_hurted(collide):
 		death = true
 		anim_player.play("death")
 	return true
+
+
+
 
 func _on_hurtbox_body_entered(body: Node) -> void:
 	direction.x = 0
