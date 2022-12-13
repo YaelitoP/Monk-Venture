@@ -84,7 +84,7 @@ func _physics_process(delta: float) -> void:
 			
 		elif Input.is_action_pressed("Right"):
 			motion = 1
-			
+		
 		direction.y += gravity() * delta
 		
 		jumping()
@@ -216,15 +216,24 @@ func animations():
 			elif direction.x == 0 and !on_air and !crounched:
 				anim_player.play("idle")
 				available_jumps = 2
-			
-	elif dashed and motion == 1:
-		anim_player.play("dash")
-		crounched = false
-		
-	elif dashed and motion == -1:
-		anim_player.play("dashleft")
-		crounched = false
-		
+	else:
+		if on_air:
+			if motion == 1:
+				anim_player.play("dashAereo")
+				crounched = false
+				
+			if motion == -1:
+				anim_player.play("dashAereoLeft")
+				crounched = false
+		else:
+			if motion == 1:
+				anim_player.play("dash")
+				crounched = false
+				
+			if motion == -1:
+				anim_player.play("dashleft")
+				crounched = false
+				
 	if !crounched:
 		
 		if !atacking:

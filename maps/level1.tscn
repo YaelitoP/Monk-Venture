@@ -49,7 +49,6 @@ scroll_ignore_camera_zoom = true
 script = ExtResource( 6 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="parallax/ParallaxBackground"]
-position = Vector2( -208, -1 )
 motion_scale = Vector2( 0.1, 0.1 )
 motion_mirroring = Vector2( 1600, 0 )
 
@@ -59,7 +58,6 @@ scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="parallax/ParallaxBackground"]
-position = Vector2( -208, -1 )
 motion_scale = Vector2( 0.2, 0.2 )
 motion_mirroring = Vector2( 1600, 0 )
 
@@ -69,7 +67,6 @@ scale = Vector2( 5, 5 )
 texture = ExtResource( 1 )
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="parallax/ParallaxBackground"]
-position = Vector2( -220, -61 )
 motion_scale = Vector2( 0.3, 0.2 )
 motion_mirroring = Vector2( 1600, 0 )
 
