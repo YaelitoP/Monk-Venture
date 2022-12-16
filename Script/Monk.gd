@@ -1,6 +1,7 @@
 extends KinematicBody2D
 class_name monkCharacter
 
+const DASH_LIMIT: = 400
 
 onready var coll: = $coll_monk
 onready var sprite: = $anim_monk
@@ -15,9 +16,6 @@ onready var floor_ray1: =  $rayfloor/floor_ray1
 onready var floor_ray2: =  $rayfloor/floor_ray2
 onready var timer: = $cooldown
 
-const DASH_LIMIT: = 400
-
-
 export var maxspeed: = 240
 export var minspeed: = 50
 export var fricction: = 5
@@ -27,20 +25,27 @@ export var dash: = true
 export var dobleJump: = false
 export var on_air: bool
 
+export var dashed: = false
+
+export var health: = 150
+export var dmg_income: = 25
+export var direction: Vector2 = Vector2.ZERO
+
+export var atacking: bool
+export var crounched: bool
+
+export var death: = false
+export var hurted: = false
+
 export var available_dash: = 2
 export var available_jumps: = 2
 export var jumpheight: = 120
 
-export var dashed: = false
-
 onready var jump: float = ((2.0 * jumpheight) / jumptime) * -1.0
-
 
 onready var jumpfall: float = ((-2.0 * jumpheight) / (jumptime * jumptime)) * -1.0
 
-
 onready var grav: float = ((-2.0 * jumpheight) / (falltime * falltime)) * -1.0
-
 
 var jumptime: = 0.4
 var falltime: = 0.5
@@ -49,25 +54,11 @@ var cooldown: = false
 var force: = 0 setget ,get_force
 var dmg: = 20 setget set_dmg, get_dmg
 
-
-export var health: = 150
-export var dmg_income: = 25
-export var direction: Vector2 = Vector2.ZERO
-
-
 var motion: = 0
 
-
-export var atacking: bool
-export var crounched: bool
-
-
-export var death: = false
-export var hurted: = false
-
-
-var moving = false
-
+var left: = false
+var right: = false
+var moving: = false
 
 func _ready() -> void:
 	sprite.flip_h = true
@@ -78,13 +69,13 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	
 	if !death and !hurted:
-		
-		if Input.is_action_pressed("Left"):
-			motion = -1
+		if !dashed:
+			if Input.is_action_pressed("Left"):
+				motion = -1
+				
+			elif Input.is_action_pressed("Right"):
+				motion = 1
 			
-		elif Input.is_action_pressed("Right"):
-			motion = 1
-		
 		direction.y += gravity() * delta
 		
 		jumping()
@@ -116,7 +107,7 @@ func get_directions(delta):
 		
 		direction.x += lerp(direction.x, maxspeed, acceleration) * delta
 		moving = true
-		
+
 	elif Input.is_action_pressed("Down"):
 		direction.x += lerp(direction.x, 0, fricction) * delta
 		
@@ -144,24 +135,33 @@ func dashing():
 	
 	if Input.is_action_just_pressed("Run") and available_dash != 0 and !atacking:
 		dashed = true
+		
+		if Input.is_action_pressed("Left"):
+			left = true
+			right = false
+			
+		elif Input.is_action_pressed("Right"):
+			left = false
+			right = true
+		
 		if on_air or atacking:
 			
-			if motion == 1:
+			if right:
 				direction.x += lerp(direction.x, maxspeed, acceleration)
 				available_dash = available_dash - 1
 				
 				
-			if motion == -1:
+			if left:
 				direction.x += lerp(direction.x, -maxspeed, acceleration)
 				available_dash = available_dash - 1
 			
 		else:
 			
-			if motion == 1:
+			if right:
 				direction.x += clamp(lerp(direction.x, maxspeed * 2, acceleration * 5), 0, DASH_LIMIT)
 				available_dash = available_dash - 1
 			
-			if motion == -1:
+			if left:
 				direction.x += clamp(lerp(direction.x, -maxspeed * 2, acceleration * 5), -DASH_LIMIT, 0)
 				available_dash = available_dash - 1
 			
@@ -216,7 +216,7 @@ func animations():
 			elif direction.x == 0 and !on_air and !crounched:
 				anim_player.play("idle")
 				available_jumps = 2
-	else:
+	elif dashed:
 		if on_air:
 			if motion == 1:
 				anim_player.play("dashAereo")
@@ -233,7 +233,8 @@ func animations():
 			if motion == -1:
 				anim_player.play("dashleft")
 				crounched = false
-				
+			
+		
 	if !crounched:
 		
 		if !atacking:
