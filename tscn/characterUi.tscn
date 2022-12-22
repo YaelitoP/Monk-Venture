@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Sprite/Fx/HUD/bar_background.png" type="Texture" id=1]
 [ext_resource path="res://Sprite/Fx/HUD/health_bar.png" type="Texture" id=2]
+[ext_resource path="res://Sprite/Fx/HUD/bar.png" type="Texture" id=3]
 [ext_resource path="res://Script/characterUi.gd" type="Script" id=4]
+[ext_resource path="res://Sprite/Gui/gui_gradient.png" type="Texture" id=5]
 
 [node name="characterUI" type="CanvasLayer"]
 script = ExtResource( 4 )
@@ -18,19 +20,41 @@ __meta__ = {
 [node name="bars" type="VBoxContainer" parent="Control"]
 anchor_top = 0.063
 anchor_bottom = 0.076
-margin_left = 7.0
-margin_top = -9.86
-margin_right = 1287.0
-margin_bottom = -2.86
+margin_left = 15.0
+margin_top = -24.86
+margin_right = 300.0
+margin_bottom = 0.139999
 rect_pivot_offset = Vector2( 112, 223.04 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="healthBar" type="TextureProgress" parent="Control/bars"]
-margin_right = 1280.0
+margin_right = 285.0
 margin_bottom = 7.0
 max_value = 150.0
 value = 150.0
 texture_under = ExtResource( 1 )
 texture_progress = ExtResource( 2 )
+
+[node name="TextureRect" type="TextureRect" parent="Control/bars/healthBar"]
+margin_left = -10.0
+margin_top = -3.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="arrow" type="Sprite" parent="Control/bars"]
+position = Vector2( 11, 21.5 )
+texture = ExtResource( 5 )
+flip_h = true
+region_enabled = true
+region_rect = Rect2( 294, 231, 20, 20 )
+
+[node name="arrow2" type="Sprite" parent="Control/bars"]
+position = Vector2( 35, 21.5 )
+texture = ExtResource( 5 )
+flip_h = true
+region_enabled = true
+region_rect = Rect2( 294, 231, 20, 20 )

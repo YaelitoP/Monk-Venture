@@ -17,8 +17,6 @@ func _on_PopupPanel_popup_hide() -> void:
 	emit_signal("close")
 	
 
-
-
 func slot0() -> void:
 	
 	SaveFile.slot = SaveFile.save

@@ -1,8 +1,7 @@
 extends CanvasLayer
 
 
-signal restart()
-signal quit_game()
+
 onready var gameover: = $gameover
 func _ready() -> void:
 	pass 

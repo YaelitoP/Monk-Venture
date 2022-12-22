@@ -2,6 +2,7 @@ extends Node2D
 
 signal heroe_death()
 signal health_status(health)
+signal dash_status(cooldown, count)
 
 onready var heroe: Node
 onready var heroe_atk: int
@@ -12,6 +13,8 @@ func _ready() -> void:
 			heroe = $monk
 			heroe_atk = heroe.get_dmg() 
 			knockback = heroe.force
+			
+			emit_signal("health_status", heroe.health)
 		# warning-ignore:return_value_discarded
 			self.connect("heroe_death", get_parent(), "game_over")
 			
@@ -24,10 +27,6 @@ func _physics_process(_delta: float) -> void:
 		if heroe.hurted == true:
 			emit_signal("health_status", heroe.health)
 
-
-func health_status(health):
-	health = heroe.health
-	
 func save():
 	
 	var game_data: = {
