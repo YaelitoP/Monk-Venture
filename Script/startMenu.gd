@@ -1,7 +1,6 @@
 extends CanvasLayer
 
 signal start_game()
-signal quit_game()
 signal options_screen()
 signal continue_game()
 

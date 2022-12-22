@@ -2,7 +2,7 @@ extends KinematicBody2D
 class_name monkCharacter
 
 const DASH_LIMIT: = 400
-
+onready var parent: = get_parent()
 onready var coll: = $coll_monk
 onready var sprite: = $anim_monk
 onready var effects: = $effects
@@ -18,7 +18,7 @@ onready var timer: = $cooldown
 
 export var maxspeed: = 240
 export var minspeed: = 50
-export var fricction: = 5
+export var fricction: = 6
 export var acceleration: = 2.5
 
 export var dash: = true
@@ -71,9 +71,11 @@ func _physics_process(delta: float) -> void:
 	if !death and !hurted:
 		if !dashed:
 			if Input.is_action_pressed("Left"):
+				
 				motion = -1
 				
 			elif Input.is_action_pressed("Right"):
+				
 				motion = 1
 			
 		direction.y += gravity() * delta
@@ -84,9 +86,12 @@ func _physics_process(delta: float) -> void:
 		
 		if !atacking and !on_air and !dashed:
 			get_directions(delta)
-				
+			
+			
 		elif !moving or on_air:
+			
 			direction.x += lerp(direction.x, 0, fricction/3) * delta
+			
 		elif dashed:
 			direction.x += lerp(direction.x, 0, fricction/2) * delta
 			
@@ -132,10 +137,10 @@ func get_directions(delta):
 
 
 func dashing():
-	
+	parent.emit_signal("dash_status", timer.time_left, available_dash)
 	if Input.is_action_just_pressed("Run") and available_dash != 0 and !atacking:
 		dashed = true
-		
+		 
 		if Input.is_action_pressed("Left"):
 			left = true
 			right = false
