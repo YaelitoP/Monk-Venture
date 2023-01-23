@@ -3,6 +3,7 @@ extends Node2D
 onready var spawn: = $spawn
 onready var check: = $check_spawn
 onready var upgrade: = $spawn_upgrade
+onready var origen: = $spawn_character
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	

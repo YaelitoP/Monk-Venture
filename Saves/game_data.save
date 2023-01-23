@@ -1,3 +1,3 @@
-{"health":100,"name":"res://tscn/wizard.tscn","parent":"/root/Game","pos_x":1482,"pos_y":141}
-{"first_touch":false,"name":"res://tscn/angel.tscn","parent":"/root/Game","pos_x":964,"pos_y":150}
-{"dmg":20,"health":75,"name":"res://tscn/Monk.tscn","parent":"/root/Game","pos_x":1022.624878,"pos_y":164.933746}
+{"health":100,"name":"res://tscn/wizard.tscn","parent":"/root/Game","pos_x":1712,"pos_y":402}
+{"first_touch":false,"name":"res://tscn/angel.tscn","parent":"/root/Game","pos_x":1091,"pos_y":411}
+{"dmg":20,"health":100,"name":"res://tscn/Monk.tscn","parent":"/root/Game","pos_x":1023.139771,"pos_y":410.933746}

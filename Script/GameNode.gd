@@ -40,6 +40,8 @@ func _ready() -> void:
 		map = world0.instance()
 		upgrade0 = doblejump.instance()
 	
+	
+	
 	if SaveFile.new_start:
 		self.add_child(title)
 	else:
@@ -82,9 +84,10 @@ func start_game():
 	self.add_child(character)
 	self.add_child(respawn_screen)
 	
-	enemy.position = map.spawn.position
-	checkpoint.position = map.check.position
-	upgrade0.position = map.upgrade.position
+	enemy.position = map.spawn.global_position
+	checkpoint.position = map.check.global_position
+	upgrade0.position = map.upgrade.global_position
+	character.position = map.origen.global_position
 	
 	if !SaveFile.new_start:
 		character.position = SaveFile.last_point
@@ -102,9 +105,9 @@ func load_game():
 	self.add_child(character)
 	self.add_child(respawn_screen)
 	
-	enemy.position = map.spawn.position
-	checkpoint.position = map.check.position
-	upgrade0.position = map.upgrade.position
+	enemy.position = map.spawn.global_position
+	checkpoint.position = map.check.global_position
+	upgrade0.position = map.upgrade.global_position
 	
 	SaveFile.load_game()
 	
