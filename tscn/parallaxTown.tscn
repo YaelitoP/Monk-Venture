@@ -6,9 +6,9 @@
 [ext_resource path="res://Script/Parallax.gd" type="Script" id=4]
 
 [node name="ParallaxTown" type="ParallaxBackground"]
-offset = Vector2( 480, -650 )
+offset = Vector2( 480, -750 )
 scale = Vector2( 3, 3 )
-transform = Transform2D( 3, 0, 0, 3, 480, -650 )
+transform = Transform2D( 3, 0, 0, 3, 480, -750 )
 script = ExtResource( 4 )
 
 [node name="moon" type="ParallaxLayer" parent="."]

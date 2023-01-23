@@ -481,6 +481,7 @@ animations = [ {
 } ]
 
 [node name="angel" type="Node2D" groups=["save"]]
+scale = Vector2( 2, 2 )
 script = ExtResource( 1 )
 
 [node name="sprite_angel" type="AnimatedSprite" parent="."]
