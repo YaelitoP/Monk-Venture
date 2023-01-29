@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=206 format=2]
+[gd_resource type="TileSet" load_steps=195 format=2]
 
 [ext_resource path="res://Sprite/Tiles/PixelFantasy_Caves_1.0/mainlev_build.png" type="Texture" id=1]
 [ext_resource path="res://Sprite/Tiles/PixelFantasy_Caves_1.0/mainlev_edited.png" type="Texture" id=2]
@@ -571,39 +571,6 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=520]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
-
-[sub_resource type="ConvexPolygonShape2D" id=521]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
-
-[sub_resource type="ConvexPolygonShape2D" id=522]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
-
-[sub_resource type="ConvexPolygonShape2D" id=523]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
-
-[sub_resource type="ConvexPolygonShape2D" id=524]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
-
-[sub_resource type="ConvexPolygonShape2D" id=525]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
-
-[sub_resource type="ConvexPolygonShape2D" id=526]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
-
-[sub_resource type="ConvexPolygonShape2D" id=527]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
-
-[sub_resource type="ConvexPolygonShape2D" id=528]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
-
-[sub_resource type="ConvexPolygonShape2D" id=529]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
-
-[sub_resource type="ConvexPolygonShape2D" id=530]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
-
-[sub_resource type="ConvexPolygonShape2D" id=531]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=532]
@@ -3177,76 +3144,9 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 239/navigation_offset = Vector2( 0, 0 )
 239/shape_offset = Vector2( 0, 0 )
 239/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-239/shape = SubResource( 521 )
 239/shape_one_way = false
-239/shape_one_way_margin = 1.0
-239/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 521 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-}, {
-"autotile_coord": Vector2( 1, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 522 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-}, {
-"autotile_coord": Vector2( 2, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 523 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-}, {
-"autotile_coord": Vector2( 3, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 524 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-}, {
-"autotile_coord": Vector2( 4, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 525 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-}, {
-"autotile_coord": Vector2( 5, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 526 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-}, {
-"autotile_coord": Vector2( 6, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 527 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-}, {
-"autotile_coord": Vector2( 7, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 528 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-}, {
-"autotile_coord": Vector2( 8, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 529 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-}, {
-"autotile_coord": Vector2( 9, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 530 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-}, {
-"autotile_coord": Vector2( 10, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 531 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
+239/shape_one_way_margin = 0.0
+239/shapes = [  ]
 239/z_index = 0
 240/name = "right8.png 240"
 240/texture = ExtResource( 2 )

@@ -1,6 +1,13 @@
 extends Node2D
 
-onready var spawns: = $spawns
+onready var mob: = $mobSpawn
+onready var check: = $checkPoint
+onready var player: = $playerSpawn
+# Declare member variables here. Examples:
+# var a: int = 2
+# var b: String = "text"
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.

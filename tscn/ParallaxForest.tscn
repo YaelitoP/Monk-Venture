@@ -5,8 +5,8 @@
 [ext_resource path="res://Sprite/Tiles/Plataformer Fantasy SET1/PFantasy_SET1_v1.0 copy/bakcground_night2.png" type="Texture" id=3]
 
 [node name="ParallaxForest" type="ParallaxBackground"]
-offset = Vector2( 640, 200 )
-transform = Transform2D( 1, 0, 0, 1, 640, 200 )
+offset = Vector2( 640, 80 )
+transform = Transform2D( 1, 0, 0, 1, 640, 80 )
 
 [node name="back" type="ParallaxLayer" parent="."]
 motion_scale = Vector2( 0.03, 0.02 )

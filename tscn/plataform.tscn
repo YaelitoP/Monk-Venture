@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Sprite/Tiles/PixelFantasy_Caves_1.0/mainlev_edited.png" type="Texture" id=1]
+[ext_resource path="res://Script/plataform.gd" type="Script" id=2]
+[ext_resource path="res://Script/waypoints.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 50.5, 16 )
+
+[node name="plataforma" type="Node"]
+
+[node name="body" type="KinematicBody2D" parent="."]
+collision_layer = 2
+script = ExtResource( 2 )
+editor_process = false
+waypoints_path = NodePath("../waypoints")
+
+[node name="Sprite" type="Sprite" parent="body"]
+position = Vector2( 0.5, 0 )
+scale = Vector2( 1.00833, 1 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 1919, 447, 98, 34 )
+
+[node name="coll_body" type="CollisionShape2D" parent="body"]
+position = Vector2( 0.5, 0 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="body"]
+
+[node name="waypoints" type="Node2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="0" type="Position2D" parent="waypoints"]
+position = Vector2( 124, 50 )
+
+[node name="1" type="Position2D" parent="waypoints"]
+position = Vector2( 131, 187 )
