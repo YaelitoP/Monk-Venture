@@ -3804,10 +3804,10 @@ script = ExtResource( 3 )
 z_index = 4
 collision_mask = 14
 script = ExtResource( 1 )
+dobleJump = true
 available_jumps = 1
 
 [node name="cam_character" type="Camera2D" parent="monk"]
-rotation = -1.74846e-07
 offset = Vector2( 0, -40 )
 current = true
 zoom = Vector2( 0.8, 0.8 )

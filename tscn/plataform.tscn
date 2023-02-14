@@ -12,7 +12,6 @@ extents = Vector2( 50.5, 16 )
 [node name="body" type="KinematicBody2D" parent="."]
 collision_layer = 2
 script = ExtResource( 2 )
-editor_process = false
 waypoints_path = NodePath("../waypoints")
 
 [node name="Sprite" type="Sprite" parent="body"]

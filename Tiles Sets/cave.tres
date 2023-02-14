@@ -1367,7 +1367,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 195/z_index = 0
-196/name = "mainlev_edited.png 196"
+196/name = "down6.png 196"
 196/texture = ExtResource( 2 )
 196/tex_offset = Vector2( 0, 0 )
 196/modulate = Color( 1, 1, 1, 1 )
@@ -1435,7 +1435,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 197/z_index = 0
-198/name = "mainlev_edited.png 198"
+198/name = "downl6.png 198"
 198/texture = ExtResource( 2 )
 198/tex_offset = Vector2( 0, 0 )
 198/modulate = Color( 1, 1, 1, 1 )
@@ -2971,7 +2971,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 235/z_index = 0
-236/name = "mainlev_edited.png 236"
+236/name = "down7.png 236"
 236/texture = ExtResource( 2 )
 236/tex_offset = Vector2( 0, 0 )
 236/modulate = Color( 1, 1, 1, 1 )
@@ -3005,7 +3005,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 236/z_index = 0
-237/name = "mainlev_edited.png 237"
+237/name = "downl7.png 237"
 237/texture = ExtResource( 2 )
 237/tex_offset = Vector2( 0, 0 )
 237/modulate = Color( 1, 1, 1, 1 )

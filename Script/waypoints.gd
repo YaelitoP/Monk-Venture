@@ -2,6 +2,8 @@ extends Node2D
 
 
 export var editor_process: = true setget set_editor_process
+var next_point: = 0 setget , get_next_point_position
+var start_point: Vector2 setget , get_start_position
 
 var _active_point_index: = 0
 
@@ -12,7 +14,7 @@ func _ready() -> void:
 	
 
 
-func _process(delta: float) -> void:
+func _process_(delta: float) -> void:
 	update()
 
 
