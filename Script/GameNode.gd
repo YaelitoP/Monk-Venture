@@ -1,18 +1,18 @@
 extends Node2D
 class_name Gamenode
 
-onready var wizard_node: = preload("res://tscn/wizard.tscn")
-onready var monk_node: = preload("res://tscn/Monk.tscn")
+onready var wizard_node: = preload("res://tscn/Mobs/wizard.tscn")
+onready var monk_node: = preload("res://tscn/Characters/Monk.tscn")
 
 onready var world0: = preload("res://maps/level1.tscn")
 onready var world1: = preload("res://maps/level2.tscn")
 
-onready var respawn_scene: = preload("res://tscn/respawn_scene.tscn")
-onready var start_menu: = preload("res://tscn/startMenu.tscn")
-onready var options_scene: = preload("res://tscn/options.tscn")
-onready var save_scene: = preload("res://tscn/SaveSelectionPanel.tscn")
+onready var respawn_scene: = preload("res://tscn/Ui&Fx/respawn_scene.tscn")
+onready var start_menu: = preload("res://tscn/Ui&Fx/startMenu.tscn")
+onready var options_scene: = preload("res://tscn/Ui&Fx/options.tscn")
+onready var save_scene: = preload("res://tscn/Ui&Fx/SaveSelectionPanel.tscn")
 
-onready var angel: = preload("res://tscn/angel.tscn")
+onready var angel: = preload("res://tscn/World/angel.tscn")
 
 onready var slot_selection: Object
 onready var checkpoint: Object
