@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=71 format=2]
 
 [ext_resource path="res://Script/Monk.gd" type="Script" id=1]
 [ext_resource path="res://Sprite Sets/Monk.tres" type="SpriteFrames" id=2]
@@ -3630,30 +3630,6 @@ tracks/13/keys = {
 radius = 15.0
 height = 10.0
 
-[sub_resource type="AtlasTexture" id=20]
-atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 32, 48 )
-
-[sub_resource type="AtlasTexture" id=21]
-atlas = ExtResource( 5 )
-region = Rect2( 32, 0, 32, 48 )
-
-[sub_resource type="AtlasTexture" id=22]
-atlas = ExtResource( 5 )
-region = Rect2( 64, 0, 32, 48 )
-
-[sub_resource type="AtlasTexture" id=23]
-atlas = ExtResource( 5 )
-region = Rect2( 96, 0, 32, 48 )
-
-[sub_resource type="AtlasTexture" id=24]
-atlas = ExtResource( 5 )
-region = Rect2( 128, 0, 32, 48 )
-
-[sub_resource type="AtlasTexture" id=25]
-atlas = ExtResource( 5 )
-region = Rect2( 160, 0, 32, 48 )
-
 [sub_resource type="AtlasTexture" id=29]
 atlas = ExtResource( 7 )
 region = Rect2( 0, 0, 64, 64 )
@@ -3774,16 +3750,40 @@ region = Rect2( 1792, 0, 64, 64 )
 atlas = ExtResource( 7 )
 region = Rect2( 1856, 0, 64, 64 )
 
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 5 )
+region = Rect2( 32, 0, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 5 )
+region = Rect2( 64, 0, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 5 )
+region = Rect2( 96, 0, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 5 )
+region = Rect2( 128, 0, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 5 )
+region = Rect2( 160, 0, 32, 48 )
+
 [sub_resource type="SpriteFrames" id=18]
 animations = [ {
-"frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
-"loop": true,
-"name": "doblejump",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ), SubResource( 58 ) ],
 "loop": true,
 "name": "dashdust",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
+"loop": true,
+"name": "doblejump",
 "speed": 5.0
 } ]
 
@@ -3794,6 +3794,18 @@ font_path = "res://Sprite/Gui/NbPixelFontBundle_v1_0/TinyUnicode.ttf"
 outline_size = 1
 outline_color = Color( 0.101961, 0.101961, 0.101961, 1 )
 font_data = SubResource( 26 )
+
+[sub_resource type="Gradient" id=64]
+interpolation_mode = 2
+offsets = PoolRealArray( 0, 0.481651, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 0.696961, 0.696961, 0.696961, 1, 0.410156, 0.410156, 0.410156, 1 )
+
+[sub_resource type="GradientTexture2D" id=63]
+gradient = SubResource( 64 )
+width = 220
+height = 90
+fill = 1
+fill_from = Vector2( 0.5, 0.5 )
 
 [node name="character" type="Node2D" groups=["save"]]
 scale = Vector2( 1.5, 1.5 )
@@ -3930,6 +3942,20 @@ region_rect = Rect2( 85, 25, 14, 14 )
 
 [node name="cooldown" type="Timer" parent="monk"]
 one_shot = true
+
+[node name="sight" type="Light2D" parent="monk"]
+position = Vector2( 0, 2.38419e-07 )
+scale = Vector2( 1, 1.20494 )
+texture = SubResource( 63 )
+offset = Vector2( 0, -20 )
+texture_scale = 3.0
+mode = 2
+range_item_cull_mask = 3
+shadow_color = Color( 0.156863, 0.156863, 0.156863, 0.760784 )
+shadow_gradient_length = 3.0
+shadow_filter = 2
+shadow_filter_smooth = 50.0
+shadow_item_cull_mask = 2
 
 [connection signal="area_entered" from="monk/hurtbox" to="monk" method="_on_hurtbox_area_entered"]
 [connection signal="area_exited" from="monk/hurtbox" to="monk" method="_on_hurtbox_area_exited"]

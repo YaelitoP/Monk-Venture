@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=195 format=2]
+[gd_resource type="TileSet" load_steps=206 format=2]
 
 [ext_resource path="res://Sprite/Tiles/PixelFantasy_Caves_1.0/mainlev_build.png" type="Texture" id=1]
 [ext_resource path="res://Sprite/Tiles/PixelFantasy_Caves_1.0/mainlev_edited.png" type="Texture" id=2]
@@ -176,6 +176,39 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
 [sub_resource type="ConvexPolygonShape2D" id=388]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="OccluderPolygon2D" id=534]
+polygon = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="OccluderPolygon2D" id=535]
+polygon = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="OccluderPolygon2D" id=536]
+polygon = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="OccluderPolygon2D" id=537]
+polygon = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="OccluderPolygon2D" id=538]
+polygon = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="OccluderPolygon2D" id=539]
+polygon = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="OccluderPolygon2D" id=540]
+polygon = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="OccluderPolygon2D" id=541]
+polygon = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="OccluderPolygon2D" id=542]
+polygon = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="OccluderPolygon2D" id=543]
+polygon = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="OccluderPolygon2D" id=544]
+polygon = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
 [sub_resource type="ConvexPolygonShape2D" id=389]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -1331,7 +1364,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 199/autotile/icon_coordinate = Vector2( 0, 0 )
 199/autotile/tile_size = Vector2( 32, 32 )
 199/autotile/spacing = 0
-199/autotile/occluder_map = [  ]
+199/autotile/occluder_map = [ Vector2( 0, 0 ), SubResource( 534 ), Vector2( 1, 0 ), SubResource( 535 ), Vector2( 2, 0 ), SubResource( 536 ), Vector2( 3, 0 ), SubResource( 537 ), Vector2( 4, 0 ), SubResource( 538 ), Vector2( 5, 0 ), SubResource( 539 ), Vector2( 6, 0 ), SubResource( 540 ), Vector2( 7, 0 ), SubResource( 541 ), Vector2( 8, 0 ), SubResource( 542 ), Vector2( 9, 0 ), SubResource( 543 ), Vector2( 10, 0 ), SubResource( 544 ) ]
 199/autotile/navpoly_map = [  ]
 199/autotile/priority_map = [  ]
 199/autotile/z_index_map = [  ]
