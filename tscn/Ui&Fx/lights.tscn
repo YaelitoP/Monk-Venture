@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Sprite/Fx/Pipoya VFX WarpPortal/192x192/pipo-gate01a192.png" type="Texture" id=1]
 [ext_resource path="res://resources/lights.tres" type="Texture" id=2]
+[ext_resource path="res://Sprite/Fx/Free_Skills_Fire/Fire II/Fire_II_Flame_16x16.png" type="Texture" id=3]
 
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 1 )
@@ -63,32 +64,145 @@ region = Rect2( 576, 384, 192, 192 )
 atlas = ExtResource( 1 )
 region = Rect2( 768, 384, 192, 192 )
 
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 3 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 3 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 3 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 3 )
+region = Rect2( 64, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 3 )
+region = Rect2( 80, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 3 )
+region = Rect2( 96, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 3 )
+region = Rect2( 112, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 3 )
+region = Rect2( 128, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 3 )
+region = Rect2( 144, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 3 )
+region = Rect2( 160, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 3 )
+region = Rect2( 176, 0, 16, 16 )
+
 [sub_resource type="SpriteFrames" id=16]
 animations = [ {
 "frames": [ SubResource( 17 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
 "loop": true,
-"name": "default",
+"name": "ball",
 "speed": 15.0
+}, {
+"frames": [ SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ) ],
+"loop": true,
+"name": "fire",
+"speed": 14.0
 } ]
 
 [node name="lights" type="Node2D"]
 
 [node name="light0" type="AnimatedSprite" parent="."]
-self_modulate = Color( 1, 1, 1, 0.196078 )
-scale = Vector2( 0.2, 0.2 )
+scale = Vector2( 4, 4 )
 frames = SubResource( 16 )
-frame = 5
+animation = "fire"
+frame = 9
 speed_scale = 0.7
 playing = true
 
 [node name="Light2D" type="Light2D" parent="light0"]
 texture = ExtResource( 2 )
-texture_scale = 25.0
+texture_scale = 15.0
 color = Color( 1, 0.317647, 0.317647, 1 )
-mode = 2
+energy = 0.7
 range_item_cull_mask = 3
 shadow_enabled = true
-shadow_gradient_length = 3.0
+shadow_gradient_length = 5.0
+shadow_filter = 2
+shadow_filter_smooth = 50.0
+shadow_item_cull_mask = 3
+
+[node name="light1" type="AnimatedSprite" parent="."]
+scale = Vector2( 4, 4 )
+frames = SubResource( 16 )
+animation = "fire"
+frame = 8
+speed_scale = 0.7
+playing = true
+
+[node name="Light2D" type="Light2D" parent="light1"]
+texture = ExtResource( 2 )
+texture_scale = 15.0
+color = Color( 1, 0.317647, 0.317647, 1 )
+energy = 0.7
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_gradient_length = 5.0
+shadow_filter = 2
+shadow_filter_smooth = 50.0
+shadow_item_cull_mask = 3
+
+[node name="light2" type="AnimatedSprite" parent="."]
+scale = Vector2( 4, 4 )
+frames = SubResource( 16 )
+animation = "fire"
+frame = 8
+speed_scale = 0.7
+playing = true
+
+[node name="Light2D" type="Light2D" parent="light2"]
+texture = ExtResource( 2 )
+texture_scale = 15.0
+color = Color( 1, 0.317647, 0.317647, 1 )
+energy = 0.7
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_gradient_length = 5.0
+shadow_filter = 2
+shadow_filter_smooth = 50.0
+shadow_item_cull_mask = 3
+
+[node name="light3" type="AnimatedSprite" parent="."]
+scale = Vector2( 4, 4 )
+frames = SubResource( 16 )
+animation = "fire"
+frame = 7
+speed_scale = 0.7
+playing = true
+
+[node name="Light2D" type="Light2D" parent="light3"]
+texture = ExtResource( 2 )
+texture_scale = 15.0
+color = Color( 1, 0.317647, 0.317647, 1 )
+energy = 0.7
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_gradient_length = 5.0
 shadow_filter = 2
 shadow_filter_smooth = 50.0
 shadow_item_cull_mask = 3

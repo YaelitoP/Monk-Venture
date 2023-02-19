@@ -3796,9 +3796,8 @@ outline_color = Color( 0.101961, 0.101961, 0.101961, 1 )
 font_data = SubResource( 26 )
 
 [sub_resource type="Gradient" id=64]
-interpolation_mode = 2
-offsets = PoolRealArray( 0, 0.481651, 1 )
-colors = PoolColorArray( 1, 1, 1, 1, 0.696961, 0.696961, 0.696961, 1, 0.410156, 0.410156, 0.410156, 1 )
+offsets = PoolRealArray( 0, 0.490826, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 0.645708, 0.709046, 0.742693, 1, 0.298039, 0.423529, 0.490196, 1 )
 
 [sub_resource type="GradientTexture2D" id=63]
 gradient = SubResource( 64 )
@@ -3806,6 +3805,7 @@ width = 220
 height = 90
 fill = 1
 fill_from = Vector2( 0.5, 0.5 )
+fill_to = Vector2( 1, 0.526429 )
 
 [node name="character" type="Node2D" groups=["save"]]
 scale = Vector2( 1.5, 1.5 )
@@ -3944,14 +3944,13 @@ region_rect = Rect2( 85, 25, 14, 14 )
 one_shot = true
 
 [node name="sight" type="Light2D" parent="monk"]
-position = Vector2( 0, 2.38419e-07 )
-scale = Vector2( 1, 1.20494 )
+position = Vector2( 0.500012, -26.6667 )
+scale = Vector2( 1.03687, 1.42716 )
 texture = SubResource( 63 )
-offset = Vector2( 0, -20 )
 texture_scale = 3.0
-mode = 2
-range_item_cull_mask = 3
-shadow_color = Color( 0.156863, 0.156863, 0.156863, 0.760784 )
+energy = 0.7
+range_item_cull_mask = 5
+shadow_enabled = true
 shadow_gradient_length = 3.0
 shadow_filter = 2
 shadow_filter_smooth = 50.0
