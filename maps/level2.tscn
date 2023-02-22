@@ -78,7 +78,7 @@ tile_data = PoolIntArray( -2096994, 8, 0, -2096993, 15, 0, -2031459, 23, 0, -203
 
 [node name="light0" parent="lights" index="0"]
 position = Vector2( 4890, 611 )
-frame = 9
+frame = 0
 
 [node name="Light2D" parent="lights/light0" index="0"]
 position = Vector2( 47.4999, 15.25 )
@@ -87,7 +87,7 @@ shadow_gradient_length = 100.0
 
 [node name="light1" parent="lights" index="1"]
 position = Vector2( 6659, 631 )
-frame = 0
+frame = 3
 
 [node name="Light2D" parent="lights/light1" index="0"]
 position = Vector2( 9.12497, 7.25 )
@@ -95,7 +95,7 @@ scale = Vector2( 0.54825, 0.424 )
 
 [node name="light2" parent="lights" index="2"]
 position = Vector2( 8736, 636 )
-frame = 3
+frame = 6
 
 [node name="Light2D" parent="lights/light2" index="0"]
 position = Vector2( -0.499962, 5.875 )
@@ -106,7 +106,6 @@ position = Vector2( 878, 87 )
 
 [node name="light0" parent="lights2" index="0"]
 position = Vector2( -416, 87 )
-frame = 5
 
 [node name="Light2D" parent="lights2/light0" index="0"]
 position = Vector2( 299.5, -7.25 )
@@ -115,7 +114,7 @@ color = Color( 0.988235, 0.717647, 0.298039, 1 )
 
 [node name="light1" parent="lights2" index="1"]
 position = Vector2( 4353, -13 )
-frame = 0
+frame = 3
 
 [node name="Light2D" parent="lights2/light1" index="0"]
 position = Vector2( 63.75, 0.499994 )
@@ -124,7 +123,7 @@ color = Color( 0.988235, 0.717647, 0.298039, 1 )
 
 [node name="light2" parent="lights2" index="2"]
 position = Vector2( 8115, -100 )
-frame = 3
+frame = 6
 
 [node name="Light2D" parent="lights2/light2" index="0"]
 position = Vector2( 77.125, -15.5 )
