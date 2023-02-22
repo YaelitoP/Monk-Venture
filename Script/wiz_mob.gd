@@ -13,7 +13,7 @@ onready var aim1: = $aiming/aim2
 onready var aim2: = $aiming/aim3
 onready var shot_speed: = $shot_speed
 
-onready var bullet: = preload("res://tscn/wispy.tscn")
+onready var bullet: = preload("res://tscn/Mobs/wispy.tscn")
 
 onready var parent: = get_parent()
 

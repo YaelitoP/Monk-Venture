@@ -4,10 +4,13 @@ signal heroe_death()
 signal health_status(health)
 signal dash_status(cooldown, count)
 
+
 onready var heroe: Node
 onready var heroe_atk: int
 onready var knockback: = 0
+
 func _ready() -> void:
+	
 	for child in get_children():
 		if child.name == "monk":
 			heroe = $monk

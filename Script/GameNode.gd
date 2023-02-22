@@ -1,20 +1,22 @@
 extends Node2D
 class_name Gamenode
 
-onready var wizard_node: = preload("res://tscn/wizard.tscn")
-onready var monk_node: = preload("res://tscn/Monk.tscn")
+onready var wizard_node: = preload("res://tscn/Mobs/wizard.tscn")
+onready var monk_node: = preload("res://tscn/Characters/Monk.tscn")
+
 onready var world0: = preload("res://maps/level1.tscn")
-onready var respawn_scene: = preload("res://tscn/respawn_scene.tscn")
-onready var start_menu: = preload("res://tscn/startMenu.tscn")
-onready var angel: = preload("res://tscn/angel.tscn")
-onready var doblejump: = preload("res://tscn/doblejump.tscn")
-onready var options_scene: = preload("res://tscn/options.tscn")
-onready var save_scene: = preload("res://tscn/SaveSelectionPanel.tscn")
+onready var world1: = preload("res://maps/level2.tscn")
+
+onready var respawn_scene: = preload("res://tscn/Ui&Fx/respawn_scene.tscn")
+onready var start_menu: = preload("res://tscn/Ui&Fx/startMenu.tscn")
+onready var options_scene: = preload("res://tscn/Ui&Fx/options.tscn")
+onready var save_scene: = preload("res://tscn/Ui&Fx/SaveSelectionPanel.tscn")
+
+onready var angel: = preload("res://tscn/World/angel.tscn")
 
 onready var slot_selection: Object
 onready var checkpoint: Object
 onready var enemy: Object
-onready var upgrade0: Object
 onready var character: Object
 onready var respawn_screen: Object
 onready var title: Object
@@ -38,12 +40,13 @@ func _ready() -> void:
 		level = SaveFile.actual_level
 	if level == 0:
 		map = world0.instance()
-		upgrade0 = doblejump.instance()
 	
 	if SaveFile.new_start:
 		self.add_child(title)
 	else:
 		start_game()
+		
+	
 # warning-ignore:return_value_discarded
 	slot_selection.connect("continue_game", self, "load_game")
 	
@@ -78,13 +81,12 @@ func start_game():
 	self.add_child(map)
 	self.add_child(enemy)
 	self.add_child(checkpoint)
-	self.add_child(upgrade0)
 	self.add_child(character)
 	self.add_child(respawn_screen)
 	
-	enemy.position = map.spawn.position
-	checkpoint.position = map.check.position
-	upgrade0.position = map.upgrade.position
+	enemy.position = map.spawns.mob.global_position
+	checkpoint.position = map.spawns.check.global_position
+	character.position = map.spawns.player.global_position
 	
 	if !SaveFile.new_start:
 		character.position = SaveFile.last_point
@@ -93,18 +95,17 @@ func start_game():
 		
 	if is_instance_valid(title):
 		title.queue_free()
+	
 
 func load_game():
 	self.add_child(map)
 	self.add_child(enemy)
 	self.add_child(checkpoint)
-	self.add_child(upgrade0)
 	self.add_child(character)
 	self.add_child(respawn_screen)
 	
-	enemy.position = map.spawn.position
-	checkpoint.position = map.check.position
-	upgrade0.position = map.upgrade.position
+	enemy.position = map.spawns.mob.global_position
+	checkpoint.position = map.spawns.check.global_position
 	
 	SaveFile.load_game()
 	
@@ -117,20 +118,16 @@ func load_game():
 		title.queue_free()
 	
 
-
-	
 func options_popup():
 	self.add_child(options)
 	options.panel.popup()
 	
-
 
 func resolution():
 	if SaveFile.fullscreen:
 		OS.window_fullscreen = true
 	else:
 		OS.window_fullscreen = false
-
 
 func close():
 	if self.is_a_parent_of(options):
@@ -141,4 +138,5 @@ func close():
 
 func game_over():
 	respawn_screen.gameover.visible = true
+	
 

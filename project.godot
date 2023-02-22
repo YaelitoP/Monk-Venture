@@ -57,8 +57,7 @@ SaveFile="*res://Script/saveFile.gd"
 
 window/size/width=1280
 window/size/height=720
-window/stretch/mode="viewport"
-window/stretch/aspect="expand"
+window/stretch/mode="2d"
 <<<<<<<Updatedupstreamwindow/stretch/mode="2d"
 <<<<<<<Updatedupstream<<<<<<<Updatedupstreamwindow/stretch/mode="2d"
 
@@ -180,4 +179,12 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+quality/filters/sharpen_intensity=0.5
+2d/snapping/use_gpu_pixel_snap=true
+quality/filters/use_nearest_mipmap_filter=true
+gles2/compatibility/disable_half_float=true
+quality/subsurface_scattering/quality=2
+quality/filters/msaa=4
+quality/filters/use_fxaa=true
+quality/filters/use_debanding=true
 environment/default_environment="res://default_env.tres"

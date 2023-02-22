@@ -16,10 +16,10 @@ onready var floor_ray1: =  $rayfloor/floor_ray1
 onready var floor_ray2: =  $rayfloor/floor_ray2
 onready var timer: = $cooldown
 
-export var maxspeed: = 240
+export var maxspeed: = 300
 export var minspeed: = 50
 export var fricction: = 6
-export var acceleration: = 2.5
+export var acceleration: = 4
 
 export var dash: = true
 export var dobleJump: = false
@@ -39,7 +39,7 @@ export var hurted: = false
 
 export var available_dash: = 2
 export var available_jumps: = 2
-export var jumpheight: = 120
+export var jumpheight: = 150
 
 onready var jump: float = ((2.0 * jumpheight) / jumptime) * -1.0
 
@@ -90,10 +90,10 @@ func _physics_process(delta: float) -> void:
 			
 		elif !moving or on_air:
 			
-			direction.x += lerp(direction.x, 0, fricction/3) * delta
+			direction.x += lerp(direction.x, 0, fricction/4) * delta
 			
-		elif dashed:
-			direction.x += lerp(direction.x, 0, fricction/2) * delta
+		elif dashed and !moving:
+			direction.x += lerp(direction.x, 0, fricction) * delta
 			
 	if !death:
 		direction = move_and_slide(direction, Vector2.UP)
