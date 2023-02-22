@@ -3796,18 +3796,16 @@ outline_color = Color( 0.101961, 0.101961, 0.101961, 1 )
 font_data = SubResource( 26 )
 
 [sub_resource type="Gradient" id=64]
-interpolation_mode = 2
-offsets = PoolRealArray( 0, 0.149254, 0.291045, 0.511194, 0.690298, 0.873134, 1 )
-colors = PoolColorArray( 1, 1, 1, 1, 0.918417, 0.918417, 0.918417, 1, 0.840912, 0.840912, 0.840912, 1, 0.749483, 0.749483, 0.749483, 1, 0.644472, 0.644472, 0.644472, 1, 0.537273, 0.537273, 0.537273, 1, 0.462891, 0.462891, 0.462891, 1 )
+offsets = PoolRealArray( 0.0275229, 0.215596, 0.380734, 0.56422, 0.775229, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 0.821312, 0.83398, 0.84071, 1, 0.664415, 0.688207, 0.700846, 1, 0.490086, 0.526236, 0.545442, 1, 0.413334, 0.463005, 0.489392, 1, 0.331577, 0.395649, 0.429688, 1 )
 
 [sub_resource type="GradientTexture2D" id=63]
-flags = 0
 gradient = SubResource( 64 )
-width = 220
-height = 90
+width = 100
+height = 50
 fill = 1
 fill_from = Vector2( 0.5, 0.5 )
-fill_to = Vector2( 1, 0.621346 )
+fill_to = Vector2( 1, 0.5125 )
 
 [node name="character" type="Node2D" groups=["save"]]
 scale = Vector2( 1.5, 1.5 )
@@ -3824,13 +3822,13 @@ available_jumps = 1
 [node name="cam_character" type="Camera2D" parent="monk"]
 offset = Vector2( 0, -40 )
 current = true
-zoom = Vector2( 0.8, 0.8 )
+zoom = Vector2( 0.6, 0.6 )
 smoothing_enabled = true
-smoothing_speed = 10.0
-drag_margin_left = 0.25
-drag_margin_top = 0.5
-drag_margin_right = 0.25
+drag_margin_left = 0.35
+drag_margin_top = 0.4
+drag_margin_right = 0.35
 drag_margin_bottom = 0.5
+editor_draw_drag_margin = true
 
 [node name="characterUI" parent="monk/cam_character" instance=ExtResource( 4 )]
 
@@ -3950,17 +3948,17 @@ region_rect = Rect2( 85, 25, 14, 14 )
 one_shot = true
 
 [node name="sight" type="Light2D" parent="monk"]
-position = Vector2( 0.500012, -26.6667 )
-scale = Vector2( 1.03687, 1.42716 )
+position = Vector2( 3, -26.6667 )
+scale = Vector2( 1.12933, 1.42716 )
 texture = SubResource( 63 )
-texture_scale = 2.0
+texture_scale = 5.0
 energy = 0.7
-range_item_cull_mask = 5
+range_item_cull_mask = 7
 shadow_enabled = true
-shadow_gradient_length = 3.0
-shadow_filter = 2
-shadow_filter_smooth = 50.0
-shadow_item_cull_mask = 2
+shadow_gradient_length = 5.0
+shadow_filter = 1
+shadow_filter_smooth = 64.0
+shadow_item_cull_mask = 3
 
 [connection signal="area_entered" from="monk/hurtbox" to="monk" method="_on_hurtbox_area_entered"]
 [connection signal="area_exited" from="monk/hurtbox" to="monk" method="_on_hurtbox_area_exited"]
