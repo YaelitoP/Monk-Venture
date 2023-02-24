@@ -131,57 +131,53 @@ animations = [ {
 scale = Vector2( 4, 4 )
 frames = SubResource( 16 )
 animation = "fire"
-frame = 8
+frame = 6
 speed_scale = 0.7
 playing = true
 
 [node name="Light2D" type="Light2D" parent="light0"]
-position = Vector2( 0, 1 )
 texture = ExtResource( 2 )
-texture_scale = 25.0
 color = Color( 1, 0.317647, 0.317647, 1 )
 range_item_cull_mask = 3
 shadow_enabled = true
-shadow_gradient_length = 15.0
+shadow_gradient_length = 5.0
 shadow_filter = 1
-shadow_filter_smooth = 50.0
+shadow_filter_smooth = 64.0
 shadow_item_cull_mask = 3
 
 [node name="light1" type="AnimatedSprite" parent="."]
 scale = Vector2( 4, 4 )
 frames = SubResource( 16 )
 animation = "fire"
-frame = 7
+frame = 2
 speed_scale = 0.7
 playing = true
 
 [node name="Light2D" type="Light2D" parent="light1"]
 texture = ExtResource( 2 )
-texture_scale = 25.0
 color = Color( 1, 0.317647, 0.317647, 1 )
 range_item_cull_mask = 3
 shadow_enabled = true
-shadow_gradient_length = 15.0
+shadow_gradient_length = 5.0
 shadow_filter = 1
-shadow_filter_smooth = 50.0
+shadow_filter_smooth = 64.0
 shadow_item_cull_mask = 3
 
 [node name="light2" type="AnimatedSprite" parent="."]
 scale = Vector2( 4, 4 )
 frames = SubResource( 16 )
 animation = "fire"
-frame = 7
+frame = 2
 speed_scale = 0.7
 playing = true
 
 [node name="Light2D" type="Light2D" parent="light2"]
 position = Vector2( 0, 0.75 )
 texture = ExtResource( 2 )
-texture_scale = 25.0
 color = Color( 1, 0.317647, 0.317647, 1 )
 range_item_cull_mask = 3
 shadow_enabled = true
-shadow_gradient_length = 15.0
+shadow_gradient_length = 5.0
 shadow_filter = 1
-shadow_filter_smooth = 50.0
+shadow_filter_smooth = 64.0
 shadow_item_cull_mask = 3

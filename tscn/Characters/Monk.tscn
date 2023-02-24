@@ -10,7 +10,7 @@
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 15.0
-height = 10.0
+height = 22.0
 
 [sub_resource type="Animation" id=8]
 resource_name = "Jump"
@@ -1632,6 +1632,18 @@ tracks/14/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/15/type = "value"
+tracks/15/path = NodePath("sight:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=19]
 resource_name = "dobleJump"
@@ -2140,31 +2152,31 @@ tracks/10/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.635294, 0.109804, 0.109804, 1 ), Color( 0.831373, 0.121569, 0.121569, 1 ), Color( 0.8, 0.8, 0.8, 1 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath(".:visible")
+tracks/11/path = NodePath(".:hurted")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ true, false, true, false, true, false, true ]
-}
-tracks/12/type = "value"
-tracks/12/path = NodePath(".:hurted")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/keys = {
 "times": PoolRealArray( 0.6 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
 }
+tracks/12/type = "value"
+tracks/12/path = NodePath("effects:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 tracks/13/type = "value"
-tracks/13/path = NodePath("effects:visible")
+tracks/13/path = NodePath("anim_monk:modulate")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
@@ -2172,11 +2184,11 @@ tracks/13/enabled = true
 tracks/13/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("anim_monk:modulate")
+tracks/14/path = NodePath(".:dashed")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
@@ -2184,20 +2196,20 @@ tracks/14/enabled = true
 tracks/14/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
+"update": 1,
+"values": [ false ]
 }
 tracks/15/type = "value"
-tracks/15/path = NodePath(".:dashed")
+tracks/15/path = NodePath("anim_monk:visible")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
 tracks/15/enabled = true
 tracks/15/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ true, false, true, false, true, false, true ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -3628,7 +3640,7 @@ tracks/13/keys = {
 
 [sub_resource type="CapsuleShape2D" id=12]
 radius = 15.0
-height = 10.0
+height = 22.0
 
 [sub_resource type="AtlasTexture" id=29]
 atlas = ExtResource( 7 )
@@ -3796,8 +3808,8 @@ outline_color = Color( 0.101961, 0.101961, 0.101961, 1 )
 font_data = SubResource( 26 )
 
 [sub_resource type="Gradient" id=64]
-offsets = PoolRealArray( 0.0275229, 0.215596, 0.380734, 0.56422, 0.775229, 1 )
-colors = PoolColorArray( 1, 1, 1, 1, 0.821312, 0.83398, 0.84071, 1, 0.664415, 0.688207, 0.700846, 1, 0.490086, 0.526236, 0.545442, 1, 0.413334, 0.463005, 0.489392, 1, 0.331577, 0.395649, 0.429688, 1 )
+offsets = PoolRealArray( 0.0275229, 0.344037, 0.559633, 0.775229, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 0.821312, 0.83398, 0.84071, 1, 0.664415, 0.688207, 0.700846, 1, 0.413334, 0.463005, 0.489392, 1, 0.331577, 0.395649, 0.429688, 1 )
 
 [sub_resource type="GradientTexture2D" id=63]
 gradient = SubResource( 64 )
@@ -3822,19 +3834,17 @@ available_jumps = 1
 [node name="cam_character" type="Camera2D" parent="monk"]
 offset = Vector2( 0, -40 )
 current = true
-process_mode = 0
-smoothing_enabled = true
+zoom = Vector2( 0.6, 0.6 )
 smoothing_speed = 2.0
 drag_margin_left = 0.35
 drag_margin_top = 0.4
 drag_margin_right = 0.35
-drag_margin_bottom = 0.5
+drag_margin_bottom = 0.6
 editor_draw_drag_margin = true
 
 [node name="characterUI" parent="monk/cam_character" instance=ExtResource( 4 )]
 
 [node name="coll_monk" type="CollisionShape2D" parent="monk" groups=["player"]]
-position = Vector2( 0, -2 )
 shape = SubResource( 1 )
 
 [node name="anim_monk" type="AnimatedSprite" parent="monk"]
@@ -3842,7 +3852,7 @@ position = Vector2( 0, -7 )
 scale = Vector2( -1.025, 1.025 )
 z_index = 4
 frames = ExtResource( 2 )
-animation = "jump"
+animation = "idle"
 
 [node name="player_monk" type="AnimationPlayer" parent="monk"]
 autoplay = "idle"
@@ -3907,7 +3917,6 @@ z_index = -1
 collision_mask = 28
 
 [node name="coll_hurt" type="CollisionShape2D" parent="monk/hurtbox"]
-position = Vector2( 0, -2 )
 shape = SubResource( 12 )
 
 [node name="effects" type="AnimatedSprite" parent="monk"]
@@ -3949,9 +3958,10 @@ region_rect = Rect2( 85, 25, 14, 14 )
 one_shot = true
 
 [node name="sight" type="Light2D" parent="monk"]
-position = Vector2( 3, -26.6667 )
-scale = Vector2( 1.12933, 1.42716 )
+position = Vector2( -4.76837e-07, -17.1975 )
+scale = Vector2( 1.12933, 1.33225 )
 texture = SubResource( 63 )
+offset = Vector2( 0, -10 )
 texture_scale = 5.0
 energy = 0.7
 range_item_cull_mask = 7
@@ -3959,7 +3969,7 @@ shadow_enabled = true
 shadow_gradient_length = 5.0
 shadow_filter = 1
 shadow_filter_smooth = 64.0
-shadow_item_cull_mask = 3
+shadow_item_cull_mask = 2
 
 [connection signal="area_entered" from="monk/hurtbox" to="monk" method="_on_hurtbox_area_entered"]
 [connection signal="area_exited" from="monk/hurtbox" to="monk" method="_on_hurtbox_area_exited"]
