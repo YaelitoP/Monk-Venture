@@ -16,7 +16,7 @@ width = 40
 height = 40
 fill = 1
 fill_from = Vector2( 0.5, 0.5 )
-fill_to = Vector2( 1, 0.934404 )
+fill_to = Vector2( 1, 0.782353 )
 
 [sub_resource type="Gradient" id=62]
 offsets = PoolRealArray( 0.00458716, 0.399083, 0.642202, 0.830275, 1 )
@@ -28,7 +28,7 @@ width = 40
 height = 40
 fill = 1
 fill_from = Vector2( 0.5, 0.5 )
-fill_to = Vector2( 1, 1 )
+fill_to = Vector2( 1, 0.755882 )
 
 [node name="world0" type="Node2D"]
 script = ExtResource( 4 )
@@ -76,7 +76,6 @@ color = Color( 0.298039, 0.423529, 0.490196, 1 )
 
 [node name="light0" parent="lights" index="0"]
 position = Vector2( 1364, 314 )
-frame = 0
 
 [node name="Light2D" parent="lights/light0" index="0"]
 position = Vector2( -2.92063e-06, 1.5 )
@@ -86,7 +85,7 @@ color = Color( 0.988235, 0.717647, 0.298039, 1 )
 
 [node name="light1" parent="lights" index="1"]
 position = Vector2( 3444, 281 )
-frame = 5
+frame = 9
 
 [node name="Light2D" parent="lights/light1" index="0"]
 position = Vector2( 2.76566e-05, -0.949998 )
@@ -97,7 +96,7 @@ shadow_filter_smooth = 52.0
 
 [node name="light2" parent="lights" index="2"]
 position = Vector2( 3904, 72 )
-frame = 5
+frame = 9
 
 [node name="Light2D" parent="lights/light2" index="0"]
 position = Vector2( -13, -3 )
@@ -109,21 +108,20 @@ shadow_filter_smooth = 52.0
 
 [node name="light0" parent="lights2" index="0"]
 position = Vector2( 116, 281 )
-frame = 11
+frame = 3
 
 [node name="Light2D" parent="lights2/light0" index="0"]
-position = Vector2( -2.25, 4.74999 )
-scale = Vector2( 6.55, 2.65 )
+position = Vector2( -7.5, 4.74999 )
+scale = Vector2( 6.7, 2.65 )
 offset = Vector2( 15, 0 )
 color = Color( 0.988235, 0.717647, 0.298039, 1 )
-shadow_gradient_length = 0.1
 
 [node name="light1" parent="lights2" index="1"]
 position = Vector2( 2200, 320 )
-frame = 7
+frame = 11
 
 [node name="Light2D" parent="lights2/light1" index="0"]
-position = Vector2( -1.00003, 0 )
+position = Vector2( -1.00004, 0 )
 scale = Vector2( 6.15, 2.4 )
 texture = SubResource( 63 )
 color = Color( 0.988235, 0.717647, 0.298039, 1 )
@@ -131,7 +129,6 @@ shadow_gradient_length = 1.0
 
 [node name="light2" parent="lights2" index="2"]
 visible = false
-frame = 0
 playing = false
 
 [node name="Light2D" parent="lights2/light2" index="0"]
