@@ -131,14 +131,14 @@ animations = [ {
 scale = Vector2( 4, 4 )
 frames = SubResource( 16 )
 animation = "fire"
-frame = 9
+frame = 1
 speed_scale = 0.7
 playing = true
 
 [node name="Light2D" type="Light2D" parent="light0"]
 texture = ExtResource( 2 )
 color = Color( 1, 0.317647, 0.317647, 1 )
-range_item_cull_mask = 3
+range_item_cull_mask = 259
 shadow_enabled = true
 shadow_gradient_length = 0.1
 shadow_filter = 1
@@ -149,14 +149,14 @@ shadow_item_cull_mask = 3
 scale = Vector2( 4, 4 )
 frames = SubResource( 16 )
 animation = "fire"
-frame = 5
+frame = 9
 speed_scale = 0.7
 playing = true
 
 [node name="Light2D" type="Light2D" parent="light1"]
 texture = ExtResource( 2 )
 color = Color( 1, 0.317647, 0.317647, 1 )
-range_item_cull_mask = 3
+range_item_cull_mask = 259
 shadow_enabled = true
 shadow_gradient_length = 0.1
 shadow_filter = 1
@@ -167,7 +167,7 @@ shadow_item_cull_mask = 3
 scale = Vector2( 4, 4 )
 frames = SubResource( 16 )
 animation = "fire"
-frame = 5
+frame = 9
 speed_scale = 0.7
 playing = true
 
@@ -175,7 +175,7 @@ playing = true
 position = Vector2( 0, 0.75 )
 texture = ExtResource( 2 )
 color = Color( 1, 0.317647, 0.317647, 1 )
-range_item_cull_mask = 3
+range_item_cull_mask = 259
 shadow_enabled = true
 shadow_gradient_length = 0.1
 shadow_filter = 1

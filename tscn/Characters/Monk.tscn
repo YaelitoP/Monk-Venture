@@ -1644,6 +1644,18 @@ tracks/15/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/16/type = "value"
+tracks/16/path = NodePath("hurtbox/coll_hurt:disabled")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=19]
 resource_name = "dobleJump"
@@ -2359,6 +2371,18 @@ tracks/11/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("sight:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=17]
@@ -3849,11 +3873,12 @@ shape = SubResource( 1 )
 
 [node name="anim_monk" type="AnimatedSprite" parent="monk"]
 self_modulate = Color( 0.756863, 0.756863, 0.756863, 1 )
-position = Vector2( 0, -7 )
+position = Vector2( 0, -5.33333 )
 scale = Vector2( -1.025, 1.025 )
 z_index = 4
 frames = ExtResource( 2 )
-animation = "idle"
+animation = "hurt"
+flip_h = true
 
 [node name="player_monk" type="AnimationPlayer" parent="monk"]
 autoplay = "idle"
@@ -3913,7 +3938,7 @@ cast_to = Vector2( 0, 35 )
 collision_mask = 2
 
 [node name="hurtbox" type="Area2D" parent="monk"]
-visible = false
+scale = Vector2( 1.07599, 1.04346 )
 z_index = -1
 collision_mask = 20
 
@@ -3956,19 +3981,22 @@ text = "Press E"
 one_shot = true
 
 [node name="sight" type="Light2D" parent="monk"]
-visible = false
 position = Vector2( -4.76837e-07, -17.1975 )
 scale = Vector2( 1.12933, 1.33225 )
 texture = SubResource( 63 )
 offset = Vector2( 0, -10 )
 texture_scale = 5.0
-energy = 0.7
+energy = 0.8
 range_item_cull_mask = 7
 shadow_enabled = true
 shadow_gradient_length = 5.0
 shadow_filter = 1
 shadow_filter_smooth = 64.0
-shadow_item_cull_mask = 3
+shadow_item_cull_mask = 7
+
+[node name="invencible" type="Timer" parent="monk"]
+wait_time = 2.0
+one_shot = true
 
 [connection signal="area_entered" from="monk/hurtbox" to="monk" method="_on_hurtbox_area_entered"]
 [connection signal="area_exited" from="monk/hurtbox" to="monk" method="_on_hurtbox_area_exited"]

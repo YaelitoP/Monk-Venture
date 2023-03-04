@@ -17,12 +17,16 @@ onready var angel: = preload("res://tscn/World/angel.tscn")
 onready var slot_selection: Object
 onready var checkpoint: Object
 onready var enemy: Object
+onready var enemy1: Object
+onready var enemy2: Object
 onready var character: Object
 onready var respawn_screen: Object
 onready var title: Object
 onready var map: Object
+onready var map1: Object
+onready var map2: Object
 onready var options: Object
-
+onready var current:  Object
 onready var level: = 0
 
 func _ready() -> void:
@@ -32,14 +36,17 @@ func _ready() -> void:
 	title = start_menu.instance()
 	character = monk_node.instance()
 	enemy = wizard_node.instance()
+	enemy1 = wizard_node.instance()
+	enemy2 = wizard_node.instance()
 	respawn_screen = respawn_scene.instance()
 	checkpoint = angel.instance()
-	
+	map = world0.instance()
+	map1 = world1.instance()
 	
 	if level != SaveFile.actual_level:
 		level = SaveFile.actual_level
-	if level == 0:
-		map = world0.instance()
+	
+
 	
 	if SaveFile.new_start:
 		self.add_child(title)
@@ -79,12 +86,21 @@ func file_selection():
 
 func start_game():
 	self.add_child(map)
-	self.add_child(enemy)
 	self.add_child(checkpoint)
 	self.add_child(character)
 	self.add_child(respawn_screen)
 	
-	enemy.position = map.spawns.mob.global_position
+	for child in map.spawns.get_children():
+		if child.name == "mobSpawn":
+			self.add_child(enemy)
+			enemy.position = child.global_position
+		if child.name == "mobSpawn1":
+			self.add_child(enemy1)
+			enemy1.position = child.global_position
+		if child.name == "mobSpawn2":
+			self.add_child(enemy2)
+			enemy2.position = child.global_position
+		
 	checkpoint.position = map.spawns.check.global_position
 	character.position = map.spawns.player.global_position
 	
@@ -98,14 +114,31 @@ func start_game():
 	
 
 func load_game():
-	self.add_child(map)
-	self.add_child(enemy)
+	
+	if level == 0:
+		self.add_child(map)
+		current = map
+	if level == 1:
+		self.add_child(map1)
+		current = map1
+	
 	self.add_child(checkpoint)
 	self.add_child(character)
 	self.add_child(respawn_screen)
 	
-	enemy.position = map.spawns.mob.global_position
-	checkpoint.position = map.spawns.check.global_position
+	
+	for child in current.spawns.get_children():
+		if child.name == "mobSpawn":
+			self.add_child(enemy)
+			enemy.position = child.global_position
+		if child.name == "mobSpawn1":
+			self.add_child(enemy1)
+			enemy1.position = child.global_position
+		if child.name == "mobSpawn2":
+			self.add_child(enemy2)
+			enemy2.position = child.global_position
+		
+	checkpoint.position = current.spawns.check.global_position
 	
 	SaveFile.load_game()
 	

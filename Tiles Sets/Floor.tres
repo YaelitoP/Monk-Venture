@@ -179,8 +179,8 @@ points = PoolVector2Array( 0, 2.91618, 16.2218, 2.91618, 16.2218, 16.4165, 0, 16
 [sub_resource type="ConvexPolygonShape2D" id=69]
 points = PoolVector2Array( 0, 2.91618, 16.0271, 2.91618, 16.092, 16.1569, 0.0603447, 16.2867 )
 
-[sub_resource type="OccluderPolygon2D" id=112]
-polygon = PoolVector2Array( 0, 17.75, 32, 17.6875, 32, 32, 0, 32 )
+[sub_resource type="OccluderPolygon2D" id=221]
+polygon = PoolVector2Array( 32, 17.5625, 0, 17.5625, 0, 4.4375, 32, 4.4375 )
 
 [sub_resource type="ConvexPolygonShape2D" id=70]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -2385,7 +2385,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 15.9622, 0, 16.092 )
 105/region = Rect2( 0, 0, 32, 32 )
 105/tile_mode = 0
 105/occluder_offset = Vector2( 0, 0 )
-105/occluder = SubResource( 112 )
+105/occluder = SubResource( 221 )
 105/navigation_offset = Vector2( 0, 0 )
 105/shape_offset = Vector2( 0, 0 )
 105/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
