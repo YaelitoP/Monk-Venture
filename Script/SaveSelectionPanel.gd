@@ -25,6 +25,7 @@ func slot0() -> void:
 		
 		if file.file_exists(SaveFile.save):
 			
+# warning-ignore:return_value_discarded
 			delete_file.remove(SaveFile.save)
 			emit_signal("start")
 			
@@ -47,6 +48,7 @@ func slot1() -> void:
 		
 		if file.file_exists(SaveFile.save1):
 			
+# warning-ignore:return_value_discarded
 			delete_file.remove(SaveFile.save1)
 			emit_signal("start")
 			
@@ -69,6 +71,7 @@ func slot2() -> void:
 		
 		if file.file_exists(SaveFile.save2):
 			
+# warning-ignore:return_value_discarded
 			delete_file.remove(SaveFile.save2)
 			emit_signal("start")
 			

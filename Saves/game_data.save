@@ -1,3 +1,4 @@
-{"health":100,"name":"res://tscn/Mobs/wizard.tscn","parent":"/root/Game","pos_x":1712,"pos_y":402}
 {"first_touch":false,"name":"res://tscn/World/angel.tscn","parent":"/root/Game","pos_x":774,"pos_y":252}
-{"dmg":20,"health":150,"name":"res://tscn/Characters/Monk.tscn","parent":"/root/Game","pos_x":699.703308,"pos_y":252.425293}
+{"dmg":20,"health":150,"name":"res://tscn/Characters/Monk.tscn","parent":"/root/Game","pos_x":714.519592,"pos_y":305.456421}
+{"health":100,"name":"res://tscn/Mobs/wizard.tscn","parent":"/root/Game","pos_x":1712,"pos_y":402}
+{"health":100,"name":"res://tscn/Mobs/wizard.tscn","parent":"/root/Game","pos_x":3323,"pos_y":381}

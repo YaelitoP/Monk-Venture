@@ -1,7 +1,7 @@
 extends Node
 
 onready var new_start: = true
-onready var actual_level: = 0
+onready var actual_level: = 1
 onready var active: = false
 onready var fullscreen: = false
 
@@ -111,3 +111,4 @@ func load_config():
 		
 		if section == "settings":
 			fullscreen = config.get_value(section, "resolution")
+			

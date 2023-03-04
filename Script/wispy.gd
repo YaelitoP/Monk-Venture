@@ -22,7 +22,10 @@ func _physics_process(_delta: float) -> void:
 				coll.disabled = true
 				anim.play("dead")
 				self.set_sleeping(true)
-				
+			if collide.is_in_group("floor"):
+				coll.disabled = true
+				anim.play("dead")
+				self.set_sleeping(true)
 			
 		
 	
