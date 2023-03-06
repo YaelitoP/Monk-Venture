@@ -90,16 +90,19 @@ func start_game():
 	self.add_child(character)
 	self.add_child(respawn_screen)
 	
-	for child in map.spawns.get_children():
-		if child.name == "mobSpawn":
-			self.add_child(enemy)
-			enemy.position = child.global_position
-		if child.name == "mobSpawn1":
-			self.add_child(enemy1)
-			enemy1.position = child.global_position
-		if child.name == "mobSpawn2":
-			self.add_child(enemy2)
-			enemy2.position = child.global_position
+	for spawners in map.spawns.get_children():
+		if spawners.name == "mobSpawn":
+			if !spawners.get_children().has(enemy):
+				self.add_child(enemy)
+			enemy.position = spawners.global_position
+		if spawners.name == "mobSpawn1":
+			if !spawners.get_children().has(enemy1):
+				self.add_child(enemy1)
+			enemy1.position = spawners.global_position
+		if spawners.name == "mobSpawn2":
+			if !spawners.get_children().has(enemy2):
+				self.add_child(enemy2)
+			enemy2.position = spawners.global_position
 		
 	checkpoint.position = map.spawns.check.global_position
 	character.position = map.spawns.player.global_position
@@ -127,16 +130,19 @@ func load_game():
 	self.add_child(respawn_screen)
 	
 	
-	for child in current.spawns.get_children():
-		if child.name == "mobSpawn":
-			self.add_child(enemy)
-			enemy.position = child.global_position
-		if child.name == "mobSpawn1":
-			self.add_child(enemy1)
-			enemy1.position = child.global_position
-		if child.name == "mobSpawn2":
-			self.add_child(enemy2)
-			enemy2.position = child.global_position
+	for spawners in current.spawns.get_children():
+		if spawners.name == "mobSpawn":
+			if !spawners.get_children().has_node(enemy):
+				self.add_child(enemy)
+			enemy.position = spawners.global_position
+		if spawners.name == "mobSpawn1":
+			if !spawners.get_children().has_node(enemy1):
+				self.add_child(enemy1)
+			enemy1.position = spawners.global_position
+		if spawners.name == "mobSpawn2":
+			if !spawners.get_children().has_node(enemy2):
+				self.add_child(enemy2)
+			enemy2.position = spawners.global_position
 		
 	checkpoint.position = current.spawns.check.global_position
 	
