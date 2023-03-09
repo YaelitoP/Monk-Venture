@@ -3,7 +3,7 @@ extends Node2D
 signal heroe_death()
 signal health_status(health)
 signal dash_status(cooldown, count)
-
+signal exit()
 
 onready var heroe: Node
 onready var heroe_atk: int
@@ -18,8 +18,6 @@ func _ready() -> void:
 			knockback = heroe.force
 			
 			emit_signal("health_status", heroe.health)
-		# warning-ignore:return_value_discarded
-			self.connect("heroe_death", get_parent(), "game_over")
 			
 
 

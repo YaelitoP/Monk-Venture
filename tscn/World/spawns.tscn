@@ -6,11 +6,7 @@
 script = ExtResource( 1 )
 
 [node name="mobSpawn" type="Position2D" parent="."]
-position = Vector2( 1712, 402 )
-scale = Vector2( 2, 2 )
 
 [node name="checkPoint" type="Position2D" parent="."]
-position = Vector2( 774, 252 )
 
 [node name="playerSpawn" type="Position2D" parent="."]
-position = Vector2( 246, 340 )

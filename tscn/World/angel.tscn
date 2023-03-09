@@ -487,7 +487,6 @@ script = ExtResource( 1 )
 [node name="sprite_angel" type="AnimatedSprite" parent="."]
 modulate = Color( 0.101961, 0.101961, 0.101961, 1 )
 light_mask = 256
-z_index = -2
 frames = SubResource( 12 )
 frame = 1
 

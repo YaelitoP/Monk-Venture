@@ -16,6 +16,7 @@ onready var floor_ray1: =  $rayfloor/floor_ray1
 onready var floor_ray2: =  $rayfloor/floor_ray2
 onready var timer: = $cooldown
 onready var invencible: = $invencible
+onready var transition: = $cam_character/scene_transition
 
 export var maxspeed: = 300
 export var minspeed: = 50
@@ -63,6 +64,7 @@ var right: = false
 var moving: = false
 
 var contador: float
+
 func _ready() -> void:
 	sprite.flip_h = true
 	death = false
@@ -70,12 +72,22 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if health <= 0:
+		death = true
+		anim_player.play("death")
 	
 	if !death:
 		if !hurted or invencible.time_left != 0:
 			for collide in hurtbox.get_overlapping_areas():
 				if collide.is_in_group("traps"):
 					was_hurted(collide)
+				if collide.is_in_group("pickup"):
+					control.set_visible(true)
+					pickUp(collide)
+				if collide.is_in_group("exit"):
+					control.set_visible(true)
+					pickUp(collide)
+				
 			direction.y += gravity() * delta
 			
 			jumping()
@@ -288,12 +300,6 @@ func animations():
 		crounched = false
 	
 
-
-
-
-
-
-
 func jumping():
 	
 	if Input.is_action_just_pressed("Jump"):
@@ -314,31 +320,24 @@ func jumping():
 	
 
 
-
-
-
 func gravity():
 	return jumpfall if available_jumps != 2 else grav
-
-
 
 
 func set_dmg(new_dmg):
 	dmg = new_dmg
 
 
-
-
 func get_dmg():
 	return dmg
 
-
-
-func pickUp():
-	if Input.is_action_just_pressed("Interactive"):
+func pickUp(collide):
+	if Input.is_action_just_pressed("Interactive") and collide.name == "doblejump":
 		dobleJump = true
-
-
+	if Input.is_action_just_pressed("Interactive") and collide.name == "exit":
+		transition.anim.play("enter")
+		parent.emit_signal("exit")
+		
 
 func was_hurted(collide):
 	if collide.is_in_group("bullets") and invencible.get_time_left() == 0:
@@ -367,8 +366,6 @@ func was_hurted(collide):
 		anim_player.play("death")
 
 
-
-
 func _on_hurtbox_body_entered(body: Node) -> void:
 	direction.x = 0
 	if body.is_in_group("bullets"):
@@ -381,16 +378,10 @@ func get_force():
 	
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
-	
-	if area.get_collision_layer() == 8:
-		control.set_visible(true)
-		pickUp()
 	if area.is_in_group("traps"):
 		was_hurted(area)
 
-func _on_hurtbox_area_exited(area: Area2D) -> void:
-	
-	if area.get_collision_layer() == 8:
-		control.set_visible(false)
+func _on_hurtbox_area_exited(_area: Area2D) -> void:
+	control.set_visible(false)
 
 
