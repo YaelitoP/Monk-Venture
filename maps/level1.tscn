@@ -89,9 +89,6 @@ position = Vector2( 363, 364 )
 [node name="mobSpawn1" type="Position2D" parent="spawns"]
 position = Vector2( 3208, 364 )
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color( 0.298039, 0.423529, 0.490196, 1 )
-
 [node name="lights" parent="." instance=ExtResource( 3 )]
 
 [node name="light0" parent="lights" index="0"]

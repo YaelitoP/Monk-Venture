@@ -31,7 +31,7 @@ onready var map2: Object
 
 onready var options: Object
 onready var current:  Object
-onready var level: = 0
+onready var level: int
 
 func _ready() -> void:
 	
@@ -40,20 +40,16 @@ func _ready() -> void:
 	title = start_menu.instance()
 	character = monk_node.instance()
 	respawn_screen = respawn_scene.instance()
-	
-	if level != SaveFile.actual_level:
-		level = SaveFile.actual_level
-	if level == 0:
-		current = map
-	if level == 1:
-		current = map1
-	
+	checkpoint = angel.instance()
+	map = world0.instance()
+	map1 = world1.instance()
+
+	level = checkpoint.get_level()
 	
 	if SaveFile.new_start:
 		self.add_child(title)
 	else:
-		start_game()
-		
+		load_game()
 	
 # warning-ignore:return_value_discarded
 	slot_selection.connect("continue_game", self, "load_game")
@@ -83,10 +79,14 @@ func file_selection():
 	slot_selection.panel.popup()
 
 func start_game():
-	SaveFile.actual_level = 0
-	map = world0.instance()
-	current = map
-	self.add_child(map)
+	
+	if level == 0:
+		self.add_child(map)
+		current = map
+	if level == 1:
+		self.add_child(map1)
+		current = map1
+	
 	self.add_child(character)
 	self.add_child(respawn_screen)
 	
@@ -105,13 +105,14 @@ func start_game():
 				spawners.add_child(enemy2)
 		
 		if spawners.name == "checkPoint":
-			checkpoint = angel.instance()
 			spawners.add_child(checkpoint)
+			checkpoint.set_level(level)
+			print(checkpoint.get_level(), "on start")
 			
-	character.position = map.spawns.player.global_position
+	character.heroe.global_position = current.spawns.player.global_position
 	
 	if !SaveFile.new_start:
-		character.position = SaveFile.last_point
+		character.heroe.global_position = SaveFile.last_point
 	else:
 		SaveFile.new_start = false
 		
@@ -122,10 +123,13 @@ func start_game():
 func load_game():
 	
 	if level == 0:
+		self.add_child(map)
 		current = map
 	if level == 1:
+		self.add_child(map1)
 		current = map1
 		
+	
 	self.add_child(character)
 	self.add_child(respawn_screen)
 	
@@ -144,21 +148,15 @@ func load_game():
 				spawners.add_child(enemy2)
 		
 		if spawners.name == "checkPoint":
-			checkpoint = angel.instance()
 			spawners.add_child(checkpoint)
+			checkpoint.set_level(level)
+			print(checkpoint.get_level(), "on load")
 	
-
-	
-	SaveFile.load_game()
-	
-	if !SaveFile.new_start:
-		character.heroe.position = SaveFile.last_point
-	else:
-		SaveFile.new_start = false
+	character.heroe.global_position = SaveFile.last_point
+	SaveFile.new_start = false
 		
 	if is_instance_valid(title):
 		title.queue_free()
-	
 
 func options_popup():
 	self.add_child(options)
@@ -167,21 +165,20 @@ func options_popup():
 
 func change_level():
 	if level == 0:
-		SaveFile.actual_level = 1
 		level = 1
 	
 	if is_instance_valid(enemy):
-		enemy.free()
+		enemy.queue_free()
 	if is_instance_valid(enemy1):
-		enemy1.free()
+		enemy1.queue_free()
 	if is_instance_valid(enemy2):
-		enemy2.free()
+		enemy2.queue_free()
 	if is_instance_valid(checkpoint):
-		checkpoint.free()
+		checkpoint.queue_free()
 	if is_instance_valid(map):
-		map.free()
+		map.queue_free()
 	if is_instance_valid(map1):
-		map1.free()
+		map1.queue_free()
 	
 	if level == 1:
 		map1 = world1.instance()
@@ -207,10 +204,13 @@ func change_level():
 		if spawners.name == "checkPoint":
 			checkpoint = angel.instance()
 			spawners.add_child(checkpoint)
+			checkpoint.set_level(level)
+			print(checkpoint.get_level(), "wtf why is this triggering")
 			
 	character.heroe.global_position = current.spawns.player.global_position
 	SaveFile.last_point = current.spawns.player.global_position
-
+	SaveFile.actual_level = checkpoint.get_level()
+	SaveFile.save_data()
 
 func game_over():
 	respawn_screen.gameover.visible = true
@@ -226,6 +226,7 @@ func resolution():
 func close():
 	if self.is_a_parent_of(options):
 		remove_child(options)
+		SaveFile.save_config()
 	if self.is_a_parent_of(slot_selection):
 		remove_child(slot_selection)
-	SaveFile.save_config()
+	

@@ -94,7 +94,6 @@ func save_config():
 	
 	config.save(settings)
 	
-	print(config)
 
 
 func load_config():
