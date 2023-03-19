@@ -371,7 +371,7 @@ tracks/4/keys = {
 [sub_resource type="CircleShape2D" id=18]
 radius = 359.113
 
-[node name="mob" type="Node2D" groups=["save"]]
+[node name="mob" type="Node2D" groups=["mobs", "save"]]
 light_mask = 4
 script = ExtResource( 12 )
 

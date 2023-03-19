@@ -35,8 +35,9 @@ func slot0() -> void:
 	else:
 		
 		if file.file_exists(SaveFile.save):
+			SaveFile.load_game()
 			emit_signal("continue_game")
-			
+
 	panel.visible = false
 
 
@@ -58,6 +59,7 @@ func slot1() -> void:
 	else:
 		
 		if file.file_exists(SaveFile.save1):
+			SaveFile.load_game()
 			emit_signal("continue_game")
 			
 	panel.visible = false
@@ -81,6 +83,7 @@ func slot2() -> void:
 	else:
 		
 		if file.file_exists(SaveFile.save2):
+			SaveFile.load_game()
 			emit_signal("continue_game")
 		
 	panel.visible = false

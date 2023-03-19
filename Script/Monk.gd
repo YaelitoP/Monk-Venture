@@ -2,6 +2,7 @@ extends KinematicBody2D
 class_name monkCharacter
 
 const DASH_LIMIT: = 300
+
 onready var parent: = get_parent()
 onready var coll: = $coll_monk
 onready var sprite: = $anim_monk
