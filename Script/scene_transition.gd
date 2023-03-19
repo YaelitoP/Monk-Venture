@@ -1,10 +1,9 @@
 extends Node
 
+onready var anim: = $AnimationPlayer
 
-onready var one_start: = false
-onready var last_point: Vector2
-onready var this_already_happend: = false
 
+# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 

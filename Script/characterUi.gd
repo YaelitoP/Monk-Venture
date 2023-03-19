@@ -9,8 +9,10 @@ onready var tick: = 0.0
 
 func _ready() -> void:
 	if owner.has_signal("health_status"):
+# warning-ignore:return_value_discarded
 		owner.connect("health_status", self, "update_health")
 	if owner.has_signal("dash_status"):
+# warning-ignore:return_value_discarded
 		owner.connect("dash_status", self, "update_stamina")
 
 func update_health(health):

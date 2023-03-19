@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Script/GameNode.gd"
 }, {
+"base": "Node2D",
+"class": "Respawn",
+"language": "GDScript",
+"path": "res://Script/angel.gd"
+}, {
 "base": "RigidBody2D",
 "class": "Wispy",
 "language": "GDScript",
@@ -28,18 +33,13 @@ _global_script_classes=[ {
 "class": "wizard",
 "language": "GDScript",
 "path": "res://Script/wiz_mob.gd"
-}, {
-"base": "Node2D",
-"class": "world_manager",
-"language": "GDScript",
-"path": "res://Script/WorldManager(Try0).gd"
 } ]
 _global_script_class_icons={
 "Gamenode": "",
+"Respawn": "",
 "Wispy": "",
 "monkCharacter": "",
-"wizard": "",
-"world_manager": ""
+"wizard": ""
 }
 
 [application]
@@ -50,7 +50,6 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Checkpoint="*res://Script/Checkpoint.gd"
 SaveFile="*res://Script/saveFile.gd"
 
 [display]

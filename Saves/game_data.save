@@ -1,4 +1,4 @@
-{"first_touch":false,"name":"res://tscn/World/angel.tscn","parent":"/root/Game","pos_x":774,"pos_y":252}
-{"dmg":20,"health":150,"name":"res://tscn/Characters/Monk.tscn","parent":"/root/Game","pos_x":714.519592,"pos_y":305.456421}
-{"health":100,"name":"res://tscn/Mobs/wizard.tscn","parent":"/root/Game","pos_x":1712,"pos_y":402}
-{"health":100,"name":"res://tscn/Mobs/wizard.tscn","parent":"/root/Game","pos_x":3323,"pos_y":381}
+{"dmg":20,"health":150,"name":"res://tscn/Characters/Monk.tscn","parent":"/root/Game","pos_x":703.641602,"pos_y":236.633835}
+{"health":100,"name":"res://tscn/Mobs/wizard.tscn","parent":"/root/Game/world0/spawns/mobSpawn","pos_x":0,"pos_y":0}
+{"first_touch":false,"name":"res://tscn/World/angel.tscn","parent":"/root/Game/world0/spawns/checkPoint","pos_x":0,"pos_y":0,"remember_level":0}
+{"health":100,"name":"res://tscn/Mobs/wizard.tscn","parent":"/root/Game/world0/spawns/mobSpawn1","pos_x":0,"pos_y":0}

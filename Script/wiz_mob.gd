@@ -110,13 +110,18 @@ func collided_with():
 	if collision0 != null:
 		if collision0.is_in_group("player"):
 			collided_player.append(true)
+		if collision0.is_in_group("world"):
+			collided_player.pop_back()
 	if collision1 != null:
 		if collision1.is_in_group("player"):
 			collided_player.append(true)
+		if collision1.is_in_group("world"):
+			collided_player.pop_back()
 	if collision2 != null:
 		if collision2.is_in_group("player"):
 			collided_player.append(true)
-	
+		if collision2.is_in_group("world"):
+			collided_player.pop_back()
 
 func play_sprites():
 	if health > 0:

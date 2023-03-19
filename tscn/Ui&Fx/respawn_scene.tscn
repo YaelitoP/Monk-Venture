@@ -98,5 +98,8 @@ custom_fonts/font = SubResource( 5 )
 custom_styles/hover = SubResource( 6 )
 text = "Exit"
 
+[node name="Camera2D" type="Camera2D" parent="gameover"]
+position = Vector2( 640, 360 )
+
 [connection signal="pressed" from="gameover/margin/rows/restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="gameover/margin/rows/exit" to="." method="_on_exit_pressed"]

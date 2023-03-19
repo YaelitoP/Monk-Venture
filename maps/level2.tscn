@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Tiles Sets/Floor.tres" type="TileSet" id=1]
 [ext_resource path="res://Tiles Sets/forest.tres" type="TileSet" id=2]
@@ -11,6 +11,9 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 786, 11.75 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 44, 62.5 )
 
 [node name="level2" type="Node2D"]
 script = ExtResource( 7 )
@@ -79,7 +82,7 @@ tile_data = PoolIntArray( -2096994, 8, 0, -2096993, 15, 0, -2031459, 23, 0, -203
 
 [node name="light0" parent="lights" index="0"]
 position = Vector2( 5216, 599 )
-frame = 9
+frame = 1
 
 [node name="Light2D" parent="lights/light0" index="0"]
 position = Vector2( -32, 2.24999 )
@@ -87,7 +90,7 @@ scale = Vector2( 5.2, 2.8 )
 
 [node name="light1" parent="lights" index="1"]
 position = Vector2( 6176, 640 )
-frame = 0
+frame = 4
 
 [node name="Light2D" parent="lights/light1" index="0"]
 position = Vector2( -1.90735e-05, -5.74999 )
@@ -96,7 +99,7 @@ shadow_item_cull_mask = 2
 
 [node name="light2" parent="lights" index="2"]
 position = Vector2( 8664, 608 )
-frame = 8
+frame = 0
 
 [node name="Light2D" parent="lights/light2" index="0"]
 position = Vector2( -87.4998, 1.00001 )
@@ -108,7 +111,7 @@ position = Vector2( 878, 87 )
 
 [node name="light0" parent="lights2" index="0"]
 position = Vector2( 738, 9 )
-frame = 10
+frame = 7
 
 [node name="Light2D" parent="lights2/light0" index="0"]
 position = Vector2( -17, -1.90735e-06 )
@@ -117,7 +120,7 @@ color = Color( 0.988235, 0.717647, 0.298039, 1 )
 
 [node name="light1" parent="lights2" index="1"]
 position = Vector2( 4353, -13 )
-frame = 0
+frame = 4
 
 [node name="Light2D" parent="lights2/light1" index="0"]
 position = Vector2( -16.7501, 5.5 )
@@ -127,7 +130,7 @@ shadow_item_cull_mask = 2
 
 [node name="light2" parent="lights2" index="2"]
 position = Vector2( 7602, -151 )
-frame = 8
+frame = 0
 
 [node name="Light2D" parent="lights2/light2" index="0"]
 position = Vector2( -0.00012207, 0 )
@@ -144,22 +147,26 @@ shape = SubResource( 1 )
 [node name="spawns" parent="." instance=ExtResource( 6 )]
 
 [node name="mobSpawn" parent="spawns" index="0"]
-position = Vector2( 1616, 96 )
+position = Vector2( 1738, 128 )
 
 [node name="checkPoint" parent="spawns" index="1"]
-position = Vector2( 5088, 640 )
+position = Vector2( 5046, 640 )
 
 [node name="playerSpawn" parent="spawns" index="2"]
-position = Vector2( 384, 176 )
+position = Vector2( 120, 220 )
 
-[node name="mobSpawn3" type="Position2D" parent="spawns"]
-position = Vector2( 8440, 35 )
+[node name="mobSpawn1" type="Position2D" parent="spawns"]
+position = Vector2( 5184, 173 )
 
 [node name="mobSpawn2" type="Position2D" parent="spawns"]
-position = Vector2( 5088, 184 )
+position = Vector2( 8195, 42 )
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color( 0.298039, 0.423529, 0.490196, 1 )
+[node name="exit" type="Area2D" parent="." groups=["exit"]]
+position = Vector2( 111, 220 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="exit"]
+position = Vector2( 0, 8.5 )
+shape = SubResource( 2 )
 
 [editable path="lights"]
 [editable path="lights2"]

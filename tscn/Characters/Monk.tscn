@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=2]
+[gd_scene load_steps=72 format=2]
 
 [ext_resource path="res://Script/Monk.gd" type="Script" id=1]
 [ext_resource path="res://Sprite Sets/Monk.tres" type="SpriteFrames" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Sprite/Fx/Free_Skills_Fire/Fire III/Fire_III_Flame_A_32x48.png" type="Texture" id=5]
 [ext_resource path="res://Sprite/Gui/GUI.png" type="Texture" id=6]
 [ext_resource path="res://Sprite/Fx/GameFXexport/SPRITESHEET_Files/IcePick_64x64.png" type="Texture" id=7]
+[ext_resource path="res://tscn/Ui&Fx/scene_transition.tscn" type="PackedScene" id=8]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 15.0
@@ -1632,30 +1633,6 @@ tracks/14/keys = {
 "update": 1,
 "values": [ false ]
 }
-tracks/15/type = "value"
-tracks/15/path = NodePath("sight:visible")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/16/type = "value"
-tracks/16/path = NodePath("hurtbox/coll_hurt:disabled")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
 
 [sub_resource type="Animation" id=19]
 resource_name = "dobleJump"
@@ -2220,7 +2197,7 @@ tracks/15/enabled = true
 tracks/15/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
+"update": 0,
 "values": [ true, false, true, false, true, false, true ]
 }
 
@@ -2371,18 +2348,6 @@ tracks/11/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
-}
-tracks/12/type = "value"
-tracks/12/path = NodePath("sight:visible")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
 }
 
 [sub_resource type="Animation" id=17]
@@ -3832,8 +3797,8 @@ outline_color = Color( 0.101961, 0.101961, 0.101961, 1 )
 font_data = SubResource( 26 )
 
 [sub_resource type="Gradient" id=64]
-offsets = PoolRealArray( 0.0275229, 0.344037, 0.559633, 0.775229, 1 )
-colors = PoolColorArray( 1, 1, 1, 1, 0.821312, 0.83398, 0.84071, 1, 0.664415, 0.688207, 0.700846, 1, 0.413334, 0.463005, 0.489392, 1, 0.331577, 0.395649, 0.429688, 1 )
+offsets = PoolRealArray( 0.0275229, 0.215596, 0.380734, 0.56422, 0.775229, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 0.821312, 0.83398, 0.84071, 1, 0.664415, 0.688207, 0.700846, 1, 0.490086, 0.526236, 0.545442, 1, 0.413334, 0.463005, 0.489392, 1, 0.331577, 0.395649, 0.429688, 1 )
 
 [sub_resource type="GradientTexture2D" id=63]
 gradient = SubResource( 64 )
@@ -3868,6 +3833,8 @@ editor_draw_drag_margin = true
 
 [node name="characterUI" parent="monk/cam_character" instance=ExtResource( 4 )]
 
+[node name="scene_transition" parent="monk/cam_character" instance=ExtResource( 8 )]
+
 [node name="coll_monk" type="CollisionShape2D" parent="monk" groups=["player"]]
 shape = SubResource( 1 )
 
@@ -3877,7 +3844,7 @@ position = Vector2( 0, -5.33333 )
 scale = Vector2( -1.025, 1.025 )
 z_index = 4
 frames = ExtResource( 2 )
-animation = "hurt"
+animation = "idle"
 flip_h = true
 
 [node name="player_monk" type="AnimationPlayer" parent="monk"]
@@ -3995,7 +3962,6 @@ shadow_filter_smooth = 64.0
 shadow_item_cull_mask = 7
 
 [node name="invencible" type="Timer" parent="monk"]
-wait_time = 2.0
 one_shot = true
 
 [connection signal="area_entered" from="monk/hurtbox" to="monk" method="_on_hurtbox_area_entered"]

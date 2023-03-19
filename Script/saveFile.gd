@@ -1,12 +1,12 @@
 extends Node
 
 onready var new_start: = true
-onready var actual_level: = 1
+onready var actual_level: = 0
 onready var active: = false
 onready var fullscreen: = false
 
 onready var last_point: = Vector2.ZERO
-
+onready var respawned: bool
 onready var slot: String
 onready var new_slot: = true
 
@@ -59,7 +59,7 @@ func load_game():
 	var _delete_this = get_tree().get_nodes_in_group("save")
 	
 	for i in _delete_this:
-		i.queue_free()
+		i.free()
 		
 	game_save.open(slot, File.READ)
 	
@@ -81,7 +81,8 @@ func load_game():
 				continue
 				
 			new_object.set(i, data[i])
-			
+		if new_object.has_method("_ready"):
+			new_object._ready()
 	game_save.close()
 
 
@@ -94,7 +95,6 @@ func save_config():
 	
 	config.save(settings)
 	
-	print(config)
 
 
 func load_config():
