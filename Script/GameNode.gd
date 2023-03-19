@@ -57,6 +57,7 @@ func _ready() -> void:
 		load_game()
 		
 	level = SaveFile.actual_level
+	
 	if level == 0:
 		current = map
 	if level == 1:
@@ -155,12 +156,17 @@ func change_level():
 	
 	if level == 0:
 		level = 1
-		
+
+	
 	if is_instance_valid(map):
 		map.queue_free()
 	if is_instance_valid(map1):
 		map1.queue_free()
 	
+	if level == 0:
+		map = world0.instance()
+		self.add_child(map)
+		current = map
 	if level == 1:
 		map1 = world1.instance()
 		self.add_child(map1)
@@ -168,7 +174,7 @@ func change_level():
 	
 	spawning()
 	
-	character.heroe.global_position = current.spawns.player.global_position
+	character.heroe.global_position = current.spawns.startLine
 	
 	SaveFile.last_point = current.spawns.player.global_position
 	SaveFile.actual_level = checkpoint.get_level()
