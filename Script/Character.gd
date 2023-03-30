@@ -7,8 +7,9 @@ signal exit()
 
 onready var heroe: Node
 onready var heroe_atk: int
-onready var knockback: = 0
-onready var parent = get_parent()
+onready var knockback: int = 0
+onready var parent: Node = get_parent()
+
 func _ready() -> void:
 # warning-ignore:return_value_discarded
 	if !self.is_connected("exit", parent, "change_level"):

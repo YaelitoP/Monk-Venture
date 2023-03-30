@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=2]
+[gd_scene load_steps=71 format=2]
 
 [ext_resource path="res://Script/Monk.gd" type="Script" id=1]
 [ext_resource path="res://Sprite Sets/Monk.tres" type="SpriteFrames" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://Sprite/Fx/Free_Skills_Fire/Fire III/Fire_III_Flame_A_32x48.png" type="Texture" id=5]
 [ext_resource path="res://Sprite/Gui/GUI.png" type="Texture" id=6]
 [ext_resource path="res://Sprite/Fx/GameFXexport/SPRITESHEET_Files/IcePick_64x64.png" type="Texture" id=7]
-[ext_resource path="res://tscn/Ui&Fx/scene_transition.tscn" type="PackedScene" id=8]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 15.0
@@ -3815,7 +3814,7 @@ script = ExtResource( 3 )
 
 [node name="monk" type="KinematicBody2D" parent="." groups=["player"]]
 z_index = 4
-collision_mask = 14
+collision_mask = 10
 script = ExtResource( 1 )
 dobleJump = true
 available_jumps = 1
@@ -3833,8 +3832,6 @@ editor_draw_drag_margin = true
 
 [node name="characterUI" parent="monk/cam_character" instance=ExtResource( 4 )]
 
-[node name="scene_transition" parent="monk/cam_character" instance=ExtResource( 8 )]
-
 [node name="coll_monk" type="CollisionShape2D" parent="monk" groups=["player"]]
 shape = SubResource( 1 )
 
@@ -3844,7 +3841,7 @@ position = Vector2( 0, -5.33333 )
 scale = Vector2( -1.025, 1.025 )
 z_index = 4
 frames = ExtResource( 2 )
-animation = "idle"
+animation = "hurt"
 flip_h = true
 
 [node name="player_monk" type="AnimationPlayer" parent="monk"]
@@ -3959,9 +3956,10 @@ shadow_enabled = true
 shadow_gradient_length = 5.0
 shadow_filter = 1
 shadow_filter_smooth = 64.0
-shadow_item_cull_mask = 7
+shadow_item_cull_mask = 263
 
 [node name="invencible" type="Timer" parent="monk"]
+wait_time = 2.0
 one_shot = true
 
 [connection signal="area_entered" from="monk/hurtbox" to="monk" method="_on_hurtbox_area_entered"]

@@ -1,10 +1,10 @@
 extends Node2D
 class_name Respawn
 
-onready var quick_save: = false
-onready var anim: = $anim_angel
-onready var popUp: = $popup
-onready var first_touch: = true
+onready var quick_save: bool  = false
+onready var anim: Object = $anim_angel
+onready var popUp:Object = $popup
+onready var first_touch:bool = true
 onready var remember_level: int setget set_level , get_level
 
 

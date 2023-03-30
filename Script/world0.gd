@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var spawns: = $spawns
+onready var spawns:Object = $spawns
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.

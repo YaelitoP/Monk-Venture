@@ -35,7 +35,7 @@ onready var current:  Object
 onready var level: int
 
 func _ready() -> void:
-	
+	randomize()
 	slot_selection = save_scene.instance()
 	options = options_scene.instance()
 	title = start_menu.instance()

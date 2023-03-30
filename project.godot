@@ -14,11 +14,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Script/GameNode.gd"
 }, {
-"base": "Node",
-"class": "Idle_Bat",
-"language": "GDScript",
-"path": "res://Script/IDLE_dragon.gd"
-}, {
 "base": "Node2D",
 "class": "Respawn",
 "language": "GDScript",
@@ -30,9 +25,9 @@ _global_script_classes=[ {
 "path": "res://Script/StateMachine.gd"
 }, {
 "base": "Node",
-"class": "Wander_Bat",
+"class": "WanderDragon",
 "language": "GDScript",
-"path": "res://Script/WANDER_dragon.gd"
+"path": "res://Script/wanderDragon.gd"
 }, {
 "base": "RigidBody2D",
 "class": "Wispy",
@@ -40,14 +35,24 @@ _global_script_classes=[ {
 "path": "res://Script/wispy.gd"
 }, {
 "base": "KinematicBody2D",
-"class": "bat",
+"class": "dragonNode",
 "language": "GDScript",
 "path": "res://Script/dragon.gd"
+}, {
+"base": "Node",
+"class": "idleDragon",
+"language": "GDScript",
+"path": "res://Script/idleDragon.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "monkCharacter",
 "language": "GDScript",
 "path": "res://Script/Monk.gd"
+}, {
+"base": "Node",
+"class": "seekDragon",
+"language": "GDScript",
+"path": "res://Script/seekDragon.gd"
 }, {
 "base": "RigidBody2D",
 "class": "wizard",
@@ -56,13 +61,14 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Gamenode": "",
-"Idle_Bat": "",
 "Respawn": "",
 "StateMachine": "",
-"Wander_Bat": "",
+"WanderDragon": "",
 "Wispy": "",
-"bat": "",
+"dragonNode": "",
+"idleDragon": "",
 "monkCharacter": "",
+"seekDragon": "",
 "wizard": ""
 }
 

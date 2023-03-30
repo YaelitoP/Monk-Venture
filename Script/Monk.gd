@@ -3,46 +3,45 @@ class_name monkCharacter
 
 const DASH_LIMIT: = 300
 
-onready var parent: = get_parent()
-onready var coll: = $coll_monk
-onready var sprite: = $anim_monk
-onready var effects: = $effects
-onready var anim_player: = $player_monk
-onready var hurtbox: = $hurtbox
-onready var coll_hurt: = $hurtbox/coll_hurt
-onready var dmg_box: = $area_atacks
-onready var control: = $Control
-onready var rayfloor: = $rayfloor
-onready var floor_ray1: =  $rayfloor/floor_ray1
-onready var floor_ray2: =  $rayfloor/floor_ray2
-onready var timer: = $cooldown
-onready var invencible: = $invencible
-onready var transition: = $cam_character/scene_transition
+onready var parent: Node = get_parent()
+onready var coll: Node = $coll_monk
+onready var sprite: Node = $anim_monk
+onready var effects: Node = $effects
+onready var anim_player: Node = $player_monk
+onready var hurtbox: Node = $hurtbox
+onready var coll_hurt: Node = $hurtbox/coll_hurt
+onready var dmg_box:Node = $area_atacks
+onready var control: Node = $Control
+onready var rayfloor: Node = $rayfloor
+onready var floor_ray1:Node =  $rayfloor/floor_ray1
+onready var floor_ray2: Node =  $rayfloor/floor_ray2
+onready var timer: Node = $cooldown
+onready var invencible: Node = $invencible
 
-export var maxspeed: = 300
-export var minspeed: = 50
-export var fricction: = 6
-export var acceleration: = 4
+export var maxspeed: int = 300
+export var minspeed: int = 50
+export var fricction: int = 6
+export var acceleration: int = 4
 
-export var dash: = true
-export var dobleJump: = false
+
+export var dobleJump: bool = false
 export var on_air: bool
 
-export var dashed: = false
+export var dashed: bool = false
 
-export var health: = 150
-export var dmg_income: = 25
+export var health: int = 150
+export var dmg_income: int = 25
 export var direction: Vector2 = Vector2.ZERO
 
 export var atacking: bool
 export var crounched: bool
 
-export var death: = false
-export var hurted: = false
+export var death: bool = false
+export var hurted: bool = false
 
-export var available_dash: = 2
-export var available_jumps: = 2
-export var jumpheight: = 150
+export var available_dash: int = 2
+export var available_jumps: int = 2
+export var jumpheight: int = 150
 
 onready var jump: float = ((2.0 * jumpheight) / jumptime) * -1.0
 
@@ -50,21 +49,20 @@ onready var jumpfall: float = ((-2.0 * jumpheight) / (jumptime * jumptime)) * -1
 
 onready var grav: float = ((-2.0 * jumpheight) / (falltime * falltime)) * -1.0
 
-var jumptime: = 0.4
-var falltime: = 0.5
-var cooldown: = false
+var jumptime: float = 0.4
+var falltime: float = 0.5
+var cooldown: bool = false
 
-var inertia: = false
-var force: = 0 setget ,get_force
-var dmg: = 20 setget set_dmg, get_dmg
+var inertia:bool = false
+var force: int = 0 setget ,get_force
+var dmg: int = 20 setget set_dmg, get_dmg
 
-var motion: = 0
+var motion: int = 0
 
-var left: = false
-var right: = false
-var moving: = false
+var left: bool = false
+var right: bool = true
+var moving:bool = false
 
-var contador: float
 
 func _ready() -> void:
 	sprite.flip_h = true
@@ -76,6 +74,14 @@ func _physics_process(delta: float) -> void:
 	if health <= 0:
 		death = true
 		anim_player.play("death")
+	if invencible.time_left !=0:
+		set_collision_layer_bit(0, false)
+		hurtbox.set_collision_mask_bit(0, false)
+		hurtbox.set_collision_mask_bit(2, false)
+	else:
+		set_collision_layer_bit(0, true)
+		hurtbox.set_collision_mask_bit(0, true)
+		hurtbox.set_collision_mask_bit(2, true)
 	
 	if !death:
 		if !hurted or invencible.time_left != 0:
@@ -95,7 +101,7 @@ func _physics_process(delta: float) -> void:
 			animations()
 			dashing()
 			
-			if !atacking and !on_air and !dashed:
+			if !atacking and !dashed:
 				if Input.is_action_pressed("Left"):
 					left = true
 					right = false
@@ -107,12 +113,15 @@ func _physics_process(delta: float) -> void:
 				get_directions(delta)
 				
 				
-			if !moving or on_air:
+			if !moving and on_air:
+				direction.x += lerp(direction.x, 0, fricction/2) * delta
 				
+			elif on_air:
 				direction.x += lerp(direction.x, 0, fricction/4) * delta
 				
 			elif dashed and !moving:
-				direction.x += lerp(direction.x, 0, fricction) * delta
+				direction.x += lerp(direction.x, 0, fricction/2) * delta
+			
 		else:
 			hurted = false
 		direction = move_and_slide(direction, Vector2.UP, false, 4, 0.785398, inertia)
@@ -122,38 +131,35 @@ func _physics_process(delta: float) -> void:
 
 
 func get_directions(delta):
-	
-	if Input.is_action_pressed("Left") and direction.x >= -maxspeed and !crounched:
+	if !hurted:
+		if Input.is_action_pressed("Left") and direction.x >= -maxspeed and !crounched:
+			
+			direction.x += lerp(direction.x, -maxspeed, acceleration) * delta
+			moving = true
+			inertia = false
+		elif Input.is_action_pressed("Right") and direction.x <= maxspeed and !crounched:
+			inertia = false
+			direction.x += lerp(direction.x, maxspeed, acceleration) * delta
+			moving = true
 		
-		direction.x += lerp(direction.x, -maxspeed, acceleration) * delta
-		moving = true
-		inertia = false
-	elif Input.is_action_pressed("Right") and direction.x <= maxspeed and !crounched:
-		inertia = false
-		direction.x += lerp(direction.x, maxspeed, acceleration) * delta
-		moving = true
-
-	elif Input.is_action_pressed("Down"):
-		direction.x += lerp(direction.x, 0, fricction) * delta
-		inertia = false
-		
-	elif !moving and !is_on_floor():
-		inertia = false
-		direction.x += lerp(direction.x, 0, fricction) * delta
-		
-	elif direction.x < -25 or direction.x > 25:
-		inertia = false
-		direction.x += lerp(direction.x, 0, fricction) * delta
+		elif Input.is_action_pressed("Down"):
+			direction.x += lerp(direction.x, 0, fricction) * delta
+			inertia = false
+			
+		elif !Input.is_action_pressed("Left") and !Input.is_action_pressed("Right"):
+			direction.x += lerp(direction.x, 0, fricction) * delta
+			moving = false
+			inertia = false
 	else:
 		inertia = false
 		direction.x = 0
 		moving = false
 		
-	if Input.is_action_just_released("Right"):
+	if Input.is_action_just_released("Right") and left == true:
 		moving = false
 		right = false
 		
-	if Input.is_action_just_released("Left"):
+	if Input.is_action_just_released("Left") and right == true:
 		moving = false
 		left = false
 		
@@ -191,6 +197,7 @@ func dashing():
 				direction.x += clamp(lerp(direction.x, DASH_LIMIT, acceleration), direction.x, DASH_LIMIT)
 				available_dash = available_dash - 1
 				inertia = true
+			
 			if left:
 				direction.x += clamp(lerp(direction.x, -DASH_LIMIT, acceleration), -DASH_LIMIT, direction.x)
 				available_dash = available_dash - 1
@@ -321,47 +328,35 @@ func jumping():
 	
 
 
-func gravity():
-	return jumpfall if available_jumps != 2 else grav
-
-
-func set_dmg(new_dmg):
-	dmg = new_dmg
-
-
-func get_dmg():
-	return dmg
 
 func pickUp(collide):
 	if Input.is_action_just_pressed("Interactive") and collide.name == "doblejump":
 		dobleJump = true
-	if Input.is_action_just_pressed("Interactive") and collide.name == "exit":
-		transition.anim.play("enter")
-		parent.emit_signal("exit")
-		
+	
 
 func was_hurted(collide):
-	if collide.is_in_group("bullets") and invencible.get_time_left() == 0:
+	if collide.is_in_group("bullets") and invencible.time_left == 0:
+		hurted = true
 		direction.x += collide.get_applied_force().x / 10
 		health = health - dmg_income
 		invencible.start()
 		crounched = false
 		moving = false
 		atacking = false
+	if collide.is_in_group("traps") and invencible.time_left == 0:
 		hurted = true
-	if collide.is_in_group("traps") and invencible.get_time_left() == 0:
+		health = health - dmg_income
 		invencible.start()
-		health = health - dmg_income
 		crounched = false
 		moving = false
 		atacking = false
+	if collide.is_in_group("mobs") and invencible.time_left == 0:
 		hurted = true
-	if collide.is_in_group("mobs") and invencible.get_time_left() == 0:
 		health = health - dmg_income
+		invencible.start()
 		crounched = false
 		moving = false
 		atacking = false
-		hurted = true
 	if health <= 0:
 		death = true
 		anim_player.play("death")
@@ -386,3 +381,13 @@ func _on_hurtbox_area_exited(_area: Area2D) -> void:
 	control.set_visible(false)
 
 
+func gravity():
+	return jumpfall if available_jumps != 2 else grav
+
+
+func set_dmg(new_dmg):
+	dmg = new_dmg
+
+
+func get_dmg():
+	return dmg

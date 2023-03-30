@@ -1,3 +1,3 @@
 extends Node2D
 
-onready var spawns: = $spawns
+onready var spawns:Object = $spawns
