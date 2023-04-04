@@ -37,7 +37,6 @@ func back() -> void:
 
 func _enter_state() -> void:
 	# Give the new state a reference to this state machine script
-	state.fsm = self
 	state.enter()
 	parent.timer.start()
 	parent.wait.start()
@@ -51,3 +50,16 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if state.has_method("_physics_update"):
 		state._physics_update(delta)
+
+func get_random_state():
+	var state_count = [IDLE, WANDER]
+	state_count.shuffle()
+	var random_index = randi() % state_count.size()
+	var state_list = STATES.values()
+	var random_state = state_list[random_index]
+	var next_state = state
+	if random_state == 0:
+		next_state = IDLE
+	else:
+		next_state = WANDER
+	return next_state

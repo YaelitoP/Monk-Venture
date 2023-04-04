@@ -4,23 +4,24 @@ class_name idleDragon
 onready var parent: = get_parent()
 onready var dragon: Object 
 onready var fsm : Object
-onready var getOut: bool = false
+onready var waiting: bool = false
 
 func _physics_update(_delta: float) -> void:
-	wait()
-	if !getOut:
-		dragon.anim.play("idle")
-	else:
-		exit(fsm.WANDER)
+	if !waiting:
+		dragon.animation.play("idle")
+		wait()
+
 	
 func enter() -> void:
-	getOut = false
+	waiting = false
 	print("estas en idle")
 
 func exit(next_state) -> void:
 	parent.change_to(next_state)
 	
 func wait():
-	if dragon.wait.time_left == 0:
-		getOut = true
+	waiting = true
+	yield(get_tree().create_timer(rand_range(1.5, 2.5)), "timeout")
+	if fsm.state == fsm.IDLE:
 		dragon.create_target()
+		exit(fsm.get_random_state())

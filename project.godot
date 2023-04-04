@@ -191,16 +191,18 @@ Interactive={
 
 2d_render/layer_1="player"
 2d_render/layer_2="world"
-2d_render/layer_3="mobs"
+2d_render/layer_3="mob"
 2d_render/layer_4="interactive"
-2d_render/layer_5="bullets"
-2d_render/layer_6="atacks"
+2d_render/layer_5="bullet"
+2d_render/layer_6="attack"
+2d_render/layer_7="hurtbox"
 2d_physics/layer_1="player"
 2d_physics/layer_2="world"
-2d_physics/layer_3="mobs"
+2d_physics/layer_3="mob"
 2d_physics/layer_4="interactive"
-2d_physics/layer_5="bullets"
-2d_physics/layer_6="atacks"
+2d_physics/layer_5="bullet"
+2d_physics/layer_6="attack"
+2d_physics/layer_7="hurbox"
 
 [physics]
 

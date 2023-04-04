@@ -21,7 +21,8 @@ func _physics_update(_delta: float) -> void:
 			dragon.target_position = i.global_position
 	
 	if dragon.wait.time_left == 0 and getOut:
-		exit(fsm.IDLE)
+		
+		exit(fsm.get_random_state())
 	
 	
 	if fsm.direction.x < 0:
@@ -30,7 +31,7 @@ func _physics_update(_delta: float) -> void:
 		dragon.anim.flip_h = false
 
 	if dragon.target_position.distance_to(dragon.global_position) > 100:
-		dragon.anim.play("idle")
+		dragon.animation.play("idle")
 		fsm.direction = dragon.global_position.direction_to(dragon.target_position)
 		dragon.move_and_slide(fsm.direction * speed/2, Vector2.UP)
 	elif !cooldown:

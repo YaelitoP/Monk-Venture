@@ -22,7 +22,7 @@ func _physics_update(_delta: float) -> void:
 		fsm.direction = dragon.global_position.direction_to(dragon.target_position)
 		dragon.move_and_slide(fsm.direction * speed, Vector2.UP)
 	else:
-		exit(fsm.IDLE)
+		exit(fsm.get_random_state())
 
 func enter() -> void:
 	dragon.create_target()
